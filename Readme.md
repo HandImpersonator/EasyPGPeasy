@@ -40,6 +40,18 @@ A TL;DR short help window.
 
 ## Dependencies
 
+You'll need xclip for the copy to clipboard buttons to work.
+
+### Ubuntu
+
+`apt install xclip`
+
+### Fedora
+
+`dnf install xclip`
+
+### Python
+
 Python libraries used in this tool were:
 
 PySimpleGUI, os, pgpy, png, pyclip, pyqrcode, random, string
