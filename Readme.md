@@ -81,7 +81,7 @@ Python libraries you'll need to install, with: `python -m pip install PySimpleGU
 
 ## Usage
 
-Execute `python EZPZ-PGP.py` and navigate through the menus.
+Execute `python EZPZ-PGP.py` and navigate through the menus. Expect bugs and errors it's still a WIP.
 
 ### Coffee
 
