@@ -10,8 +10,8 @@ def create_remove_coffee():
     Returns coffee layout."""
     width = 60
 
-    add = ["BTC", "ETH", "XMR", "ZEC Transparent", "ZEC Shielded", "ALGO", "ALGO ASA",
-           "\n(HDL, YLDY, CryptoTrees, STBL)", "ONE", "LTC", "XTZ", "ATOM", "XLM"]
+    add = ["BTC", "ETH", "XMR", "ZEC Transparent", "ZEC Shielded", "ALGO", "ALGO ASA \n(HDL, YLDY, CryptoTrees, STBL)",
+           "ONE", "LTC", "XTZ", "ATOM", "XLM"]
     text_eng = ["\n", "Send only listed ASA on ALSO ASA, other ASA sent won't be received, and be lost.",
                 "Clicking a button will copy the address to clipboard and show a QR.",
                 "The QR code will show for 5 seconds.", "Thanks for the coffee! :)", "Menu"]
@@ -35,7 +35,7 @@ def create_remove_coffee():
                          [all_imports.pSG.Text(text_eng[0])], [all_imports.pSG.Text(text_eng[1])],
                          [all_imports.pSG.Text(text_eng[2])], [all_imports.pSG.Text(text_eng[3])],
                          [all_imports.pSG.Text(text_eng[4])],
-                         [all_imports.pSG.Button(add[12], key = 800, size = (width, 0))]]
+                         [all_imports.pSG.Button(text_eng[5], key = 800, size = (width, 0))]]
     layout_coffee_esp = [[all_imports.pSG.Button(add[0], key = 1, size = (width, 0))],
                          [all_imports.pSG.Button(add[1], key = 2, size = (width, 0))],
                          [all_imports.pSG.Button(add[2], key = 3, size = (width, 0))],
@@ -51,7 +51,7 @@ def create_remove_coffee():
                          [all_imports.pSG.Text(text_esp[0])], [all_imports.pSG.Text(text_esp[1])],
                          [all_imports.pSG.Text(text_esp[2])], [all_imports.pSG.Text(text_esp[3])],
                          [all_imports.pSG.Text(text_esp[4])],
-                         [all_imports.pSG.Button(add[12], key = 800, size = (width, 0))]]
+                         [all_imports.pSG.Button(text_esp[5], key = 800, size = (width, 0))]]
 
     window_coffee_eng = all_imports.pSG.Window("EZPZ PGP - Buy me a coffee", layout_coffee_eng, disable_close = True,
                                                element_justification = "center")
