@@ -6,10 +6,12 @@ from src.Functions import all_imports
 
 
 def create_menu(lang, imp, ks):
-    event = False
-    height = 370
-    values = {}
-    width = 360
+    event, event1 = False, False
+    imp_eng, imp_esp = None, None
+    lang_eng, lang_esp = "", ""
+    height = 440
+    values = []
+    width = 320
 
     while True:
 
@@ -22,7 +24,8 @@ def create_menu(lang, imp, ks):
 
         # Create PGP Pair.
         if event == 100:
-            private_key, public_key = all_imports.create_pgp_pair.pgpy_create_keypair(values["value"])
+            size = tuple(values.items())[0][1]
+            private_key, public_key = all_imports.create_pgp_pair.pgpy_create_keypair(size)
             text_file_private = open(ks + "/private.asc", "w")
             text_file_private.write(str(private_key))
             text_file_private.close()
@@ -31,82 +34,154 @@ def create_menu(lang, imp, ks):
             text_file_public.close()
             if lang:
                 all_imports.pSG.popup_auto_close("Done!", auto_close_duration = 0.8, button_type = 5, title = "Done!")
-                menu_eng.close()
             elif not lang:
                 all_imports.pSG.popup_auto_close("¡Hecho!", auto_close_duration = 0.8, button_type = 5,
                                                  title = "¡Hecho!")
-                menu_esp.close()
+            menu_eng.close()
+            menu_esp.close()
             event = False
 
-        # Import V_Public key.
-        if event == "v_p_k":
-            imp_eng, imp_esp = all_imports.import_create.create_remove_import()
+        # Import.
+        if event == 110 or event == 112 or event == 114:
+            if event == 110:
+                imp_eng, imp_esp = all_imports.import_enc_create.create_remove_enc_import()
+            elif event == 112:
+                imp_eng, imp_esp = all_imports.import_pub_create.create_remove_pub_import()
+            elif event == 114:
+                imp_eng, imp_esp = all_imports.import_sig_create.create_remove_sig_import()
+
             if lang:
                 menu_eng.close()
-                event, values = imp_eng.read()
+                event1, values = imp_eng.read()
+                if event1 == "xclipp":
+                    toggle = False
+                    paste = all_imports.pyclip.paste(text = True).decode("utf-8").strip()
+                    if event == 110:
+                        imp_eng[110].update(value = paste)
+                    elif event == 112:
+                        imp_eng[112].update(value = paste)
+                    elif event == 114:
+                        imp_eng[114].update(value = paste)
+                    imp_eng["xclipp"].update(visible = toggle)
+                    event1, values = imp_eng.read()
+
             elif not lang:
                 menu_esp.close()
-                event, values = imp_esp.read()
+                event1, values = imp_esp.read()
+                if event1 == "xclipp":
+                    toggle = False
+                    paste = all_imports.pyclip.paste(text = True).decode("utf-8").strip()
+                    if event == 110:
+                        imp_eng[110].update(value = paste)
+                    elif event == 112:
+                        imp_eng[112].update(value = paste)
+                    elif event == 114:
+                        imp_eng[114].update(value = paste)
+                    imp_eng["xclipp"].update(visible = toggle)
+                    event1, values = imp_eng.read()
+            vp = (tuple(values.items())[0][0], tuple(values.items())[0][1])
 
-            if event == 700:
-                vpk = values["V_P_K"]
-                if not vpk:
+            if event1 == 700:
+                if not vp[1]:
                     if lang:
                         all_imports.pSG.popup_error("Cannot import empty data.")
                     elif not lang:
                         all_imports.pSG.popup_error("No se puede importar datos vacíos.")
-                    event = "v_p_k"
                     imp_eng.close()
                     imp_esp.close()
-                if vpk:
+                elif vp[1]:
                     try:
-                        well_is_it = all_imports.enc_dec.is_public(vpk)
-                        if well_is_it:
-                            text_file_v_public = open(imp + "/v_public.asc", "w")
-                            text_file_v_public.write(str(vpk))
-                            text_file_v_public.close()
+                        if vp[0] == 110:
+                            text_file_v = open(imp + "/v_imported_message.txt", "w")
+                            text_file_v.write(str(vp[1]))
+                            text_file_v.close()
                             if lang:
-                                all_imports.pSG.popup_auto_close("Done!", auto_close_duration = 0.8, button_type = 5)
-                                imp_eng.close()
+                                all_imports.pSG.popup_auto_close("Done!", auto_close_duration = 0.8,
+                                                                 button_type = 5)
                             elif not lang:
-                                all_imports.pSG.popup_auto_close("¡Hecho!", auto_close_duration = 0.8, button_type = 5)
-                                imp_esp.close()
+                                all_imports.pSG.popup_auto_close("¡Hecho!", auto_close_duration = 0.8,
+                                                                 button_type = 5)
                             event = False
-                        elif not well_is_it:
-                            if lang:
-                                all_imports.pSG.popup_error("Not a valid PUBLIC PGP key.")
+                            imp_eng.close()
+                            imp_esp.close()
+                        elif vp[0] == 112:
+                            well_is_it = all_imports.enc_dec.is_public(vp[1])
+                            if well_is_it:
+                                text_file_v = open(imp + "/v_public.asc", "w")
+                                text_file_v.write(str(vp[1]))
+                                text_file_v.close()
+                                event = False
+                            elif not well_is_it:
+                                if lang:
+                                    all_imports.pSG.popup_error("Not a valid PUBLIC PGP key.")
+                                elif not lang:
+                                    all_imports.pSG.popup_error("No es una clave PÚBLICA válida.")
+                            imp_eng.close()
+                            imp_esp.close()
+                        elif vp[0] == 114:
+                            well_is_it = all_imports.enc_dec.is_signature(vp[1])
+                            if well_is_it:
+                                text_file_v = open(imp + "/v_signature.txt", "w")
+                                text_file_v.write(str(vp[1]))
+                                text_file_v.close()
+                                if lang:
+                                    all_imports.pSG.popup_auto_close("Done!", auto_close_duration = 0.8,
+                                                                     button_type = 5)
+                                elif not lang:
+                                    all_imports.pSG.popup_auto_close("¡Hecho!", auto_close_duration = 0.8,
+                                                                     button_type = 5)
                                 imp_eng.close()
-                            elif not lang:
-                                all_imports.pSG.popup_error("No es una clave PÚBLICA válida.")
                                 imp_esp.close()
-                            event = "v_p_k"
+                                event = False
+                            elif not well_is_it:
+                                if lang:
+                                    all_imports.pSG.popup_error("Not a valid signature key.")
+                                    imp_eng.close()
+                                elif not lang:
+                                    all_imports.pSG.popup_error("No es una signature válida.")
+                                    imp_esp.close()
                     except ValueError:
                         if lang:
                             all_imports.pSG.popup_error("Expected: ASCII-armored PGP data, "
-                                                        "not a valid PGP Public key to import.")
+                                                        "not a valid PGP Public key or not a valid PGP Signature "
+                                                        "to import.")
                         if not lang:
                             all_imports.pSG.popup_error("Expected: ASCII-armored PGP data, "
-                                                        "no es una clave pública PGP válida para importar.")
+                                                        "no es una clave pública PGP válida o no es una Firma PGP "
+                                                        "válida para importar.")
                         imp_eng.close()
                         imp_esp.close()
-                        event = "v_p_k"
-
-            if event == 800:
+            if event1 == 800:
                 imp_eng.close()
                 imp_esp.close()
+                event = False
 
         # Select encrypt mode.
         if event == 200:
             menu_eng.close()
             menu_esp.close()
-            mode_text = True
+            mode_text = 10
             break
 
         # Select decrypt mode.
         if event == 300:
             menu_eng.close()
             menu_esp.close()
-            mode_text = False
+            mode_text = 20
+            break
+
+        # Select sign mode.
+        if event == 250:
+            menu_eng.close()
+            menu_esp.close()
+            mode_text = 30
+            break
+
+        # Select verify mode.
+        if event == 350:
+            menu_eng.close()
+            menu_esp.close()
+            mode_text = 40
             break
 
         # Toggle language.
@@ -115,17 +190,14 @@ def create_menu(lang, imp, ks):
                 lang_eng, lang_esp = all_imports.language_create.create_remove_language()
                 event, values = lang_eng.read()
                 if event == 454:
-                    pass
                     lang_eng.close()
                     menu_eng.close()
+                    event = False
                 elif event == 455:
                     lang = False
                     lang_eng.close()
                     menu_eng.close()
                     return lang, None
-                if event == 800:
-                    lang_eng.close()
-                    menu_eng.close()
             elif not lang:
                 lang_eng, lang_esp = all_imports.language_create.create_remove_language()
                 event, values = lang_esp.read()
@@ -135,12 +207,14 @@ def create_menu(lang, imp, ks):
                     menu_esp.close()
                     return lang, None
                 elif event == 455:
-                    pass
                     lang_esp.close()
                     menu_esp.close()
-                if event == 800:
-                    lang_esp.close()
-                    menu_esp.close()
+                    event = False
+            if event == 800:
+                lang_eng.close()
+                menu_eng.close()
+                lang_esp.close()
+                menu_esp.close()
 
         # Show help.
         if event == 500:
@@ -148,11 +222,8 @@ def create_menu(lang, imp, ks):
             if lang:
                 menu_eng.close()
                 event, values = help_eng.read()
-                if event == 800:
-                    help_eng.close()
             elif not lang:
                 menu_esp.close()
-                help_eng, help_esp = all_imports.help_create.create_remove_help()
                 event, values = help_esp.read()
 
             help_eng.close()
