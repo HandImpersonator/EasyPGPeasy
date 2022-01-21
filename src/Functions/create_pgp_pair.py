@@ -4,6 +4,8 @@
 
 from src.Functions import all_imports
 
+"""Creates a keypair of given key length."""
+
 
 def get_random_string(length):
     """Choose a random string of a given length.
@@ -13,21 +15,30 @@ def get_random_string(length):
     return result_str
 
 
-def pgpy_create_keypair(size):
-    """Create a keypair of a given size.
-    Return created keypair."""
-    # we can start by generating a primary key. For this example, we'll use RSA, but it could be DSA or ECDSA as well
+def pgpy_create_keypair(email, keys, name, size, custom):
+    """Create a keypair of a given size."""
+
+    real_email, real_name = None, None
+
+    # We can start by generating a primary key. For this example, we'll use RSA, but it could be DSA or ECDSA as well
     private = all_imports.pgpy.PGPKey.new(all_imports.PubKeyAlgorithm.RSAEncryptOrSign, size)
 
-    name = get_random_string(8) + " " + get_random_string(12)
-    real_email = get_random_string(12) + "@fakersa.pokemon"
+    if not name or not email:
+        custom = False
 
-    # we now have some key material, but our new key doesn't have a user ID yet, and therefore is not yet usable!
-    uid = all_imports.pgpy.PGPUID.new(name, email = real_email)
+    if custom:
+        real_name = name
+        real_email = email
+    elif not custom:
+        real_name = get_random_string(8) + " " + get_random_string(12)
+        real_email = get_random_string(12) + "@fakersa.pokemon"
 
-    # now we must add the new user id to the key. We'll need to specify all of our preferences at this point
+    # We now have some key material, but our new key doesn't have a user ID yet, and therefore is not yet usable!
+    uid = all_imports.pgpy.PGPUID.new(real_name, email = real_email)
+
+    # Now we must add the new user id to the key. We'll need to specify all of our preferences at this point
     # because PGPy doesn't have any built-in key preference defaults at this time
-    # this example is similar to GnuPG 2.1.x defaults, with no expiration or preferred keyserver
+    # this example is similar to GnuPG 2.1.x defaults, with no expiration or preferred keyserver.
     private.add_uid(uid, usage = {all_imports.KeyFlags.Sign, all_imports.KeyFlags.EncryptCommunications,
                                   all_imports.KeyFlags.EncryptStorage},
                     hashes = [all_imports.HashAlgorithm.SHA256, all_imports.HashAlgorithm.SHA384,
@@ -37,4 +48,9 @@ def pgpy_create_keypair(size):
 
     public = private.pubkey
 
-    return private, public
+    text_file_private = open(keys + "/private.asc", "w")
+    text_file_private.write(str(private))
+    text_file_private.close()
+    text_file_public = open(keys + "/public.asc", "w")
+    text_file_public.write(str(public))
+    text_file_public.close()

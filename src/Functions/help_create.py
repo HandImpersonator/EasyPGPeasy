@@ -7,7 +7,7 @@ from src.Functions import all_imports
 
 def create_remove_help():
     """Create help window layout.
-    Return creted layout."""
+    Return created layout."""
     width = 76
 
     text_eng = ["This is a very simple and easy to use PGP tool.", "You can:",
@@ -17,7 +17,7 @@ def create_remove_help():
                 "· Decrypt messages that were encrypted with your created public key.",
                 "· Use your own keypair by changing contents of the created key files.", "\n",
                 "· Keys will be saved to files and overwritten on every creation.",
-                "· Imported publkeys will also be rewritten when you import new keys.", "\n",
+                "· Imported pubkeys will also be rewritten when you import new keys.", "\n",
                 "· Language change is also available, though only english and spanish.", "\n",
                 "If you really like the tool I created, you could help me by buying me a coffee if you want. :)"]
     buttons_eng = ["Coffee", "Menu"]
@@ -43,8 +43,8 @@ def create_remove_help():
                        [all_imports.pSG.Text(text_eng[10])], [all_imports.pSG.Text(text_eng[11])],
                        [all_imports.pSG.Text(text_eng[12])], [all_imports.pSG.Text(text_eng[13])],
                        [all_imports.pSG.Text(text_eng[14])], [all_imports.pSG.Text(text_eng[15])],
-                       [all_imports.pSG.Button(buttons_eng[0], key = 666, size = (width, 0))],
-                       [all_imports.pSG.Button(buttons_eng[1], key = 800, size = (width, 0))]]
+                       [all_imports.pSG.Button(buttons_eng[0], focus = False, key = 666, size = (width, 0))],
+                       [all_imports.pSG.Button(buttons_eng[1], focus = False, key = 800, size = (width, 0))]]
     layout_help_esp = [[all_imports.pSG.Text(texts_esp[0])], [all_imports.pSG.Text(texts_esp[1])],
                        [all_imports.pSG.Text(texts_esp[2])], [all_imports.pSG.Text(texts_esp[3])],
                        [all_imports.pSG.Text(texts_esp[4])], [all_imports.pSG.Text(texts_esp[5])],
@@ -53,12 +53,12 @@ def create_remove_help():
                        [all_imports.pSG.Text(texts_esp[10])], [all_imports.pSG.Text(texts_esp[11])],
                        [all_imports.pSG.Text(texts_esp[12])], [all_imports.pSG.Text(texts_esp[13])],
                        [all_imports.pSG.Text(texts_esp[14])], [all_imports.pSG.Text(texts_esp[15])],
-                       [all_imports.pSG.Button(buttons_esp[0], key = 666, size = (width, 0))],
-                       [all_imports.pSG.Button(buttons_esp[1], key = 800, size = (width, 0))]]
+                       [all_imports.pSG.Button(buttons_esp[0], focus = False, key = 666, size = (width, 0))],
+                       [all_imports.pSG.Button(buttons_esp[1], focus = False, key = 800, size = (width, 0))]]
 
-    window_help_eng = all_imports.pSG.Window("EZPZ PGP - Buy me a coffee", layout_help_eng, disable_close = True,
+    window_help_eng = all_imports.pSG.Window("EZPZ PGP - Short help window", layout_help_eng, disable_close = True,
                                              element_justification = "center")
-    window_help_esp = all_imports.pSG.Window("EZPZ PGP - Cómprame un café", layout_help_esp, disable_close = True,
+    window_help_esp = all_imports.pSG.Window("EZPZ PGP - Ventana de ayuda corta", layout_help_esp, disable_close = True,
                                              element_justification = "center")
 
     return window_help_eng, window_help_esp

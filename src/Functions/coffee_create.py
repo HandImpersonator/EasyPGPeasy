@@ -6,7 +6,7 @@ from src.Functions import all_imports
 
 
 def create_remove_coffee():
-    """Create coffee window lavyout.
+    """Create coffee window layout.
     Returns coffee layout."""
     width = 60
 
@@ -19,39 +19,38 @@ def create_remove_coffee():
                 "Haciendo click en cada botón copiará la dirección y mostrará un QR.",
                 "El código QR se mostrará durante 5 segundos.", "¡Gracias por el café! :)", "Menu"]
 
-    layout_coffee_eng = [[all_imports.pSG.Button(add[0], key = 1, size = (width, 0))],
-                         [all_imports.pSG.Button(add[1], key = 2, size = (width, 0))],
-                         [all_imports.pSG.Button(add[2], key = 3, size = (width, 0))],
-                         [all_imports.pSG.Button(add[3], key = 4, size = (width, 0))],
-                         [all_imports.pSG.Button(add[4], key = 5, size = (width, 0))],
-                         # ZCash t1Y2UiuGFLNYQMtcW4dpbKmsuoQ1hVnhyeE
-                         [all_imports.pSG.Button(add[5], key = 6, size = (width, 0))],
-                         [all_imports.pSG.Button(add[6], key = 7, size = (width, 0))],
-                         [all_imports.pSG.Button(add[7], key = 8, size = (width, 0))],
-                         [all_imports.pSG.Button(add[8], key = 9, size = (width, 0))],
-                         [all_imports.pSG.Button(add[9], key = 10, size = (width, 0))],
-                         [all_imports.pSG.Button(add[10], key = 11, size = (width, 0))],
-                         [all_imports.pSG.Button(add[11], key = 12, size = (width, 0))],
+    layout_coffee_eng = [[all_imports.pSG.Button(add[0], focus = False, key = 1, size = (width, 0))],
+                         [all_imports.pSG.Button(add[1], focus = False, key = 2, size = (width, 0))],
+                         [all_imports.pSG.Button(add[2], focus = False, key = 3, size = (width, 0))],
+                         [all_imports.pSG.Button(add[3], focus = False, key = 4, size = (width, 0))],
+                         [all_imports.pSG.Button(add[4], focus = False, key = 5, size = (width, 0))], # ZCash Shielded
+                         [all_imports.pSG.Button(add[5], focus = False, key = 6, size = (width, 0))],
+                         [all_imports.pSG.Button(add[6], focus = False, key = 7, size = (width, 0))],
+                         [all_imports.pSG.Button(add[7], focus = False, key = 8, size = (width, 0))],
+                         [all_imports.pSG.Button(add[8], focus = False, key = 9, size = (width, 0))],
+                         [all_imports.pSG.Button(add[9], focus = False, key = 10, size = (width, 0))],
+                         [all_imports.pSG.Button(add[10], focus = False, key = 11, size = (width, 0))],
+                         [all_imports.pSG.Button(add[11], focus = False, key = 12, size = (width, 0))],
                          [all_imports.pSG.Text(text_eng[0])], [all_imports.pSG.Text(text_eng[1])],
                          [all_imports.pSG.Text(text_eng[2])], [all_imports.pSG.Text(text_eng[3])],
                          [all_imports.pSG.Text(text_eng[4])],
-                         [all_imports.pSG.Button(text_eng[5], key = 800, size = (width, 0))]]
-    layout_coffee_esp = [[all_imports.pSG.Button(add[0], key = 1, size = (width, 0))],
-                         [all_imports.pSG.Button(add[1], key = 2, size = (width, 0))],
-                         [all_imports.pSG.Button(add[2], key = 3, size = (width, 0))],
-                         [all_imports.pSG.Button(add[3], key = 4, size = (width, 0))],
-                         [all_imports.pSG.Button(add[4], key = 5, size = (width, 0))],
-                         [all_imports.pSG.Button(add[5], key = 6, size = (width, 0))],
-                         [all_imports.pSG.Button(add[6], key = 7, size = (width, 0))],
-                         [all_imports.pSG.Button(add[7], key = 8, size = (width, 0))],
-                         [all_imports.pSG.Button(add[8], key = 9, size = (width, 0))],
-                         [all_imports.pSG.Button(add[9], key = 10, size = (width, 0))],
-                         [all_imports.pSG.Button(add[10], key = 11, size = (width, 0))],
-                         [all_imports.pSG.Button(add[11], key = 12, size = (width, 0))],
+                         [all_imports.pSG.Button(text_eng[5], focus = False, key = 800, size = (width, 0))]]
+    layout_coffee_esp = [[all_imports.pSG.Button(add[0], focus = False, key = 1, size = (width, 0))],
+                         [all_imports.pSG.Button(add[1], focus = False, key = 2, size = (width, 0))],
+                         [all_imports.pSG.Button(add[2], focus = False, key = 3, size = (width, 0))],
+                         [all_imports.pSG.Button(add[3], focus = False, key = 4, size = (width, 0))],
+                         [all_imports.pSG.Button(add[4], focus = False, key = 5, size = (width, 0))],
+                         [all_imports.pSG.Button(add[5], focus = False, key = 6, size = (width, 0))],
+                         [all_imports.pSG.Button(add[6], focus = False, key = 7, size = (width, 0))],
+                         [all_imports.pSG.Button(add[7], focus = False, key = 8, size = (width, 0))],
+                         [all_imports.pSG.Button(add[8], focus = False, key = 9, size = (width, 0))],
+                         [all_imports.pSG.Button(add[9], focus = False, key = 10, size = (width, 0))],
+                         [all_imports.pSG.Button(add[10], focus = False, key = 11, size = (width, 0))],
+                         [all_imports.pSG.Button(add[11], focus = False, key = 12, size = (width, 0))],
                          [all_imports.pSG.Text(text_esp[0])], [all_imports.pSG.Text(text_esp[1])],
                          [all_imports.pSG.Text(text_esp[2])], [all_imports.pSG.Text(text_esp[3])],
                          [all_imports.pSG.Text(text_esp[4])],
-                         [all_imports.pSG.Button(text_esp[5], key = 800, size = (width, 0))]]
+                         [all_imports.pSG.Button(text_esp[5], focus = False, key = 800, size = (width, 0))]]
 
     window_coffee_eng = all_imports.pSG.Window("EZPZ PGP - Buy me a coffee", layout_coffee_eng, disable_close = True,
                                                element_justification = "center")

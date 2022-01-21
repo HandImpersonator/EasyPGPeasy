@@ -13,12 +13,12 @@ def create_remove_language():
     button_eng = ["English", "Spanish", "Menu"]
     button_esp = ["Inglés", "Español", "Menú"]
 
-    layout_language_eng = [[all_imports.pSG.Button(button_eng[0], key = 454, size = (width, 0))],
-                           [all_imports.pSG.Button(button_eng[1], key = 455, size = (width, 0))],
-                           [all_imports.pSG.Button(button_eng[2], key = 800, size = (width, 0))]]
-    layout_language_esp = [[all_imports.pSG.Button(button_esp[0], key = 454, size = (width, 0))],
-                           [all_imports.pSG.Button(button_esp[1], key = 455, size = (width, 0))],
-                           [all_imports.pSG.Button(button_esp[2], key = 800, size = (width, 0))]]
+    layout_language_eng = [[all_imports.pSG.Button(button_eng[0], focus = False, key = 454, size = (width, 0))],
+                           [all_imports.pSG.Button(button_eng[1], focus = False, key = 455, size = (width, 0))],
+                           [all_imports.pSG.Button(button_eng[2], focus = False, key = 800, size = (width, 0))]]
+    layout_language_esp = [[all_imports.pSG.Button(button_esp[0], focus = False, key = 454, size = (width, 0))],
+                           [all_imports.pSG.Button(button_esp[1], focus = False, key = 455, size = (width, 0))],
+                           [all_imports.pSG.Button(button_esp[2], focus = False, key = 800, size = (width, 0))]]
 
     window_language_eng = all_imports.pSG.Window("EZPZ PGP - Language selection", layout_language_eng,
                                                  disable_close = True, element_justification = "center")
