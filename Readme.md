@@ -4,11 +4,11 @@ This is a simple and easy to use PGP tool.
 
 ## Features
 
-[X] Create new PGP Keypairs, able to choose between 4096 and 8192 bit keys.
+[X] Create new PGP Keypairs, able to choose between 4096, 8192 and 16384 (overkill) bit keys.
 
-[X] Paste from clipboard on all import windows.
+[X] Paste from clipboard.
 
-[X] Import Public/Private PGP Keypairs.
+[X] Import Public PGP.
 
 [X] Import Message
 
@@ -16,15 +16,21 @@ This is a simple and easy to use PGP tool.
 
 [X] Encrypt message.
 
+[ ] Encrypt files. (Perhaps, will look into the possibility.)
+
 [X] Decrypt message.
 
-[ ] Sign messages.
+[ ] Decrypt files. (Perhaps, will look into the possibility.)
 
-[ ] Verify message.
+[X] Sign messages.
+
+[ ] Sign files. (Perhaps, will look into the possibility.)
+
+[X] Verify message.
+
+[ ] Verify files. (Perhaps, will look into the possibility.)
 
 [X] Switch language.
-
-[ ] Share Public PGP Key button.
 
 [X] Help.
 
@@ -65,11 +71,11 @@ You'll need xclip for the copy/paste to/from clipboard buttons to work.
 
 ### Ubuntu
 
-`apt install xclip`
+`apt install python-tk xclip`
 
 ### Fedora
 
-`dnf install xclip`
+`dnf install python-tk xclip`
 
 ### Python
 
