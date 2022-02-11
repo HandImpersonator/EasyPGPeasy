@@ -43,6 +43,5 @@
 import PySimpleGUI as pSG
 from src.Functions import create_pgp_pair, dec, edsv, enc, menu, sig, ver
 from src.Layouts import choose_layout, eds_layout, help_layout, imp_layout, lang_layout, menu_layout
-from pgpy.constants import CompressionAlgorithm, HashAlgorithm, KeyFlags, PubKeyAlgorithm
-from pgpy.constants import SymmetricKeyAlgorithm
+from pgpy.constants import CompressionAlgorithm, HashAlgorithm, KeyFlags, PubKeyAlgorithm,SymmetricKeyAlgorithm
 import os, pgpy, png, pyclip, pyqrcode, random, string, time

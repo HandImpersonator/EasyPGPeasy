@@ -29,14 +29,14 @@ def pgpy_decrypt(enc_data, file, key, lang, dec):
     try:
         privkey, _ = all_imp.pgpy.PGPKey.from_file(key)
     except all_imp.pgpy.errors.PGPError:
-        error_enc_eng = ["Incorrect padding: Error in Private key.", "Returning to menu.", "Decrypt error!"]
-        error_enc_esp = ["Incorrect padding: Error en clave Privada.", "Volviendo al menú.", "¡Error descifrando!"]
+        error_dec_eng = ["Incorrect padding: Error in Private key.", "Returning to menu.", "Decrypt error!"]
+        error_dec_esp = ["Incorrect padding: Error en clave Privada.", "Volviendo al menú.", "¡Error descifrando!"]
         if lang:
-            error1 = error_enc_eng[0] + "\n" + error_enc_eng[1]
-            error2 = error_enc_eng[2]
+            error1 = error_dec_eng[0] + "\n" + error_dec_eng[1]
+            error2 = error_dec_eng[2]
         if not lang:
-            error1 = error_enc_esp[0] + "\n" + error_enc_esp[1]
-            error2 = error_enc_esp[2]
+            error1 = error_dec_esp[0] + "\n" + error_dec_esp[1]
+            error2 = error_dec_esp[2]
         all_imp.pSG.popup_error(error1, title = error2)
 
     choose_pass_eng, choose_pass_esp = all_imp.choose_layout.crem_pass()
@@ -243,25 +243,25 @@ def pgpy_encrypt(data, file, key, lang, enc):
                     fin = "¡Hecho! Copiado a portapapeles y guardado en ./Output/Encrypted."
                 return str(enc_data), fin
             except all_imp.pgpy.errors.PGPError:
-                error_dec_eng = ["Cannot encrypt the file/message with the imported Public key, import it again.",
+                error_enc_eng = ["Cannot encrypt the file/message with the imported Public key, import it again.",
                                  "Returning to menu.", "Decrypt error!"]
-                error_dec_esp = ["No se puede cifrar el fichero/mensaje con la clave Pública importada, "
+                error_enc_esp = ["No se puede cifrar el fichero/mensaje con la clave Pública importada, "
                                  "impórtala de nuevo.", "Volviendo al menú.", "¡Error descifrando!"]
                 if lang:
-                    error1 = error_dec_eng[0] + "\n" + error_dec_eng[1]
-                    error2 = error_dec_eng[2]
+                    error1 = error_enc_eng[0] + "\n" + error_enc_eng[1]
+                    error2 = error_enc_eng[2]
                 if not lang:
-                    error1 = error_dec_esp[0] + "\n" + error_dec_esp[1]
-                    error2 = error_dec_esp[2]
+                    error1 = error_enc_esp[0] + "\n" + error_enc_esp[1]
+                    error2 = error_enc_esp[2]
             except TypeError:
-                error_dec_eng = ["Cannot encrypt.", "Returning to menu.", "Encrypt error!"]
-                error_dec_esp = ["No se puede cifrar.", "Volviendo al menú.", "¡Error cifrando!"]
+                error_enc_eng = ["Cannot encrypt.", "Returning to menu.", "Encrypt error!"]
+                error_enc_esp = ["No se puede cifrar.", "Volviendo al menú.", "¡Error cifrando!"]
                 if lang:
-                    error1 = error_dec_eng[0] + "\n" + error_dec_eng[1]
-                    error2 = error_dec_eng[2]
+                    error1 = error_enc_eng[0] + "\n" + error_enc_eng[1]
+                    error2 = error_enc_eng[2]
                 if not lang:
-                    error1 = error_dec_esp[0] + "\n" + error_dec_esp[1]
-                    error2 = error_dec_esp[2]
+                    error1 = error_enc_esp[0] + "\n" + error_enc_esp[1]
+                    error2 = error_enc_esp[2]
             except ValueError:
                 error_enc_eng = ["Expected: ASCII-armored PGP data, not a valid PGP Public key to encrypt.",
                                  "Returning to menu.", "Encrypt error!"]
@@ -292,26 +292,26 @@ def pgpy_encrypt(data, file, key, lang, enc):
                     fin = "¡Hecho! Guardado en ./Output/Encrypted."
                 all_imp.pSG.popup_auto_close(fin, auto_close_duration = 1, button_type = 5, title = fin)
             except all_imp.pgpy.errors.PGPError:
-                error_dec_eng = ["Cannot encrypt the file/message with the imported Public key.",
+                error_enc_eng = ["Cannot encrypt the file/message with the imported Public key.",
                                  "Returning to menu.", "Decrypt error!"]
-                error_dec_esp = ["No se puede cifrar el fichero/mensaje con la clave Pública importada.",
+                error_enc_esp = ["No se puede cifrar el fichero/mensaje con la clave Pública importada.",
                                  "Volviendo al menú.", "¡Error descifrando!"]
                 if lang:
-                    error1 = error_dec_eng[0] + "\n" + error_dec_eng[1]
-                    error2 = error_dec_eng[2]
+                    error1 = error_enc_eng[0] + "\n" + error_enc_eng[1]
+                    error2 = error_enc_eng[2]
                 if not lang:
-                    error1 = error_dec_esp[0] + "\n" + error_dec_esp[1]
-                    error2 = error_dec_esp[2]
+                    error1 = error_enc_esp[0] + "\n" + error_enc_esp[1]
+                    error2 = error_enc_esp[2]
                 all_imp.pSG.popup_error(error1, title = error2)
             except TypeError:
-                error_dec_eng = ["Cannot encrypt.", "Returning to menu.", "Encrypt error!"]
-                error_dec_esp = ["No se puede cifrar.", "Volviendo al menú.", "¡Error cifrando!"]
+                error_enc_eng = ["Cannot encrypt.", "Returning to menu.", "Encrypt error!"]
+                error_enc_esp = ["No se puede cifrar.", "Volviendo al menú.", "¡Error cifrando!"]
                 if lang:
-                    error1 = error_dec_eng[0] + "\n" + error_dec_eng[1]
-                    error2 = error_dec_eng[2]
+                    error1 = error_enc_eng[0] + "\n" + error_enc_eng[1]
+                    error2 = error_enc_eng[2]
                 if not lang:
-                    error1 = error_dec_esp[0] + "\n" + error_dec_esp[1]
-                    error2 = error_dec_esp[2]
+                    error1 = error_enc_esp[0] + "\n" + error_enc_esp[1]
+                    error2 = error_enc_esp[2]
                 all_imp.pSG.popup_error(error1, title = error2)
             except ValueError:
                 error_enc_eng = ["Expected: ASCII-armored PGP data, not a valid PGP Public key to encrypt.",
@@ -432,14 +432,14 @@ def pgpy_sign(data, file, key, lang, sig):
     try:
         privkey, _ = all_imp.pgpy.PGPKey.from_file(key)
     except all_imp.pgpy.errors.PGPError:
-        error_enc_eng = ["Incorrect padding: Error in Private key.", "Returning to menu.", "Signing error!"]
-        error_enc_esp = ["Padding incorrecto: Error en clave Privada.", "Volviendo al menú.", "¡Error firmando!"]
+        error_sig_eng = ["Incorrect padding: Error in Private key.", "Returning to menu.", "Signing error!"]
+        error_sig_esp = ["Padding incorrecto: Error en clave Privada.", "Volviendo al menú.", "¡Error firmando!"]
         if lang:
-            error1 = error_enc_eng[0] + "\n" + error_enc_eng[1]
-            error2 = error_enc_eng[2]
+            error1 = error_sig_eng[0] + "\n" + error_sig_eng[1]
+            error2 = error_sig_eng[2]
         if not lang:
-            error1 = error_enc_esp[0] + "\n" + error_enc_esp[1]
-            error2 = error_enc_esp[2]
+            error1 = error_sig_esp[0] + "\n" + error_sig_esp[1]
+            error2 = error_sig_esp[2]
         all_imp.pSG.popup_error(error1, title = error2)
 
     choose_pass_eng, choose_pass_esp = all_imp.choose_layout.crem_pass()
@@ -481,36 +481,36 @@ def pgpy_sign(data, file, key, lang, sig):
                             fin = "¡Firmado! Copiado a portapapeles y guardado en ./Output/Signed."
                     return str(sig_data), fin
                 except all_imp.pgpy.errors.PGPError:
-                    error_dec_eng = ["Cannot sign the file/message with the Private key.", "Returning to menu.",
+                    error_sig_eng = ["Cannot sign the file/message with the Private key.", "Returning to menu.",
                                      "Signing error!"]
-                    error_dec_esp = ["No se puede firmar el fichero/mensaje con la clave Privada.",
+                    error_sig_esp = ["No se puede firmar el fichero/mensaje con la clave Privada.",
                                      "Volviendo al menú.", "¡Error firmando!"]
                     if lang:
-                        error1 = error_dec_eng[0] + "\n" + error_dec_eng[1]
-                        error2 = error_dec_eng[2]
+                        error1 = error_sig_eng[0] + "\n" + error_sig_eng[1]
+                        error2 = error_sig_eng[2]
                     if not lang:
-                        error1 = error_dec_esp[0] + "\n" + error_dec_esp[1]
-                        error2 = error_dec_esp[2]
+                        error1 = error_sig_esp[0] + "\n" + error_sig_esp[1]
+                        error2 = error_sig_esp[2]
                 except TypeError:
-                    error_dec_eng = ["Cannot sign.", "Returning to menu.", "Sign error!"]
-                    error_dec_esp = ["No se puede firmar.", "Volviendo al menú.", "¡Error firmando!"]
+                    error_sig_eng = ["Cannot sign.", "Returning to menu.", "Sign error!"]
+                    error_sig_esp = ["No se puede firmar.", "Volviendo al menú.", "¡Error firmando!"]
                     if lang:
-                        error1 = error_dec_eng[0] + "\n" + error_dec_eng[1]
-                        error2 = error_dec_eng[2]
+                        error1 = error_sig_eng[0] + "\n" + error_sig_eng[1]
+                        error2 = error_sig_eng[2]
                     if not lang:
-                        error1 = error_dec_esp[0] + "\n" + error_dec_esp[1]
-                        error2 = error_dec_esp[2]
+                        error1 = error_sig_esp[0] + "\n" + error_sig_esp[1]
+                        error2 = error_sig_esp[2]
                 except ValueError:
-                    error_enc_eng = ["Expected: ASCII-armored PGP data, not a valid PGP Private key to sign.",
+                    error_sig_eng = ["Expected: ASCII-armored PGP data, not a valid PGP Private key to sign.",
                                      "Returning to menu.", "Signing error!"]
-                    error_enc_esp = ["Expected: ASCII-armored PGP data, no hay clave PGP Privada válida para firmar.",
+                    error_sig_esp = ["Expected: ASCII-armored PGP data, no hay clave PGP Privada válida para firmar.",
                                      "Volviendo al menú.", "¡Error firmando!"]
                     if lang:
-                        error1 = error_enc_eng[0] + "\n" + error_enc_eng[1]
-                        error2 = error_enc_eng[2]
+                        error1 = error_sig_eng[0] + "\n" + error_sig_eng[1]
+                        error2 = error_sig_eng[2]
                     if not lang:
-                        error1 = error_enc_esp[0] + "\n" + error_enc_esp[1]
-                        error2 = error_enc_esp[2]
+                        error1 = error_sig_esp[0] + "\n" + error_sig_esp[1]
+                        error2 = error_sig_esp[2]
                 all_imp.pSG.popup_error(error1, title = error2)
                 return None, None
             else:
@@ -527,26 +527,26 @@ def pgpy_sign(data, file, key, lang, sig):
                             fin = "¡Firmado! Gardado en ./Output/Signed."
                         all_imp.pSG.popup_auto_close(fin, auto_close_duration = 1, button_type = 5, title = fin)
                     except all_imp.pgpy.errors.PGPError:
-                        error_dec_eng = ["Cannot sign the file/message with the Private key.", "Returning to menu.",
+                        error_sig_eng = ["Cannot sign the file/message with the Private key.", "Returning to menu.",
                                          "Signing error!"]
-                        error_dec_esp = ["No se puede firmar el fichero/mensaje con la clave Privada.",
+                        error_sig_esp = ["No se puede firmar el fichero/mensaje con la clave Privada.",
                                          "Volviendo al menú.", "¡Error firmando!"]
                         if lang:
-                            error1 = error_dec_eng[0] + "\n" + error_dec_eng[1]
-                            error2 = error_dec_eng[2]
+                            error1 = error_sig_eng[0] + "\n" + error_sig_eng[1]
+                            error2 = error_sig_eng[2]
                         if not lang:
-                            error1 = error_dec_esp[0] + "\n" + error_dec_esp[1]
-                            error2 = error_dec_esp[2]
+                            error1 = error_sig_esp[0] + "\n" + error_sig_esp[1]
+                            error2 = error_sig_esp[2]
                         all_imp.pSG.popup_error(error1, title = error2)
                     except TypeError:
-                        error_dec_eng = ["Cannot sign.", "Returning to menu.", "Sign error!"]
-                        error_dec_esp = ["No se puede firmar.", "Volviendo al menú.", "¡Error firmando!"]
+                        error_sig_eng = ["Cannot sign.", "Returning to menu.", "Sign error!"]
+                        error_sig_esp = ["No se puede firmar.", "Volviendo al menú.", "¡Error firmando!"]
                         if lang:
-                            error1 = error_dec_eng[0] + "\n" + error_dec_eng[1]
-                            error2 = error_dec_eng[2]
+                            error1 = error_sig_eng[0] + "\n" + error_sig_eng[1]
+                            error2 = error_sig_eng[2]
                         if not lang:
-                            error1 = error_dec_esp[0] + "\n" + error_dec_esp[1]
-                            error2 = error_dec_esp[2]
+                            error1 = error_sig_esp[0] + "\n" + error_sig_esp[1]
+                            error2 = error_sig_esp[2]
                         all_imp.pSG.popup_error(error1, title = error2)
                     except ValueError:
                         error_enc_eng = ["Expected: ASCII-armored PGP data, not a valid PGP Private key to sign.",
@@ -589,15 +589,15 @@ def pgpy_verify(file, imp, key, lang, sig_data, ver):
     try:
         pubkey, _ = all_imp.pgpy.PGPKey.from_file(key)
     except all_imp.pgpy.errors.PGPError:
-        error_enc_eng = ["Incorrect padding: Import Public key again", "Returning to menu.", "Verifying error!"]
-        error_enc_esp = ["Padding incorrecto: Importar clave Pública de nuevo.", "Volviendo al menú.",
+        error_ver_eng = ["Incorrect padding: Import Public key again", "Returning to menu.", "Verifying error!"]
+        error_ver_esp = ["Padding incorrecto: Importar clave Pública de nuevo.", "Volviendo al menú.",
                          "¡Error verificando!"]
         if lang:
-            error1 = error_enc_eng[0] + "\n" + error_enc_eng[1]
-            error2 = error_enc_eng[2]
+            error1 = error_ver_eng[0] + "\n" + error_ver_eng[1]
+            error2 = error_ver_eng[2]
         if not lang:
-            error1 = error_enc_esp[0] + "\n" + error_enc_esp[1]
-            error2 = error_enc_esp[2]
+            error1 = error_ver_esp[0] + "\n" + error_ver_esp[1]
+            error2 = error_ver_esp[2]
         all_imp.pSG.popup_error(error1, title = error2)
 
     sig = all_imp.pgpy.PGPSignature.from_file(sig_data)
@@ -606,38 +606,38 @@ def pgpy_verify(file, imp, key, lang, sig_data, ver):
         try:
             ver_mes = pubkey.verify(imp_mes, sig)
         except all_imp.pgpy.errors.PGPError:
-            error_dec_eng = ["Cannot verify the file/message with the imported Public key.", "Returning to menu.",
+            error_ver_eng = ["Cannot verify the file/message with the imported Public key.", "Returning to menu.",
                              "Verify error!"]
-            error_dec_esp = ["No se puede verificar el fichero/mensaje con la clave Pública importada.",
+            error_ver_esp = ["No se puede verificar el fichero/mensaje con la clave Pública importada.",
                              "Volviendo al menú.", "¡Error verificando!"]
             if lang:
-                error1 = error_dec_eng[0] + "\n" + error_dec_eng[1]
-                error2 = error_dec_eng[2]
+                error1 = error_ver_eng[0] + "\n" + error_ver_eng[1]
+                error2 = error_ver_eng[2]
             if not lang:
-                error1 = error_dec_esp[0] + "\n" + error_dec_esp[1]
-                error2 = error_dec_esp[2]
+                error1 = error_ver_esp[0] + "\n" + error_ver_esp[1]
+                error2 = error_ver_esp[2]
             all_imp.pSG.popup_error(error1, title = error2)
         except TypeError:
-            error_dec_eng = ["Cannot verify.", "Returning to menu.", "Verify error!"]
-            error_dec_esp = ["No se puede verificar.", "Volviendo al menú.", "¡Error verificando!"]
+            error_ver_eng = ["Cannot verify.", "Returning to menu.", "Verify error!"]
+            error_ver_esp = ["No se puede verificar.", "Volviendo al menú.", "¡Error verificando!"]
             if lang:
-                error1 = error_dec_eng[0] + "\n" + error_dec_eng[1]
-                error2 = error_dec_eng[2]
+                error1 = error_ver_eng[0] + "\n" + error_ver_eng[1]
+                error2 = error_ver_eng[2]
             if not lang:
-                error1 = error_dec_esp[0] + "\n" + error_dec_esp[1]
-                error2 = error_dec_esp[2]
+                error1 = error_ver_esp[0] + "\n" + error_ver_esp[1]
+                error2 = error_ver_esp[2]
             all_imp.pSG.popup_error(error1, title = error2)
         except ValueError:
-            error_enc_eng = ["Expected: ASCII-armored PGP data, not a valid PGP Public key to verify.",
+            error_ver_eng = ["Expected: ASCII-armored PGP data, not a valid PGP Public key to verify.",
                              "Returning to menu.", "Verify error!"]
-            error_enc_esp = ["Expected: ASCII-armored PGP data, no hay clave PGP Pública válida para verificar.",
+            error_ver_esp = ["Expected: ASCII-armored PGP data, no hay clave PGP Pública válida para verificar.",
                              "Volviendo al menú.", "¡Error verificando!"]
             if lang:
-                error1 = error_enc_eng[0] + "\n" + error_enc_eng[1]
-                error2 = error_enc_eng[2]
+                error1 = error_ver_eng[0] + "\n" + error_ver_eng[1]
+                error2 = error_ver_eng[2]
             if not lang:
-                error1 = error_enc_esp[0] + "\n" + error_enc_esp[1]
-                error2 = error_enc_esp[2]
+                error1 = error_ver_esp[0] + "\n" + error_ver_esp[1]
+                error2 = error_ver_esp[2]
             all_imp.pSG.popup_error(error1, title = error2)
         if ver_mes.__bool__():
             if not file:
