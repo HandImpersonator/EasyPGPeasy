@@ -262,6 +262,6 @@ def create_menu(lang, imp, ks):
 
         # Exit
         if event == 600:
-            exit(0)
+            all_imp.sys.exit(0)
 
     return lang, mode_text

@@ -61,7 +61,7 @@ def ef(enc, event, imported, lang, mes_enc_eng, mes_enc_esp, values):
     if mes_enc_eng[event].GetText() == "Reset" or mes_enc_esp[event].GetText() == "Reset":
         mode = 15
     if event == 600:
-        exit(0)
+        all_imp.sys.exit(0)
 
     return event, mode, values
 

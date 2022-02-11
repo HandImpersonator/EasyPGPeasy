@@ -166,7 +166,7 @@ while True:
 
     # Exit tool.
     if event == 600:
-        exit(0)
+        all_imp.sys.exit(0)
 
     # Show menu.
     if event == 800:

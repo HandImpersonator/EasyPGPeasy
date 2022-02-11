@@ -103,6 +103,6 @@ def vm(event, imported, lang, ver):
     if event == 800:
         mode = None
     if event == 600:
-        exit(0)
+        all_imp.sys.exit(0)
 
     return event, mode, values

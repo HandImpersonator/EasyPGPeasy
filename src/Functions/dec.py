@@ -77,7 +77,7 @@ def df(dec, event, keys, lang, mes_dec_eng, mes_dec_esp, values):
         if mes_dec_eng[event].GetText() == "Reset" or mes_dec_esp[event].GetText() == "Reset":
             mode = 20
         if event == 600:
-            exit(0)
+            all_imp.sys.exit(0)
 
     return event, mode, values
 

@@ -71,7 +71,7 @@ def sf(event, keys, lang, mes_sig_eng, mes_sig_esp, sig, values):
     if mes_sig_eng[event].GetText() == "Reset" or mes_sig_esp[event].GetText() == "Reset":
         mode = 30
     if event == 600:
-        exit(0)
+        all_imp.sys.exit(0)
 
     return event, mode, values
 
