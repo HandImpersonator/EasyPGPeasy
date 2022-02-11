@@ -18,7 +18,7 @@ This is a simple and easy to use PGP tool.
 
 ## TODO
 
-Release to an executable.
+Release to a standalone executable.
 
 ## What the tool can do
 
@@ -133,5 +133,11 @@ rFLlXVEXjo6VldipvujgT2IwqE07sssvC+yAzTq6
 ### Coffee
 
 Last but not least, if you found the tool useful and would like to help me out and buy me a coffee, I've included the addresses in the tool that'll be copied to clipboard automatically whilst a 5 second popup shows a QR code you can scan.
+
+#### Sidenote
+
+UNIX users should have no issue, though I've only been able to test on Fedora, will continue testing.
+Mac users, it should work like with UNIX users.
+Windows users, only PDF and txt files work when ecnrypting and decrypting, other file formats aren't recoverable as far as I've tested.
 
 ## ENJOY THE TOOL!
