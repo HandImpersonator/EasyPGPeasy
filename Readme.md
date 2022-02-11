@@ -67,11 +67,11 @@ A TL;DR short help window.
 
 ## How to use the tool
 
-If you want to create a PGP Keypair, select the bit size to use, choose whether you want a random or your own name, surname and email, type a passphrase for your PGP Private Key and create it. It will automatically create a Keypair with the chosen name, surname and email. Created Keypairs will be overwritten on every button press and will be automatically saved in `./Keys`folder. Any operation that needs to use the PGP Private Key will ask for the passphrase.
+If you want to create a PGP Keypair, select the bit size to use, choose whether you want a random or your own name, surname and email, type a passphrase for your PGP Private Key and create it. It will automatically create a Keypair with the chosen name, surname and email. Created Keypairs will be overwritten on every button press and will be automatically saved in `./Keys` folder. Any operation that needs to use the PGP Private Key will ask for the passphrase.
 
 You can import a message that was encrypted with your public key to automatically decrypt it, if the encrypted message was signed and you import the signature you can verify it, import a plaintext message and it's signature to verify it. 
 You can import a PGP Public Key to encrypt a message.
-All of the above also applies with files and everything imported with be in the folder `./Imported`
+All of the above also applies with files and everything imported with be in the folder `./Imported`.
 
 If you want to encrypt a file/message, you first need to import the PGP Public Key, then type or paste the message, click encrypt and in the output the encrypted message will show and save in `./Output/Encrypted` folder.
 
@@ -106,7 +106,7 @@ Python libraries you'll need to install, with: `python -m pip install PySimpleGU
 
 ## Usage
 
-Execute `python EZPZ-PGP.py` and navigate through the menus..
+Execute `python EZPZ-PGP.py` and navigate through the menus...
 
 ### PGP Public Key
 
@@ -173,6 +173,6 @@ UNIX users should have no issue, though I've only been able to test on Fedora, w
 
 Mac users, it should work like with UNIX users.
 
-Windows users, only PDF and txt files work when ecnrypting and decrypting, other file formats aren't recoverable as far as I've tested.
+Windows users, only PDF and txt files work when encrypting and decrypting, other file formats aren't recoverable as far as I've tested.
 
 ## ENJOY THE TOOL!
