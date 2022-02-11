@@ -22,7 +22,7 @@ Release to a standalone executable.
 
 ## File structure
 
-```
+```bash
 .
 ├── EZPZ-PGP.py
 ├── Imported
