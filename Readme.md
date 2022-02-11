@@ -20,11 +20,44 @@ This is a simple and easy to use PGP tool.
 
 Release to a standalone executable.
 
+## File structure
+
+```
+.
+├── EZPZ-PGP.py
+├── Imported
+├── Keys
+├── Output
+│   ├── Decrypted
+│   ├── Encrypted
+│   ├── Signed
+│   └── Verified
+└── src
+    ├── Functions
+    │   ├── all_imp.py
+    │   ├── create_pgp_pair.py
+    │   ├── dec.py
+    │   ├── edsv.py
+    │   ├── enc.py
+    │   ├── menu.py
+    │   ├── sig.py
+    │   └── ver.py
+    └── Layouts
+        ├── choose_layout.py
+        ├── eds_layout.py
+        ├── help_layout.py
+        ├── imp_layout.py
+        ├── lang_layout.py
+        └── menu_layout.py
+
+10 directories, 15 files
+```
+
 ## What the tool can do
 
-Create new PGP Keypairs, they'll be automatically saved in two separate files appropriately named in `src/Keys`, which will be used when Encrypting, Decrypting, Signing and Verifying signature files and messages. Please note, every time you create new Keypairs, the old ones will be overwritten. If you want to use your own Keypairs, create a new pair to check if the formatting and replace the content of the created ones with your own.
+Create new PGP Keypairs, they'll be automatically saved in two separate files appropriately named in `./Keys`, which will be used when Encrypting, Decrypting, Signing and Verifying signature files and messages. Please note, every time you create new Keypairs, the old ones will be overwritten. If you want to use your own Keypairs, create a new pair to check if the formatting and replace the content of the created ones with your own.
 
-Imported Public PGP Keys, messages (in order to sign or verify them) and signatures (that correspond to the imported message) will be saved in `src/Imported`, and also rewritten with every import. The imported public keys will be used in encrypting and verifying. Please note imported Private PGP keys will be saved in `src/Imported`.
+Imported Public PGP Keys, messages (in order to sign or verify them) and signatures (that correspond to the imported message) will be saved in `./Imported`, and also rewritten with every import. The imported public keys will be used in encrypting and verifying. Please note imported Private PGP keys will be saved in `./Imported`.
 
 Encrypting, decrypting, signing and verifying files and messages using the created keys and imported keys where necessary.
 
