@@ -8,43 +8,25 @@ This is a simple and easy to use PGP tool.
 
 [X] Paste from clipboard.
 
-[X] Import Public PGP.
+[X] Import messages, PGP Public Keys and PGP Signatures.
 
-[X] Import Message
-
-[X] Import Signature
-
-[X] Encrypt message.
-
-[ ] Encrypt files. (Perhaps, will look into the possibility.)
-
-[X] Decrypt message.
-
-[ ] Decrypt files. (Perhaps, will look into the possibility.)
-
-[X] Sign messages.
-
-[ ] Sign files. (Perhaps, will look into the possibility.)
-
-[X] Verify message.
-
-[ ] Verify files. (Perhaps, will look into the possibility.)
+[X] Encrypt, Decrypt, Sign and Verify files and messages.
 
 [X] Switch language.
 
-[X] Help.
+[X] Small help window.
 
 ## TODO
 
-Add copy to clipboard buttons, several bug checks, error control, release to an executable.
+Release to an executable.
 
-## What you can do
+## What the tool can do
 
-You can create new PGP Keypairs, they'll be automatically saved in two separate files appropriately named in `src/Keys`, which will be used when Decrypting and signing messages. Please note, every time you create new Keypairs, the old ones will be overwritten.
+Create new PGP Keypairs, they'll be automatically saved in two separate files appropriately named in `src/Keys`, which will be used when Encrypting, Decrypting, Signing and Verifying signature files and messages. Please note, every time you create new Keypairs, the old ones will be overwritten. If you want to use your own Keypairs, create a new pair to check if the formatting and replace the content of the created ones with your own.
 
-Importing your previosuly created Keypairs is also something you can do, they'll be also named, in the folder `src/Imported`, and also rewritten with every import. Th imported public keys will be used in encrypting and verifying. Please note imported Private PGP keys will be saved in `src/Keys` as the tool doesn't recognize or use private keys elsewhere.
+Imported Public PGP Keys, messages (in order to sign or verify them) and signatures (that correspond to the imported message) will be saved in `src/Imported`, and also rewritten with every import. The imported public keys will be used in encrypting and verifying. Please note imported Private PGP keys will be saved in `src/Imported`.
 
-Encrypting, decrypting, signing and verifying messages (the latter two are WIP) using the created keys and imported keys where necessary.
+Encrypting, decrypting, signing and verifying files and messages using the created keys and imported keys where necessary.
 
 Language change (only English and Spanish, I know no other languages).
 
@@ -52,22 +34,26 @@ A TL;DR short help window.
 
 ## How to use the tool
 
-If you want to create a PGP Keypair, select the bit size to use and create it, it will automatically create a Keypair with a random name, surname and email. Created Keypairs will be overwritten on every button press and will be automatically saved in `./Keys`folder.
+If you want to create a PGP Keypair, select the bit size to use, choose whether you want a random or your own name, surname and email, type a passphrase for your PGP Private Key and create it. It will automatically create a Keypair with the chosen name, surname and email. Created Keypairs will be overwritten on every button press and will be automatically saved in `./Keys`folder. Any operation that needs to use the PGP Private Key will ask for the passphrase.
 
-If you want to import a PGP Public Key to encrypt a message for someone, a message (encrypted or not) that you'd like to verify a signature of, and import the the signagture of the message you also imported, click the necessary buttons and import them. If they get imported incorrectly, they'll print out errors in future operations, there are some checks in place to prevent major errors during the import operations but I can't forsee everything. Imported keys, messages and signatures will be automatically saved with a correspondant name inside `./Imported` folder.
+You can import a message that was encrypted with your public key to automatically decrypt it, if the encrypted message was signed and you import the signature you can verify it, import a plaintext message and it's signature to verify it. 
+You can import a PGP Public Key to encrypt a message.
+All of the above also applies with files and everything imported with be in the folder `./Imported`
 
-If you want to encrypt a message, you first need to import the PGP Public Key, otherwise it'd print and error of either missing PGP Public Key or Public Key incorrectly imported, then type or paste the message, click encrypt and in the output the encrypted message will show, it'll automatically save in a file in `./Messages` folder.
+If you want to encrypt a file/message, you first need to import the PGP Public Key, then type or paste the message, click encrypt and in the output the encrypted message will show and save in `./Output/Encrypted` folder.
 
-If you want to decrypt a message someone encrypted with your PGP Public Key, first, make sure the original Keypair of the Public Key you shared is still in place.
-Paste the encrypted message, press decrpyt and voilà.
+If you want to decrypt a file/message someone encrypted with your PGP Public Key, first, paste the encrypted message, press decrypt, type the passphrase and voilà, if the encrypted message was imported, you can autodecrypt, you can also choose to decrypt a file you encrypted. Decrypted files amd messages will be saved in `./Output/Decrypted`.
 
-If you want to sign a message, you have two options, type a plaintext message and press sign, it'll sign the message with your PGP Public Key in the folder `./Keys`and save a copy of the signed message and the signature in `./Messages`, second option is to sign an encrypted message you created, it'll read the file of the encrypted message in `./Messages`that should have been previously created, it'll sign the message and automatically save the signature in that same folder.
+If you want to sign a file/message, you can type a plaintext message, and press sign, you can automatically sign a message that was imported, be it plaintext or encrypted, or a file and will be saved in `./Output/Signed`. The signing operation requires you to type the PGP Private Key passphrase.
 
-If you want to verify a message, it should've been imported previously, along with the corresponding PGP Public Key to verify that signature, clicking the verify button will grab those two files, verify the signature matches and give a positive or negative result.
+If you want to verify a file/message, you need import the message, import the PGP Public Key, import the signature along with the corresponding PGP Public Key to verify that message, if will give a positive or negative result and save the verified message in `./Output/Verified`, it will not save anything when verifying a file.
+
+If anything goes wrong, an error will pop up and redirect you to the menu.
+If the tool crashes please open a ticket, with clear instructions on your steps to encounter the issue and I'll try and replicate the issue on my end and fix it the best I can.
 
 ## Dependencies
 
-You'll need xclip for the copy/paste to/from clipboard buttons to work.
+You'll need xclip for the copy/paste to/from clipboard actions to work.
 
 ### Ubuntu
 
@@ -87,10 +73,10 @@ Python libraries you'll need to install, with: `python -m pip install PySimpleGU
 
 ## Usage
 
-Execute `python EZPZ-PGP.py` and navigate through the menus. Expect bugs and errors it's still a WIP.
+Execute `python EZPZ-PGP.py` and navigate through the menus..
 
 ### Coffee
 
-Last but not least, if you found the tool useful and would like to help me out and buy me a coffee, I've included the addresses in the tool that'll be copied to clipboard automatically. I'll paste them here too if that's allowed.
+Last but not least, if you found the tool useful and would like to help me out and buy me a coffee, I've included the addresses in the tool that'll be copied to clipboard automatically whilst a 5 second popup shows a QR code you can scan.
 
 ## ENJOY THE TOOL!
