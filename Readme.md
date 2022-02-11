@@ -77,11 +77,12 @@ Execute `python EZPZ-PGP.py` and navigate through the menus..
 
 ### PGP Public Key
 
-`-----BEGIN PGP PUBLIC KEY BLOCK-----
+```
+-----BEGIN PGP PUBLIC KEY BLOCK-----
 
 xsNNBGIFrcgBIACUP/EYE4hLQIJCUDSJMZ7Iq0NaQ0IByvwnv4lnvw1KouNj39lD
 rmf0rrasL5ZAVMGB4zYdg8gnh0m9RgjHToNvKcOQ0TH17S90JShidIMEvGaxSboH
-ZXGRAO1ggPYYCZVOkQaxPg+0dmihbgtQpoBriGib6vaKEeA1roERKYzmhQqvvCg1
+ZXGRAO1ggPYYCZVOkQaxPg+0dm`ihbgtQpoBriGib6vaKEeA1roERKYzmhQqvvCg1
 MG1GIc5+Tke1+6lRRrGmiSvghRZz3IYWmEF2M4XTx16vOBGqnblPQb1NrPxf/u/X
 d3s4P5/WKkTxTV3LIqbaizuBQpo1mrvlxYMygoG3JugrOm68v9vSpxGLKQ19lHCq
 y00zYJXhTEah9hSHDSpEjagpwwr0baVozFqfpocQ2CMrz8vYhedKJpxEN1uyMCG6
@@ -126,7 +127,8 @@ eGDKD+ATcZet6nnqARSgSLmosMyt8FhAjDL5unVjHM5v6pyliHLcsC0wwbOCR5sq
 Ps8dHhEhs2/OlleQ6k0VHMwWFy6GPAv6VPeUsfQP+I+ndLmhwzw7z33AFUugjAzz
 rFLlXVEXjo6VldipvujgT2IwqE07sssvC+yAzTq6
 =2k/C
------END PGP PUBLIC KEY BLOCK-----`
+-----END PGP PUBLIC KEY BLOCK-----
+```
 
 ### Coffee
 
