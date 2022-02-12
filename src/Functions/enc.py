@@ -40,7 +40,7 @@ def ef(enc, event, imported, lang, mes_enc_eng, mes_enc_esp, values):
                 mes_enc_esp["output"].update(value = str(out_enc))
                 mes_enc_esp["xclipp"].update(visible = False)
                 mes_enc_esp.Element("enc").Update((update_button[1], "Reset")[pressed])
-                mes_enc_eng.refresh()
+                mes_enc_esp.refresh()
                 if fin:
                     all_imp.pSG.popup_auto_close(fin, auto_close_duration = 1, button_type = 5, title = fin)
                 event, values = mes_enc_esp.read()

@@ -549,16 +549,16 @@ def pgpy_sign(data, file, key, lang, sig):
                             error2 = error_sig_esp[2]
                         all_imp.pSG.popup_error(error1, title = error2)
                     except ValueError:
-                        error_enc_eng = ["Expected: ASCII-armored PGP data, not a valid PGP Private key to sign.",
+                        error_sig_eng = ["Expected: ASCII-armored PGP data, not a valid PGP Private key to sign.",
                                          "Returning to menu.", "Signing error!"]
-                        error_enc_esp = ["Expected: ASCII-armored PGP data, no hay clave PGP Privada válida "
+                        error_sig_esp = ["Expected: ASCII-armored PGP data, no hay clave PGP Privada válida "
                                          "para firmar.", "Volviendo al menú.", "¡Error firmando!"]
                         if lang:
-                            error1 = error_enc_eng[0] + "\n" + error_enc_eng[1]
-                            error2 = error_enc_eng[2]
+                            error1 = error_sig_eng[0] + "\n" + error_sig_eng[1]
+                            error2 = error_sig_eng[2]
                         if not lang:
-                            error1 = error_enc_esp[0] + "\n" + error_enc_esp[1]
-                            error2 = error_enc_esp[2]
+                            error1 = error_sig_esp[0] + "\n" + error_sig_esp[1]
+                            error2 = error_sig_esp[2]
                         all_imp.pSG.popup_error(error1, title = error2)
         elif is_public(str(privkey), lang):
             error_popup_eng = ["Error. Provided key to sign was a Public key, try checking the Private key used.\n",

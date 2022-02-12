@@ -102,8 +102,8 @@ def create_menu(lang, imp, ks):
                         imp_esp[112].update(value = paste)
                     elif event == 114:
                         imp_esp[114].update(value = paste)
-                    imp_eng["xclipp"].update(visible = toggle)
-                    event1, values = imp_eng.read()
+                    imp_esp["xclipp"].update(visible = toggle)
+                    event1, values = imp_esp.read()
                     imp_esp.close()
             vp = (tuple(values.items())[0][0], tuple(values.items())[0][1])
             imp_eng.close()

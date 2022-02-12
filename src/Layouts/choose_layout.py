@@ -125,7 +125,7 @@ def crem_pass():
                               [all_imp.pSG.Input(do_not_clear = False, focus = False, key = "pass", size = (width, 0))],
                               [all_imp.pSG.Button(buttons_eng, focus = False, key = "acc", size = (width, 0))]]
     layout_pass_choose_esp = [[all_imp.pSG.Text(text_esp)],
-                              [all_imp.pSG.Input(text_esp, do_not_clear = False, focus = False, key = "pass",
+                              [all_imp.pSG.Input(do_not_clear = False, focus = False, key = "pass",
                                                  size = (width, 0))],
                               [all_imp.pSG.Button(buttons_esp, focus = False, key = "acc", size = (width, 0))]]
 
