@@ -84,7 +84,7 @@ If you want to verify a file/message, you need import the message, import the PG
 If anything goes wrong, an error will pop up and redirect you to the menu.
 If the tool crashes please open a ticket, with clear instructions on your steps to encounter the issue and I'll try and replicate the issue on my end and fix it the best I can.
 
-## Dependencies
+## Requirements
 
 You'll need xclip for the copy/paste to/from clipboard actions to work.
 
@@ -98,15 +98,22 @@ You'll need xclip for the copy/paste to/from clipboard actions to work.
 
 ### Python
 
-Python libraries used in this tool were:
+- Python 3.6+
+- PySimpleGUI
+- pgpy
+- png
+- pyclip
+- pyqrcode
 
-PySimpleGUI, os, pgpy, png, pyclip, pyqrcode, random, string
-
-Python libraries you'll need to install, with: `python -m pip install PySimpleGUI pgpy pypng pyclip pyqrcode`
+Install with: `python -m pip install PySimpleGUI pgpy pypng pyclip pyqrcode`
 
 ## Usage
 
 Execute `python EZPZ-PGP.py` and navigate through the menus...
+
+### Releases
+
+Tried on fedora 34, fedora 35, several windows 10 builds (currently trying to build for Mac and try it).
 
 ### PGP Public Key
 
@@ -162,6 +169,15 @@ rFLlXVEXjo6VldipvujgT2IwqE07sssvC+yAzTq6
 =2k/C
 -----END PGP PUBLIC KEY BLOCK-----
 ```
+
+## Credits
+
+Thanks to the guys who wrote the following Python libraries/modules, couldn't have done it without their awesome code:
+- https://github.com/SecurityInnovation/PGPy
+- https://github.com/spyoungtech/pyclip
+- https://github.com/drj11/pypng
+- https://github.com/mnooner256/pyqrcode
+- https://github.com/PySimpleGUI/PySimpleGUI
 
 ### Coffee
 
