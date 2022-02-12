@@ -24,7 +24,7 @@ def pgpy_decrypt(enc_data, file, key, lang, dec):
     empty key will return an error.
     Return decrypted file/message or error if something went wrong."""
 
-    error1, error2, fin, privkey, values = "", "", "", "", {}
+    dec_data, error1, error2, fin, privkey, values = "", "", "", "", "", {}
 
     try:
         privkey, _ = all_imp.pgpy.PGPKey.from_file(key)
@@ -52,8 +52,7 @@ def pgpy_decrypt(enc_data, file, key, lang, dec):
         if not file:
             if not is_public(str(privkey), lang):
                 if all_imp.os.path.exists(enc_data):
-                    mes = open(enc_data, "r")
-                    message = mes.read().strip()
+                    message = open(enc_data, "r").read().strip()
                     dec_message = open(dec + "/auto_decrypted_message.txt", "w")
                 else:
                     message = str(enc_data)
@@ -132,12 +131,17 @@ def pgpy_decrypt(enc_data, file, key, lang, dec):
         else:
             if not is_public(str(privkey), lang):
                 message = open(enc_data, "rb").read().strip()
-                original_name = enc_data.split("/")[-1].split(".")[-4] + "." + enc_data.split("/")[-1].split(".")[-3]
+                original_name = str(enc_data.split("/")[-1].split(".")[-4] +
+                                    "." + enc_data.split("/")[-1].split(".")[-3])
                 try:
                     data = all_imp.pgpy.PGPMessage.from_blob(message)
                     dec_data = (privkey.decrypt(data)).message
-                    dec_message = open(dec + "/" + original_name, "wb")
-                    dec_message.write(dec_data)
+                    if isinstance(dec_data, str):
+                        dec_message = open(dec + "/" + original_name, "w")
+                        dec_message.write(str(dec_data))
+                    else:
+                        dec_message = open(dec + "/" + original_name, "wb")
+                        dec_message.write(bytes(dec_data))
                     dec_message.close()
                     if lang == "eng":
                         fin = "Done! Saved in ./Output/Decrypted."
@@ -168,16 +172,16 @@ def pgpy_decrypt(enc_data, file, key, lang, dec):
                         error1 = error_dec_esp[0] + "\n" + error_dec_esp[1]
                         error2 = error_dec_esp[2]
                     all_imp.pSG.popup_error(error1, title = error2)
-                except TypeError:
-                    error_dec_eng = ["Cannot decrypt.", "Returning to menu.", "Decrypt error!"]
-                    error_dec_esp = ["No se puede descifrar.", "Volviendo al menú.", "¡Error descifrando!"]
-                    if lang == "eng":
-                        error1 = error_dec_eng[0] + "\n" + error_dec_eng[1]
-                        error2 = error_dec_eng[2]
-                    if not lang:
-                        error1 = error_dec_esp[0] + "\n" + error_dec_esp[1]
-                        error2 = error_dec_esp[2]
-                    all_imp.pSG.popup_error(error1, title = error2)
+                # except TypeError:
+                #     error_dec_eng = ["Cannot decrypt.", "Returning to menu.", "Decrypt error!"]
+                #     error_dec_esp = ["No se puede descifrar.", "Volviendo al menú.", "¡Error descifrando!"]
+                #     if lang == "eng":
+                #         error1 = error_dec_eng[0] + "\n" + error_dec_eng[1]
+                #         error2 = error_dec_eng[2]
+                #     if not lang:
+                #         error1 = error_dec_esp[0] + "\n" + error_dec_esp[1]
+                #         error2 = error_dec_esp[2]
+                #     all_imp.pSG.popup_error(error1, title = error2)
                 except ValueError:
                     error_dec_eng = ["Expected: ASCII-armored PGP data, not a valid Private key to decrypt.",
                                      "Returning to menu.", "Decrypt error!"]
@@ -276,7 +280,7 @@ def pgpy_encrypt(data, file, key, lang, enc):
             all_imp.pSG.popup_error(error1, title = error2)
             return None, None
         else:
-            data_file = open(data, "rb").read()
+            data_file = open(data, "rb").read().strip()
             mes = all_imp.pgpy.PGPMessage.new(data_file, compression = all_imp.CompressionAlgorithm.BZ2,
                                               sensitive = True)
             try:
@@ -455,8 +459,7 @@ def pgpy_sign(data, file, key, lang, sig):
         if not is_public(str(privkey), lang):
             if not file:
                 if all_imp.os.path.exists(data):
-                    mes = open(data, "r").read()
-                    message = mes.strip()
+                    message = open(data, "r").read().strip()
                     sig_message = open(sig + "/encrypted_signed.txt", "w")
                     auto = True
                 else:
@@ -515,10 +518,11 @@ def pgpy_sign(data, file, key, lang, sig):
                 return None, None
             else:
                 if not is_public(str(privkey), lang):
-                    sign_file = open(data, "rb").read()
+                    sign_file = open(data, "rb").read().strip()
                     try:
+                        file_name = str(data.split("/")[-1].split(".")[:-1][0])
                         sig_data = str(privkey.sign(sign_file))
-                        sig_file = open(sig + "/file_signature.txt", "w")
+                        sig_file = open(sig + "/" + file_name + "_signature.txt", "w")
                         sig_file.write(str(sig_data))
                         sig_file.close()
                         if lang == "eng":
@@ -582,9 +586,9 @@ def pgpy_verify(file, imp, key, lang, sig_data, ver):
     error1, error2, fin, imp_mes, pubkey, ver_mes = "", "", "", "", "", ""
 
     if not file:
-        imp_mes = open(imp, "r").read()
+        imp_mes = open(imp, "r").read().strip()
     else:
-        imp_mes = open(imp, "rb").read()
+        imp_mes = open(imp, "rb").read().strip()
 
     try:
         pubkey, _ = all_imp.pgpy.PGPKey.from_file(key)
