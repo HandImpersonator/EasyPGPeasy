@@ -21,6 +21,8 @@ def df(dec, event, keys, lang, mes_dec_eng, mes_dec_esp, values):
             error1 = empty_error_esp[0] + "\n" + empty_error_esp[1]
             error2 = empty_error_esp[2]
         all_imp.pSG.popup_error(error1, title = error2)
+        mes_dec_eng.close()
+        mes_dec_esp.close()
     elif values["input"].strip():
         if all_imp.os.path.isfile(keys + "/private.asc"):
             try:
@@ -36,6 +38,9 @@ def df(dec, event, keys, lang, mes_dec_eng, mes_dec_esp, values):
                     error1 = error_pass_esp[0] + "\n" + error_pass_esp[1]
                     error2 = error_pass_esp[2]
                 all_imp.pSG.popup_error(error1, title = error2)
+                mes_dec_eng.close()
+                mes_dec_esp.close()
+
             except TypeError:
                 pass
             update_button = ["Decrypt", "Descifrar"]
@@ -71,13 +76,18 @@ def df(dec, event, keys, lang, mes_dec_eng, mes_dec_esp, values):
                 error1 = no_pub_esp[0] + "\n" + no_pub_esp[1]
                 error2 = no_pub_esp[2]
             all_imp.pSG.popup_error(error1, title = error2)
+            mes_dec_eng.close()
+            mes_dec_esp.close()
+    mode = None
+    if event == 800:
         mode = None
-        if event == 800:
-            mode = None
-        if mes_dec_eng[event].GetText() == "Reset" or mes_dec_esp[event].GetText() == "Reset":
-            mode = 20
-        if event == 600:
-            all_imp.sys.exit(0)
+        mes_dec_eng.close()
+        mes_dec_esp.close()
+    if mes_dec_eng[event].GetText() == "Reset" or mes_dec_esp[event].GetText() == "Reset":
+        event = 24
+        mode = 20
+    if event == 600:
+        all_imp.sys.exit(0)
 
     return event, mode, values
 
@@ -97,31 +107,50 @@ def dm(dec, event, imported, keys, lang, mes_dec_eng, mes_dec_esp):
         choose_dec_esp.close()
 
     if event == 24:
-        if lang:
-            event, values = mes_dec_eng.read()
-        elif not lang:
-            event, values = mes_dec_esp.read()
-
-        # Paste from clipboard.
-        if event == "xclipp":
-            try:
-                paste = str(all_imp.pyclip.paste(text = True).strip())
-            except BaseException:
-                if lang:
-                    paste = "Clipboard was empty, here you go."
-                elif not lang:
-                    paste = "El portapapeles estaba vacío, aquí tienes."
-            toggle = False
-
-            # Update window with pasted content.
+        if all_imp.os.path.isfile(keys + "/private.asc"):
             if lang:
-                mes_dec_eng["input"].update(value = paste)
-                mes_dec_eng["xclipp"].update(visible = toggle)
                 event, values = mes_dec_eng.read()
             elif not lang:
-                mes_dec_esp["input"].update(value = paste)
-                mes_dec_esp["xclipp"].update(visible = toggle)
                 event, values = mes_dec_esp.read()
+
+            # Paste from clipboard.
+            if event == "xclipp":
+                try:
+                    paste = str(all_imp.pyclip.paste(text = True).strip())
+                except BaseException:
+                    if lang:
+                        paste = "Clipboard was empty, here you go."
+                    elif not lang:
+                        paste = "El portapapeles estaba vacío, aquí tienes."
+                toggle = False
+
+                # Update window with pasted content.
+                if lang:
+                    mes_dec_eng["input"].update(value = paste)
+                    mes_dec_eng["xclipp"].update(visible = toggle)
+                    event, values = mes_dec_eng.read()
+                elif not lang:
+                    mes_dec_esp["input"].update(value = paste)
+                    mes_dec_esp["xclipp"].update(visible = toggle)
+                    event, values = mes_dec_esp.read()
+        else:
+            no_priv_eng = ["Private key to decrypt message does not exist.", "Returning to menu.", "Error!"]
+            no_priv_esp = ["La clave privada para descifrar el mensaje no existe.", "Volviendo al menú.",
+                           "¡Error!"]
+            if lang:
+                error1 = no_priv_eng[0] + "\n" + no_priv_eng[1]
+                error2 = no_priv_eng[2]
+            elif not lang:
+                error1 = no_priv_esp[0] + "\n" + no_priv_esp[1]
+                error2 = no_priv_esp[2]
+            all_imp.pSG.popup_error(error1, title = error2)
+            event = None
+        mode = None
+        if event == 800:
+            mes_dec_eng.close()
+            mes_dec_esp.close()
+        if event == 600:
+            all_imp.sys.exit(0)
 
     elif event == 25:
         if all_imp.os.path.isfile(keys + "/private.asc"):

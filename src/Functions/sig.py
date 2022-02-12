@@ -21,6 +21,8 @@ def sf(event, keys, lang, mes_sig_eng, mes_sig_esp, sig, values):
             error1 = empty_error_esp[0]
             error2 = empty_error_esp[1]
         all_imp.pSG.popup_error(error1, title = error2)
+        mes_sig_eng.close()
+        mes_sig_esp.close()
     elif values["input"].strip():
         if all_imp.os.path.isfile(keys + "/private.asc"):
             try:
@@ -65,10 +67,13 @@ def sf(event, keys, lang, mes_sig_eng, mes_sig_esp, sig, values):
                 error1 = no_priv_esp[0] + "\n" + no_priv_esp[1]
                 error2 = no_priv_esp[2]
             all_imp.pSG.popup_error(error1, title = error2)
-        mode = None
+    mode = None
     if event == 800:
         mode = None
+        mes_sig_eng.close()
+        mes_sig_esp.close()
     if mes_sig_eng[event].GetText() == "Reset" or mes_sig_esp[event].GetText() == "Reset":
+        event = 34
         mode = 30
     if event == 600:
         all_imp.sys.exit(0)
@@ -83,10 +88,10 @@ def sm(enc, event, keys, lang, mes_sig_eng, mes_sig_esp, sig):
     done, error1, error2, fin, mode, paste, window_title, values = "", "", "", "", "", "", "", ""
 
     choose_sig_eng, choose_sig_esp = all_imp.choose_layout.crem_sign()
-    if lang and event != [34, 35, 36]:
+    if lang and event not in [34, 35, 36]:
         event, values = choose_sig_eng.read()
         choose_sig_eng.close()
-    elif not lang and event != [34, 35, 36]:
+    elif not lang and event not in [34, 35, 36]:
         event, values = choose_sig_esp.read()
         choose_sig_esp.close()
 
@@ -116,6 +121,12 @@ def sm(enc, event, keys, lang, mes_sig_eng, mes_sig_esp, sig):
                 mes_sig_esp["input"].update(value = paste)
                 mes_sig_esp["xclipp"].update(visible = toggle)
                 event, values = mes_sig_esp.read()
+        mode = None
+        if event == 800:
+            mes_sig_eng.close()
+            mes_sig_esp.close()
+        if event == 600:
+            all_imp.sys.exit(0)
 
     elif event == 35:
         if all_imp.os.path.isfile(keys + "/private.asc"):
@@ -155,6 +166,8 @@ def sm(enc, event, keys, lang, mes_sig_eng, mes_sig_esp, sig):
                 error1 = no_priv_esp[0] + "\n" + no_priv_esp[1]
                 error2 = no_priv_esp[2]
             all_imp.pSG.popup_error(error1, title = error2)
+        event = None
+        mode = None
 
     elif event == 36:
         if all_imp.os.path.isfile(keys + "/private.asc"):
@@ -186,6 +199,7 @@ def sm(enc, event, keys, lang, mes_sig_eng, mes_sig_esp, sig):
                 error1 = no_priv_esp[0] + "\n" + no_priv_esp[1]
                 error2 = no_priv_esp[2]
             all_imp.pSG.popup_error(error1, title = error2)
-    mode = None
+        event = None
+        mode = None
 
     return event, mode, values

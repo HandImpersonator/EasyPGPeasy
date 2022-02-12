@@ -20,8 +20,8 @@ def vm(event, imported, lang, ver):
         choose_ver_esp.close()
 
     if event == 44:
-        if all_imp.os.path.isfile(imported + "/v_imported_message.txt"):
-            if all_imp.os.path.isfile(imported + "/v_imported_public.asc"):
+        if all_imp.os.path.isfile(imported + "/v_imported_public.asc"):
+            if all_imp.os.path.isfile(imported + "/v_imported_message.txt"):
                 if all_imp.os.path.isfile(imported + "/v_imported_signature.txt"):
                     mes = imported + "/v_imported_message.txt"
                     key = imported + "/v_imported_public.asc"
@@ -41,9 +41,8 @@ def vm(event, imported, lang, ver):
                         error2 = no_ver_esp[2]
                     all_imp.pSG.popup_error(error1, title = error2)
             else:
-                no_pub_eng = ["Public key to verify message is not imported.", "Returning to menu.", "Error!"]
-                no_pub_esp = ["La clave pública para verificar el mensaje no está importado.", "Volviendo al menú.",
-                              "¡Error!"]
+                no_pub_eng = ["Message to be verified is not imported.", "Returning to menu.", "Error!"]
+                no_pub_esp = ["El mensaje a verificar no está importade.", "Volviendo al menú.", "¡Error!"]
                 if lang:
                     error1 = no_pub_eng[0] + "\n" + no_pub_eng[1]
                     error2 = no_pub_eng[2]
@@ -52,8 +51,9 @@ def vm(event, imported, lang, ver):
                     error2 = no_pub_esp[2]
                 all_imp.pSG.popup_error(error1, title = error2)
         else:
-            no_pub_eng = ["Message to be verified is not imported.", "Returning to menu.", "Error!"]
-            no_pub_esp = ["El mensaje a verificar no está importade.", "Volviendo al menú.", "¡Error!"]
+            no_pub_eng = ["Public key to verify message is not imported.", "Returning to menu.", "Error!"]
+            no_pub_esp = ["La clave pública para verificar el mensaje no está importado.", "Volviendo al menú.",
+                          "¡Error!"]
             if lang:
                 error1 = no_pub_eng[0] + "\n" + no_pub_eng[1]
                 error2 = no_pub_eng[2]

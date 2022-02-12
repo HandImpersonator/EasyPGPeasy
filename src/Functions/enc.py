@@ -21,6 +21,8 @@ def ef(enc, event, imported, lang, mes_enc_eng, mes_enc_esp, values):
             error1 = empty_esp[0] + "\n" + empty_esp[1]
             error2 = empty_esp[2]
         all_imp.pSG.popup_error(error1, title = error2)
+        mes_enc_eng.close()
+        mes_enc_esp.close()
     elif values["input"].strip():
         if all_imp.os.path.isfile(imported + "/v_imported_public.asc"):
             out_enc, fin = all_imp.edsv.pgpy_encrypt(values["input"].strip(), False,
@@ -55,10 +57,15 @@ def ef(enc, event, imported, lang, mes_enc_eng, mes_enc_esp, values):
                 error1 = no_pub_esp[0] + "\n" + no_pub_esp[1]
                 error2 = no_pub_esp[2]
             all_imp.pSG.popup_error(error1, title = error2)
+            mes_enc_eng.close()
+            mes_enc_esp.close()
     mode = None
     if event == 800:
         mode = None
+        mes_enc_eng.close()
+        mes_enc_esp.close()
     if mes_enc_eng[event].GetText() == "Reset" or mes_enc_esp[event].GetText() == "Reset":
+        event = 14
         mode = 15
     if event == 600:
         all_imp.sys.exit(0)
@@ -106,6 +113,13 @@ def em(enc, event, imported, lang, mes_enc_eng, mes_enc_esp):
                 mes_enc_esp["input"].update(value = paste)
                 mes_enc_esp["xclipp"].update(visible = toggle)
                 event, values = mes_enc_esp.read()
+        mode = None
+        if event == 800:
+            mode = None
+            mes_enc_eng.close()
+            mes_enc_esp.close()
+        if event == 600:
+            all_imp.sys.exit(0)
 
     elif event == 16:
         if all_imp.os.path.isfile(imported + "/v_imported_public.asc"):
@@ -126,6 +140,7 @@ def em(enc, event, imported, lang, mes_enc_eng, mes_enc_esp):
                 error1 = no_pub_esp[0] + "\n" + no_pub_esp[1]
                 error2 = no_pub_esp[2]
             all_imp.pSG.popup_error(error1, title = error2)
+        event = None
         mode = None
 
     return event, mode, values
