@@ -40,7 +40,6 @@ def df(dec, event, keys, lang, mes_dec_eng, mes_dec_esp, values):
                 all_imp.pSG.popup_error(error1, title = error2)
                 mes_dec_eng.close()
                 mes_dec_esp.close()
-
             except TypeError:
                 pass
             update_button = ["Decrypt", "Descifrar"]
