@@ -12,10 +12,10 @@ def vm(event, imported, lang, ver):
     done, error1, error2, fin, mode, window_title, values = "", "", "", "", "", "", ""
 
     choose_ver_eng, choose_ver_esp = all_imp.choose_layout.crem_verify()
-    if lang and event != [44, 46]:
+    if lang == "eng" and event != [44, 46]:
         event, values = choose_ver_eng.read()
         choose_ver_eng.close()
-    elif not lang and event != [44, 46]:
+    elif lang == "esp" and event != [44, 46]:
         event, values = choose_ver_esp.read()
         choose_ver_esp.close()
 
@@ -33,20 +33,20 @@ def vm(event, imported, lang, ver):
                     no_ver_eng = ["Signature to verify message is not imported.", "Returning to menu.", "Error!"]
                     no_ver_esp = ["La firma para verificar el mensaje no está importado.", "Volviendo al menú.",
                                   "Error!"]
-                    if lang:
+                    if lang == "eng":
                         error1 = no_ver_eng[0] + "\n" + no_ver_eng[1]
                         error2 = no_ver_eng[2]
-                    elif not lang:
+                    elif lang == "esp":
                         error1 = no_ver_esp[0] + "\n" + no_ver_esp[1]
                         error2 = no_ver_esp[2]
                     all_imp.pSG.popup_error(error1, title = error2)
             else:
                 no_pub_eng = ["Message to be verified is not imported.", "Returning to menu.", "Error!"]
                 no_pub_esp = ["El mensaje a verificar no está importade.", "Volviendo al menú.", "¡Error!"]
-                if lang:
+                if lang == "eng":
                     error1 = no_pub_eng[0] + "\n" + no_pub_eng[1]
                     error2 = no_pub_eng[2]
-                elif not lang:
+                elif lang == "esp":
                     error1 = no_pub_esp[0] + "\n" + no_pub_esp[1]
                     error2 = no_pub_esp[2]
                 all_imp.pSG.popup_error(error1, title = error2)
@@ -54,10 +54,10 @@ def vm(event, imported, lang, ver):
             no_pub_eng = ["Public key to verify message is not imported.", "Returning to menu.", "Error!"]
             no_pub_esp = ["La clave pública para verificar el mensaje no está importado.", "Volviendo al menú.",
                           "¡Error!"]
-            if lang:
+            if lang == "eng":
                 error1 = no_pub_eng[0] + "\n" + no_pub_eng[1]
                 error2 = no_pub_eng[2]
-            elif not lang:
+            elif lang == "esp":
                 error1 = no_pub_esp[0] + "\n" + no_pub_esp[1]
                 error2 = no_pub_esp[2]
             all_imp.pSG.popup_error(error1, title = error2)
@@ -66,9 +66,9 @@ def vm(event, imported, lang, ver):
     elif event == 46:
         if all_imp.os.path.isfile(imported + "/v_imported_public.asc"):
             if all_imp.os.path.isfile(imported + "/v_imported_signature.txt"):
-                if lang:
+                if lang == "eng":
                     window_title = "Document to verify:"
-                elif not lang:
+                elif lang == "esp":
                     window_title = "Documento a verificar:"
                 mes = all_imp.pSG.popup_get_file(window_title, title = window_title)
                 key = imported + "/v_imported_public.asc"
@@ -80,10 +80,10 @@ def vm(event, imported, lang, ver):
             else:
                 no_ver_eng = ["Signature to verify message is not imported.", "Returning to menu.", "Error!"]
                 no_ver_esp = ["La firma para verificar el mensaje no está importado.", "Volviendo al menú.", "Error!"]
-                if lang:
+                if lang == "eng":
                     error1 = no_ver_eng[0] + "\n" + no_ver_eng[1]
                     error2 = no_ver_eng[2]
-                elif not lang:
+                elif lang == "esp":
                     error1 = no_ver_esp[0] + "\n" + no_ver_esp[1]
                     error2 = no_ver_esp[2]
                 all_imp.pSG.popup_error(error1, title = error2)
@@ -91,10 +91,10 @@ def vm(event, imported, lang, ver):
             no_pub_eng = ["Public key to verify message is not imported.", "Returning to menu.", "Error!"]
             no_pub_esp = ["La clave pública para verificar el mensaje no está importada.", "Volviendo al menú.",
                           "¡Error!"]
-            if lang:
+            if lang == "eng":
                 error1 = no_pub_eng[0] + "\n" + no_pub_eng[1]
                 error2 = no_pub_eng[2]
-            elif not lang:
+            elif lang == "esp":
                 error1 = no_pub_esp[0] + "\n" + no_pub_esp[1]
                 error2 = no_pub_esp[2]
             all_imp.pSG.popup_error(error1, title = error2)

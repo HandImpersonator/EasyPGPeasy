@@ -17,7 +17,7 @@ def df(dec, event, keys, lang, mes_dec_eng, mes_dec_esp, values):
         if lang:
             error1 = empty_error_eng[0] + "\n" + empty_error_eng[1]
             error2 = empty_error_eng[2]
-        elif not lang:
+        elif lang == "esp":
             error1 = empty_error_esp[0] + "\n" + empty_error_esp[1]
             error2 = empty_error_esp[2]
         all_imp.pSG.popup_error(error1, title = error2)
@@ -34,13 +34,12 @@ def df(dec, event, keys, lang, mes_dec_eng, mes_dec_esp, values):
                 if lang:
                     error1 = error_pass_eng[0] + "\n" + error_pass_eng[1]
                     error2 = error_pass_eng[2]
-                elif not lang:
+                elif lang == "esp":
                     error1 = error_pass_esp[0] + "\n" + error_pass_esp[1]
                     error2 = error_pass_esp[2]
                 all_imp.pSG.popup_error(error1, title = error2)
                 mes_dec_eng.close()
                 mes_dec_esp.close()
-
             except TypeError:
                 pass
             update_button = ["Decrypt", "Descifrar"]
@@ -54,7 +53,7 @@ def df(dec, event, keys, lang, mes_dec_eng, mes_dec_esp, values):
                     all_imp.pSG.popup_auto_close(fin, auto_close_duration = 1, button_type = 5, title = fin)
                 event, values = mes_dec_eng.read()
                 mes_dec_eng.close()
-            elif not lang:
+            elif lang == "esp":
                 mes_dec_esp["output"].update(value = str(out_dec))
                 mes_dec_esp["xclipp"].update(visible = False)
                 mes_dec_esp.Element("dec").Update((update_button[1], "Reset")[pressed])
@@ -72,7 +71,7 @@ def df(dec, event, keys, lang, mes_dec_eng, mes_dec_esp, values):
             if lang:
                 error1 = no_pub_eng[0] + "\n" + no_pub_eng[1]
                 error2 = no_pub_eng[2]
-            elif not lang:
+            elif lang == "esp":
                 error1 = no_pub_esp[0] + "\n" + no_pub_esp[1]
                 error2 = no_pub_esp[2]
             all_imp.pSG.popup_error(error1, title = error2)
@@ -99,18 +98,18 @@ def dm(dec, event, imported, keys, lang, mes_dec_eng, mes_dec_esp):
     done, error1, error2, fin, mode, paste, window_title, values = "", "", "", "", "", "", "", ""
 
     choose_dec_eng, choose_dec_esp = all_imp.choose_layout.crem_decrypt()
-    if lang and event not in [24, 25, 26]:
+    if lang == "eng" and event not in [24, 25, 26]:
         event, values = choose_dec_eng.read()
         choose_dec_eng.close()
-    elif not lang and event not in [24, 25, 26]:
+    elif lang == "esp" and event not in [24, 25, 26]:
         event, values = choose_dec_esp.read()
         choose_dec_esp.close()
 
     if event == 24:
         if all_imp.os.path.isfile(keys + "/private.asc"):
-            if lang:
+            if lang == "eng":
                 event, values = mes_dec_eng.read()
-            elif not lang:
+            elif lang == "esp":
                 event, values = mes_dec_esp.read()
 
             # Paste from clipboard.
@@ -118,18 +117,18 @@ def dm(dec, event, imported, keys, lang, mes_dec_eng, mes_dec_esp):
                 try:
                     paste = str(all_imp.pyclip.paste(text = True).strip())
                 except BaseException:
-                    if lang:
+                    if lang == "eng":
                         paste = "Clipboard was empty, here you go."
-                    elif not lang:
+                    elif lang == "esp":
                         paste = "El portapapeles estaba vacío, aquí tienes."
                 toggle = False
 
                 # Update window with pasted content.
-                if lang:
+                if lang == "eng":
                     mes_dec_eng["input"].update(value = paste)
                     mes_dec_eng["xclipp"].update(visible = toggle)
                     event, values = mes_dec_eng.read()
-                elif not lang:
+                elif lang == "esp":
                     mes_dec_esp["input"].update(value = paste)
                     mes_dec_esp["xclipp"].update(visible = toggle)
                     event, values = mes_dec_esp.read()
@@ -137,10 +136,10 @@ def dm(dec, event, imported, keys, lang, mes_dec_eng, mes_dec_esp):
             no_priv_eng = ["Private key to decrypt message does not exist.", "Returning to menu.", "Error!"]
             no_priv_esp = ["La clave privada para descifrar el mensaje no existe.", "Volviendo al menú.",
                            "¡Error!"]
-            if lang:
+            if lang == "eng":
                 error1 = no_priv_eng[0] + "\n" + no_priv_eng[1]
                 error2 = no_priv_eng[2]
-            elif not lang:
+            elif lang == "esp":
                 error1 = no_priv_esp[0] + "\n" + no_priv_esp[1]
                 error2 = no_priv_esp[2]
             all_imp.pSG.popup_error(error1, title = error2)
@@ -161,10 +160,10 @@ def dm(dec, event, imported, keys, lang, mes_dec_eng, mes_dec_esp):
                 except all_imp.pgpy.errors.PGPDecryptionError:
                     error_pass_eng = ["The passphrase is incorrect.", "Returning to menu.", "Error!"]
                     error_pass_esp = ["La contraseña es incorrecta.", "Volviendo al menú.", "¡Error!"]
-                    if lang:
+                    if lang == "eng":
                         error1 = error_pass_eng[0] + "\n" + error_pass_eng[1]
                         error2 = error_pass_eng[2]
-                    elif not lang:
+                    elif lang == "esp":
                         error1 = error_pass_esp[0] + "\n" + error_pass_esp[1]
                         error2 = error_pass_esp[2]
                     all_imp.pSG.popup_error(error1, title = error2)
@@ -173,20 +172,20 @@ def dm(dec, event, imported, keys, lang, mes_dec_eng, mes_dec_esp):
             else:
                 no_mes_eng = ["No message to decrypt found in Imported folder.", "Returning to menu.", "Error!"]
                 no_mes_esp = ["No existe un mensaje descifrar en la carpeta Imported.", "Volviendo al menú", "¡Error!"]
-                if lang:
+                if lang == "eng":
                     error1 = no_mes_eng[0] + "\n" + no_mes_eng[1]
                     error2 = no_mes_eng[2]
-                elif not lang:
+                elif lang == "esp":
                     error1 = no_mes_esp[0] + "\n" + no_mes_esp[1]
                     error2 = no_mes_esp[2]
                 all_imp.pSG.popup_error(error1, title = error2)
         else:
             no_priv_eng = ["Private key to decrypt message does not exist.", "Returning to menu.", "Error!"]
             no_priv_esp = ["La clave privada para descifrar el mensaje no existe.", "Volviendo al menú.", "¡Error!"]
-            if lang:
+            if lang == "eng":
                 error1 = no_priv_eng[0] + "\n" + no_priv_eng[1]
                 error2 = no_priv_eng[2]
-            elif not lang:
+            elif lang == "esp":
                 error1 = no_priv_esp[0] + "\n" + no_priv_esp[1]
                 error2 = no_priv_esp[2]
             all_imp.pSG.popup_error(error1, title = error2)
@@ -195,9 +194,9 @@ def dm(dec, event, imported, keys, lang, mes_dec_eng, mes_dec_esp):
 
     elif event == 26:
         if all_imp.os.path.isfile(keys + "/private.asc"):
-            if lang:
+            if lang == "eng":
                 window_title = "Document to decrypt:"
-            elif not lang:
+            elif lang == "esp":
                 window_title = "Documento a descifrar:"
             fname = all_imp.pSG.popup_get_file(window_title, title = window_title)
             if fname:
@@ -208,10 +207,10 @@ def dm(dec, event, imported, keys, lang, mes_dec_eng, mes_dec_esp):
                     except all_imp.pgpy.errors.PGPDecryptionError:
                         error_pass_eng = ["The passphrase is incorrect.", "Returning to menu.", "Error!"]
                         error_pass_esp = ["La contraseña es incorrecta.", "Volviendo al menú.", "¡Error!"]
-                        if lang:
+                        if lang == "eng":
                             error1 = error_pass_eng[0] + "\n" + error_pass_eng[1]
                             error2 = error_pass_eng[2]
-                        elif not lang:
+                        elif lang == "esp":
                             error1 = error_pass_esp[0] + "\n" + error_pass_esp[1]
                             error2 = error_pass_esp[2]
                         all_imp.pSG.popup_error(error1, title = error2)
@@ -219,20 +218,20 @@ def dm(dec, event, imported, keys, lang, mes_dec_eng, mes_dec_esp):
                     file_ext_eng = ["Incorrect file extension to decrypt.", "Returning to menu.", "Error!"]
                     file_ext_esp = ["La extensión del fichero a descifrar es incorrecta.", "Volviendo al menú.",
                                     "¡Error!"]
-                    if lang:
+                    if lang == "eng":
                         error1 = file_ext_eng[0] + "\n" + file_ext_eng[1]
                         error2 = file_ext_eng[2]
-                    elif not lang:
+                    elif lang == "esp":
                         error1 = file_ext_esp[0] + "\n" + file_ext_esp[1]
                         error2 = file_ext_esp[2]
                     all_imp.pSG.popup_error(error1, title = error2)
         else:
             no_priv_eng = ["Private key to decrypt message does not exist.", "Returning to menu.", "Error!"]
             no_priv_esp = ["La clave privada para descifrar el mensaje no existe.", "Volviendo al menú.", "¡Error!"]
-            if lang:
+            if lang == "eng":
                 error1 = no_priv_eng[0] + "\n" + no_priv_eng[1]
                 error2 = no_priv_eng[2]
-            elif not lang:
+            elif lang == "esp":
                 error1 = no_priv_esp[0] + "\n" + no_priv_esp[1]
                 error2 = no_priv_esp[2]
             all_imp.pSG.popup_error(error1, title = error2)

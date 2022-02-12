@@ -11,7 +11,7 @@ file saving and file reading, pasting from clipboard."""
 access_rights = 0o755
 copied, error1, error2, fin, paste = "", "", "", "", ""
 curr_path = all_imp.os.getcwd()
-done, event, lang, mode = False, None, True, None
+done, event, lang, mode = False, None, "eng", None
 imported = curr_path + "/Imported"
 keys = curr_path + "/Keys"
 output = curr_path + "/Output"
@@ -32,10 +32,10 @@ if not (all_imp.os.path.exists(imported)):
     except OSError:
         folder_error_eng = ["Creation of the directory %s failed." % imported, "Error!"]
         folder_error_esp = ["Ha fallado la creación del directorio %s." % imported, "¡Error!"]
-        if lang:
+        if lang == "eng":
             error1 = folder_error_eng[0]
             error2 = folder_error_eng[1]
-        elif not lang:
+        elif lang == "esp":
             error1 = folder_error_esp[0]
             error2 = folder_error_esp[1]
         all_imp.pSG.popup_auto_close(error1, auto_close_duration = 2, button_type = 5, title = error2)
@@ -46,10 +46,10 @@ if not (all_imp.os.path.exists(keys)):
     except OSError:
         folder_error_eng = ["Creation of the directory %s failed." % keys, "Error!"]
         folder_error_esp = ["Ha fallado la creación del directorio %s. " % keys, "¡Error!"]
-        if lang:
+        if lang == "eng":
             error1 = folder_error_eng[0]
             error2 = folder_error_eng[1]
-        elif not lang:
+        elif lang == "esp":
             error1 = folder_error_esp[0]
             error2 = folder_error_esp[1]
         all_imp.pSG.popup_auto_close(error1, auto_close_duration = 2, button_type = 5, title = error2)
@@ -60,10 +60,10 @@ if not (all_imp.os.path.exists(output)):
     except OSError:
         folder_error_eng = ["Creation of the directory %s failed." % output, "Error!"]
         folder_error_esp = ["Ha fallado la creación del directorio %s." % output, "¡Error!"]
-        if lang:
+        if lang == "eng":
             error1 = folder_error_eng[0]
             error2 = folder_error_eng[1]
-        elif not lang:
+        elif lang == "esp":
             error1 = folder_error_esp[0]
             error2 = folder_error_esp[1]
         all_imp.pSG.popup_auto_close(error1, auto_close_duration = 2, button_type = 5, title = error2)
@@ -74,10 +74,10 @@ if not (all_imp.os.path.exists(encrypted)):
     except OSError:
         folder_error_eng = ["Creation of the directory %s failed." % encrypted, "Error!"]
         folder_error_esp = ["Ha fallado la creación del directorio %s." % encrypted, "¡Error!"]
-        if lang:
+        if lang == "eng":
             error1 = folder_error_eng[0]
             error2 = folder_error_eng[1]
-        elif not lang:
+        elif lang == "esp":
             error1 = folder_error_esp[0]
             error2 = folder_error_esp[1]
         all_imp.pSG.popup_auto_close(error1, auto_close_duration = 2, button_type = 5, title = error2)
@@ -88,10 +88,10 @@ if not (all_imp.os.path.exists(decrypted)):
     except OSError:
         folder_error_eng = ["Creation of the directory %s failed." % decrypted, "Error!"]
         folder_error_esp = ["Ha fallado la creación del directorio %s." % decrypted, "¡Error!"]
-        if lang:
+        if lang == "eng":
             error1 = folder_error_eng[0]
             error2 = folder_error_eng[1]
-        elif not lang:
+        elif lang == "esp":
             error1 = folder_error_esp[0]
             error2 = folder_error_esp[1]
         all_imp.pSG.popup_auto_close(error1, auto_close_duration = 2, button_type = 5, title = error2)
@@ -102,10 +102,10 @@ if not (all_imp.os.path.exists(signed)):
     except OSError:
         folder_error_eng = ["Creation of the directory %s failed." % signed, "Error!"]
         folder_error_esp = ["Ha fallado la creación del directorio %s." % signed, "¡Error!"]
-        if lang:
+        if lang == "eng":
             error1 = folder_error_eng[0]
             error2 = folder_error_eng[1]
-        elif not lang:
+        elif lang == "esp":
             error1 = folder_error_esp[0]
             error2 = folder_error_esp[1]
         all_imp.pSG.popup_auto_close(error1, auto_close_duration = 2, button_type = 5, title = error2)
@@ -116,10 +116,10 @@ if not (all_imp.os.path.exists(verified)):
     except OSError:
         folder_error_eng = ["Creation of the directory %s failed." % verified, "Error!"]
         folder_error_esp = ["Ha fallado la creación del directorio %s." % verified, "¡Error!"]
-        if lang:
+        if lang == "eng":
             error1 = folder_error_eng[0]
             error2 = folder_error_eng[1]
-        elif not lang:
+        elif lang == "esp":
             error1 = folder_error_esp[0]
             error2 = folder_error_esp[1]
         all_imp.pSG.popup_auto_close(error1, auto_close_duration = 2, button_type = 5, title = error2)

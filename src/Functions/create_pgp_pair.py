@@ -44,9 +44,9 @@ def pgpy_create_keypair(email, keys, lang, name, size, custom):
                     compression = [all_imp.CompressionAlgorithm.BZ2])
 
     choose_pass_eng, choose_pass_esp = all_imp.choose_layout.crem_pass()
-    if lang:
+    if lang == "eng":
         event, values = choose_pass_eng.read()
-    elif not lang:
+    elif lang == "esp":
         event, values = choose_pass_esp.read()
     password = values["pass"]
     choose_pass_eng.close()
@@ -63,8 +63,8 @@ def pgpy_create_keypair(email, keys, lang, name, size, custom):
     text_file_public.write(str(public))
     text_file_public.close()
 
-    if lang:
+    if lang == "eng":
         fin = "Done! Saved in folder Keys."
-    elif not lang:
+    elif lang == "esp":
         fin = "¡Hecho! Guardado en carpeta Keys."
     all_imp.pSG.popup_auto_close(fin, auto_close_duration = 1.2, button_type = 5, title = fin)

@@ -20,10 +20,10 @@ def create_menu(lang, imp, ks):
 
         # Show menu.
         if not event or event == 800:
-            if lang:
+            if lang == "eng":
                 event, values = menu_eng.read()
                 menu_eng.close()
-            elif not lang:
+            elif lang == "esp":
                 event, values = menu_esp.read()
                 menu_esp.close()
 
@@ -31,10 +31,10 @@ def create_menu(lang, imp, ks):
         if event == 100:
             size = tuple(values.items())[0][1]
             keypair_choose_eng, keypair_choose_esp = all_imp.choose_layout.crem_kp()
-            if lang:
+            if lang == "eng":
                 event, values = keypair_choose_eng.read()
                 keypair_choose_eng.close()
-            elif not lang:
+            elif lang == "esp":
                 event, values = keypair_choose_esp.read()
                 keypair_choose_esp.close()
 
@@ -49,10 +49,10 @@ def create_menu(lang, imp, ks):
             # Custom name PGP Keypair.
             elif event == 118:
                 ne_choose_eng, ne_choose_esp = all_imp.choose_layout.crem_ne()
-                if lang:
+                if lang == "eng":
                     event, values = ne_choose_eng.read()
                     ne_choose_eng.close()
-                elif not lang:
+                elif lang == "esp":
                     event, values = ne_choose_esp.read()
                     ne_choose_esp.close()
                 if event == 660:
@@ -69,9 +69,9 @@ def create_menu(lang, imp, ks):
             elif event == 114:
                 imp_eng, imp_esp = all_imp.imp_layout.crem_sig_import()
 
-            if lang:
+            if lang == "eng":
                 event1, values = imp_eng.read()
-            elif not lang:
+            elif lang == "esp":
                 event1, values = imp_esp.read()
 
             # Paste from clipboard.
@@ -79,13 +79,13 @@ def create_menu(lang, imp, ks):
                 try:
                     paste = str(all_imp.pyclip.paste(text = True).strip())
                 except BaseException:
-                    if lang:
+                    if lang == "eng":
                         paste = "Clipboard was empty, here you go."
-                    elif not lang:
+                    elif lang == "esp":
                         paste = "El portapapeles estaba vacío, aquí tienes."
                 toggle = False
                 # Update window with pasted content.
-                if lang:
+                if lang == "eng":
                     if event == 110:
                         imp_eng[110].update(value = paste)
                     elif event == 112:
@@ -95,7 +95,7 @@ def create_menu(lang, imp, ks):
                     imp_eng["xclipp"].update(visible = toggle)
                     event1, values = imp_eng.read()
                     imp_eng.close()
-                elif not lang:
+                elif lang == "esp":
                     if event == 110:
                         imp_esp[110].update(value = paste)
                     elif event == 112:
@@ -113,10 +113,10 @@ def create_menu(lang, imp, ks):
                 if not vp[1]:
                     empty_eng = ["Cannot import empty data.", "Error!"]
                     empty_esp = ["No se puede importar datos vacíos.", "¡Error!"]
-                    if lang:
+                    if lang == "eng":
                         error1 = empty_eng[0]
                         error2 = empty_eng[1]
-                    elif not lang:
+                    elif lang == "esp":
                         error1 = empty_esp[0]
                         error2 = empty_esp[1]
                     all_imp.pSG.popup_error(error1, title = error2)
@@ -140,7 +140,7 @@ def create_menu(lang, imp, ks):
                         else:
                             error_popup_eng = ["Not a valid Public key.", "Error encrypting!"]
                             error_popup_esp = ["No es una clave Pública válida.", "¡Error cifrando!"]
-                            if lang:
+                            if lang == "eng":
                                 error1 = error_popup_eng[0]
                                 error2 = error_popup_eng[1]
                             if not lang:
@@ -159,7 +159,7 @@ def create_menu(lang, imp, ks):
                         else:
                             error_popup_eng = ["Not a valid Signature.", "Error encrypting!"]
                             error_popup_esp = ["No es una Firma válida.", "¡Error cifrando!"]
-                            if lang:
+                            if lang == "eng":
                                 error1 = error_popup_eng[0]
                                 error2 = error_popup_eng[1]
                             if not lang:
@@ -169,9 +169,9 @@ def create_menu(lang, imp, ks):
 
                     # Show finished message
                     if ok:
-                        if lang:
+                        if lang == "eng":
                             fin = "Done! Saved in Imported."
-                        elif not lang:
+                        elif lang == "esp":
                             fin = "¡Hecho! Guardado en Imported."
                         all_imp.pSG.popup_auto_close(fin, auto_close_duration = 1.2, button_type = 5, title = fin)
                         event = False
@@ -201,36 +201,36 @@ def create_menu(lang, imp, ks):
         # Toggle language.
         if event == 400:
             lang_eng, lang_esp = all_imp.lang_layout.crem_language()
-            if lang:
+            if lang == "eng":
                 event, values = lang_eng.read()
                 lang_eng.close()
-                if event == 455:
-                    lang = False
-            elif not lang:
+                if event == "esp":
+                    lang = "esp"
+            elif lang == "esp":
                 event, values = lang_esp.read()
                 lang_esp.close()
-                if event == 454:
-                    lang = True
+                if event == "eng":
+                    lang = "eng"
             event = False
             mode_text = None
 
         # Show help.
         if event == 500:
             help_eng, help_esp = all_imp.help_layout.crem_help()
-            if lang:
+            if lang == "eng":
                 event, values = help_eng.read()
                 help_eng.close()
-            elif not lang:
+            elif lang == "esp":
                 event, values = help_esp.read()
                 help_esp.close()
 
             # Show coffee.
             while event == 666:
                 coffee_eng, coffee_esp = all_imp.help_layout.crem_coffee()
-                if lang:
+                if lang == "eng":
                     event, values = coffee_eng.read()
                     coffee_eng.close()
-                elif not lang:
+                elif lang == "esp":
                     event, values = coffee_esp.read()
                     coffee_esp.close()
 

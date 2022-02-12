@@ -14,10 +14,10 @@ def ef(enc, event, imported, lang, mes_enc_eng, mes_enc_esp, values):
     if not values["input"].strip():
         empty_eng = ["Cannot encrypt empty data.", "Returning to menu.", "Error!"]
         empty_esp = ["No se pueden cifrar datos vacíos.", "Volviendo al menú.", "¡Error!"]
-        if lang:
+        if lang == "eng":
             error1 = empty_eng[0] + "\n" + empty_eng[1]
             error2 = empty_eng[2]
-        elif not lang:
+        elif lang == "esp":
             error1 = empty_esp[0] + "\n" + empty_esp[1]
             error2 = empty_esp[2]
         all_imp.pSG.popup_error(error1, title = error2)
@@ -29,7 +29,7 @@ def ef(enc, event, imported, lang, mes_enc_eng, mes_enc_esp, values):
                                                      imported + "/v_imported_public.asc", lang, enc)
             update_button = ["Encrypt", "Cifrar"]
             pressed = True
-            if lang:
+            if lang == "eng":
                 mes_enc_eng["output"].update(value = str(out_enc))
                 mes_enc_eng["xclipp"].update(visible = False)
                 mes_enc_eng.Element("enc").Update((update_button[0], "Reset")[pressed])
@@ -38,7 +38,7 @@ def ef(enc, event, imported, lang, mes_enc_eng, mes_enc_esp, values):
                     all_imp.pSG.popup_auto_close(fin, auto_close_duration = 1, button_type = 5, title = fin)
                 event, values = mes_enc_eng.read()
                 mes_enc_eng.close()
-            elif not lang:
+            elif lang == "esp":
                 mes_enc_esp["output"].update(value = str(out_enc))
                 mes_enc_esp["xclipp"].update(visible = False)
                 mes_enc_esp.Element("enc").Update((update_button[1], "Reset")[pressed])
@@ -50,10 +50,10 @@ def ef(enc, event, imported, lang, mes_enc_eng, mes_enc_esp, values):
         else:
             no_pub_eng = ["Public key to encrypt message does not exist.", "Returning to menu", "Error!"]
             no_pub_esp = ["La clave pública para cifrar el mensaje no existe.", "Volviendo al menu", "¡Error!"]
-            if lang:
+            if lang == "eng":
                 error1 = no_pub_eng[0] + "\n" + no_pub_eng[1]
                 error2 = no_pub_eng[2]
-            elif not lang:
+            elif lang == "esp":
                 error1 = no_pub_esp[0] + "\n" + no_pub_esp[1]
                 error2 = no_pub_esp[2]
             all_imp.pSG.popup_error(error1, title = error2)
@@ -80,17 +80,17 @@ def em(enc, event, imported, lang, mes_enc_eng, mes_enc_esp):
     error1, error2, fin, mode, paste, window_title, values = "", "", "", "", "", "", ""
 
     choose_enc_eng, choose_enc_esp = all_imp.choose_layout.crem_encrypt()
-    if lang and event not in [14, 16]:
+    if lang == "eng" and event not in [14, 16]:
         event, values = choose_enc_eng.read()
         choose_enc_eng.close()
-    elif not lang and event not in [14, 16]:
+    elif lang == "esp" and event not in [14, 16]:
         event, values = choose_enc_esp.read()
         choose_enc_esp.close()
 
     if event == 14:
-        if lang:
+        if lang == "eng":
             event, values = mes_enc_eng.read()
-        elif not lang:
+        elif lang == "esp":
             event, values = mes_enc_esp.read()
 
         # Paste from clipboard.
@@ -98,18 +98,18 @@ def em(enc, event, imported, lang, mes_enc_eng, mes_enc_esp):
             try:
                 paste = str(all_imp.pyclip.paste(text = True).strip())
             except BaseException:
-                if lang:
+                if lang == "eng":
                     paste = "Clipboard was empty, here you go."
-                elif not lang:
+                elif lang == "esp":
                     paste = "El portapapeles estaba vacío, aquí tienes."
             toggle = False
 
             # Update window with pasted content.
-            if lang:
+            if lang == "eng":
                 mes_enc_eng["input"].update(value = paste)
                 mes_enc_eng["xclipp"].update(visible = toggle)
                 event, values = mes_enc_eng.read()
-            elif not lang:
+            elif lang == "esp":
                 mes_enc_esp["input"].update(value = paste)
                 mes_enc_esp["xclipp"].update(visible = toggle)
                 event, values = mes_enc_esp.read()
@@ -123,9 +123,9 @@ def em(enc, event, imported, lang, mes_enc_eng, mes_enc_esp):
 
     elif event == 16:
         if all_imp.os.path.isfile(imported + "/v_imported_public.asc"):
-            if lang:
+            if lang == "eng":
                 window_title = "Document to encrypt:"
-            elif not lang:
+            elif lang == "esp":
                 window_title = "Documento a cifrar:"
             fname = all_imp.pSG.popup_get_file(window_title, title = window_title)
             if fname:
@@ -133,10 +133,10 @@ def em(enc, event, imported, lang, mes_enc_eng, mes_enc_esp):
         else:
             no_pub_eng = ["Public key to encrypt message does not exist.", "Returning to menu", "Error!"]
             no_pub_esp = ["La clave pública para cifrar el mensaje no existe.", "Volviendo al menu", "¡Error!"]
-            if lang:
+            if lang == "eng":
                 error1 = no_pub_eng[0] + "\n" + no_pub_eng[1]
                 error2 = no_pub_eng[2]
-            elif not lang:
+            elif lang == "esp":
                 error1 = no_pub_esp[0] + "\n" + no_pub_esp[1]
                 error2 = no_pub_esp[2]
             all_imp.pSG.popup_error(error1, title = error2)
