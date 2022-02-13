@@ -131,8 +131,7 @@ def pgpy_decrypt(enc_data, file, key, lang, dec):
         else:
             if not is_public(str(privkey), lang):
                 message = open(enc_data, "rb").read().strip()
-                original_name = str(enc_data.split("/")[-1].split(".")[-4] +
-                                    "." + enc_data.split("/")[-1].split(".")[-3])
+                original_name = ".".join(enc_data.split("/")[-1].split(".")[:-2])
                 try:
                     data = all_imp.pgpy.PGPMessage.from_blob(message)
                     dec_data = (privkey.decrypt(data)).message
@@ -520,7 +519,7 @@ def pgpy_sign(data, file, key, lang, sig):
                 if not is_public(str(privkey), lang):
                     sign_file = open(data, "rb").read().strip()
                     try:
-                        file_name = str(data.split("/")[-1].split(".")[:-1][0])
+                        file_name = data.split("/")[-1]
                         sig_data = str(privkey.sign(sign_file))
                         sig_file = open(sig + "/" + file_name + "_signature.txt", "w")
                         sig_file.write(str(sig_data))
