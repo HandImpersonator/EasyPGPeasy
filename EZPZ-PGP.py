@@ -30,8 +30,8 @@ if not (all_imp.os.path.exists(imported)):
     try:
         all_imp.os.mkdir(imported, access_rights)
     except OSError:
-        folder_error_eng = ["Creation of the directory %s failed." % imported, "Error!"]
-        folder_error_esp = ["Ha fallado la creación del directorio %s." % imported, "¡Error!"]
+        folder_error_eng = ["Creation of the directory %s failed." % imported, "Error creating folder!"]
+        folder_error_esp = ["Ha fallado la creación del directorio %s." % imported, "¡Error creando fichero!"]
         if lang == "eng":
             error1 = folder_error_eng[0]
             error2 = folder_error_eng[1]
@@ -44,8 +44,8 @@ if not (all_imp.os.path.exists(keys)):
     try:
         all_imp.os.mkdir(keys, access_rights)
     except OSError:
-        folder_error_eng = ["Creation of the directory %s failed." % keys, "Error!"]
-        folder_error_esp = ["Ha fallado la creación del directorio %s. " % keys, "¡Error!"]
+        folder_error_eng = ["Creation of the directory %s failed." % keys, "Error creating folder!"]
+        folder_error_esp = ["Ha fallado la creación del directorio %s. " % keys, "¡Error creando fichero!"]
         if lang == "eng":
             error1 = folder_error_eng[0]
             error2 = folder_error_eng[1]
@@ -58,8 +58,8 @@ if not (all_imp.os.path.exists(output)):
     try:
         all_imp.os.mkdir(output, access_rights)
     except OSError:
-        folder_error_eng = ["Creation of the directory %s failed." % output, "Error!"]
-        folder_error_esp = ["Ha fallado la creación del directorio %s." % output, "¡Error!"]
+        folder_error_eng = ["Creation of the directory %s failed." % output, "Error creating folder!"]
+        folder_error_esp = ["Ha fallado la creación del directorio %s." % output, "¡Error creando fichero!"]
         if lang == "eng":
             error1 = folder_error_eng[0]
             error2 = folder_error_eng[1]
@@ -72,8 +72,8 @@ if not (all_imp.os.path.exists(encrypted)):
     try:
         all_imp.os.mkdir(encrypted, access_rights)
     except OSError:
-        folder_error_eng = ["Creation of the directory %s failed." % encrypted, "Error!"]
-        folder_error_esp = ["Ha fallado la creación del directorio %s." % encrypted, "¡Error!"]
+        folder_error_eng = ["Creation of the directory %s failed." % encrypted, "Error creating folder!"]
+        folder_error_esp = ["Ha fallado la creación del directorio %s." % encrypted, "¡Error creando fichero!"]
         if lang == "eng":
             error1 = folder_error_eng[0]
             error2 = folder_error_eng[1]
@@ -86,8 +86,8 @@ if not (all_imp.os.path.exists(decrypted)):
     try:
         all_imp.os.mkdir(decrypted, access_rights)
     except OSError:
-        folder_error_eng = ["Creation of the directory %s failed." % decrypted, "Error!"]
-        folder_error_esp = ["Ha fallado la creación del directorio %s." % decrypted, "¡Error!"]
+        folder_error_eng = ["Creation of the directory %s failed." % decrypted, "Error creating folder!"]
+        folder_error_esp = ["Ha fallado la creación del directorio %s." % decrypted, "¡Error creando fichero!"]
         if lang == "eng":
             error1 = folder_error_eng[0]
             error2 = folder_error_eng[1]
@@ -100,8 +100,8 @@ if not (all_imp.os.path.exists(signed)):
     try:
         all_imp.os.mkdir(signed, access_rights)
     except OSError:
-        folder_error_eng = ["Creation of the directory %s failed." % signed, "Error!"]
-        folder_error_esp = ["Ha fallado la creación del directorio %s." % signed, "¡Error!"]
+        folder_error_eng = ["Creation of the directory %s failed." % signed, "Error creating folder!"]
+        folder_error_esp = ["Ha fallado la creación del directorio %s." % signed, "¡Error creando fichero!"]
         if lang == "eng":
             error1 = folder_error_eng[0]
             error2 = folder_error_eng[1]
@@ -114,8 +114,8 @@ if not (all_imp.os.path.exists(verified)):
     try:
         all_imp.os.mkdir(verified, access_rights)
     except OSError:
-        folder_error_eng = ["Creation of the directory %s failed." % verified, "Error!"]
-        folder_error_esp = ["Ha fallado la creación del directorio %s." % verified, "¡Error!"]
+        folder_error_eng = ["Creation of the directory %s failed." % verified, "Error creating folder!"]
+        folder_error_esp = ["Ha fallado la creación del directorio %s." % verified, "¡Error creando fichero!"]
         if lang == "eng":
             error1 = folder_error_eng[0]
             error2 = folder_error_eng[1]

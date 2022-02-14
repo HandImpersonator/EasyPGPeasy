@@ -86,18 +86,20 @@ def crem_ne():
     width1 = 40
     width2 = 45
 
+    text_eng = ["Name:", "Email:"]
     buttons_eng = ["Create", "Menu"]
+    text_esp = ["Nombre:", "Correo:"]
     buttons_esp = ["Crear", "Menú"]
 
-    layout_ne_choose_eng = [[all_imp.pSG.Text("Name:", auto_size_text = True, enable_events = False),
+    layout_ne_choose_eng = [[all_imp.pSG.Text(text_eng[0], auto_size_text = True, enable_events = False),
                              all_imp.pSG.Input(do_not_clear = False, focus = False, key = "name", size = (width1, 0))],
-                            [all_imp.pSG.Text("Email:", auto_size_text = True, enable_events = False),
+                            [all_imp.pSG.Text(text_eng[1], auto_size_text = True, enable_events = False),
                              all_imp.pSG.Input(do_not_clear = False, focus = False, key = "email", size = (width1, 0))],
                             [all_imp.pSG.Button(buttons_eng[0], focus = False, key = 660, size = (width2, 0))],
                             [all_imp.pSG.Button(buttons_eng[1], focus = False, key = 800, size = (width2, 0))]]
-    layout_ne_choose_esp = [[all_imp.pSG.Text("Nombre:", auto_size_text = True, enable_events = False),
+    layout_ne_choose_esp = [[all_imp.pSG.Text(text_esp[0], auto_size_text = True, enable_events = False),
                              all_imp.pSG.Input(do_not_clear = False, focus = False, key = "name", size = (width1, 0))],
-                            [all_imp.pSG.Text("Correo:", auto_size_text = True, enable_events = False),
+                            [all_imp.pSG.Text(text_esp[1], auto_size_text = True, enable_events = False),
                              all_imp.pSG.Input(do_not_clear = False, focus = False, key = "email", size = (width1, 0))],
                             [all_imp.pSG.Button(buttons_esp[0], focus = False, key = 660, size = (width2, 0))],
                             [all_imp.pSG.Button(buttons_esp[1], focus = False, key = 800, size = (width2, 0))]]
@@ -117,8 +119,8 @@ def crem_pass():
     width = 40
 
     text_eng = "Private key passphrase:"
-    text_esp = "Contraseña clave Privada:"
     buttons_eng = "Accept"
+    text_esp = "Contraseña clave Privada:"
     buttons_esp = "Aceptar"
 
     layout_pass_choose_eng = [[all_imp.pSG.Text(text_eng)],

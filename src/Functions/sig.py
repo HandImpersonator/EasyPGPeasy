@@ -9,11 +9,11 @@ def sf(event, keys, lang, mes_sig_eng, mes_sig_esp, sig, values):
     """Function that handles the signing process.
     Returns events, mode choice and values if there were any typed in."""
 
-    done, error1, error2, fin, mode, out_sig = "", "", "", "", "", ""
+    error1, error2, fin, mode, out_sig = "", "", "", "", ""
 
     if not values["input"].strip():
-        empty_error_eng = ["Cannot sign empty data.", "Error!"]
-        empty_error_esp = ["No se pueden firmar datos vacíos.", "¡Error!"]
+        empty_error_eng = ["Cannot sign empty data.", "Error signing!"]
+        empty_error_esp = ["No se pueden firmar datos vacíos.", "¡Error firmando!"]
         if lang == "eng":
             error1 = empty_error_eng[0]
             error2 = empty_error_eng[1]
@@ -28,8 +28,8 @@ def sf(event, keys, lang, mes_sig_eng, mes_sig_esp, sig, values):
             try:
                 out_sig, fin = all_imp.edsv.pgpy_sign(values["input"].strip(), False, keys + "/private.asc", lang, sig)
             except all_imp.pgpy.errors.PGPDecryptionError:
-                error_pass_eng = ["The passphrase is incorrect.", "Returning to menu.", "Error!"]
-                error_pass_esp = ["La contraseña es incorrecta.", "Volviendo al menú.", "¡Error!"]
+                error_pass_eng = ["The passphrase is incorrect.", "Returning to menu.", "Error signing!"]
+                error_pass_esp = ["La contraseña es incorrecta.", "Volviendo al menú.", "¡Error firmando!"]
                 if lang == "eng":
                     error1 = error_pass_eng[0] + "\n" + error_pass_eng[1]
                     error2 = error_pass_eng[2]
@@ -39,27 +39,27 @@ def sf(event, keys, lang, mes_sig_eng, mes_sig_esp, sig, values):
                 all_imp.pSG.popup_error(error1, title = error2)
             update_button = ["Sign", "Firmar"]
             pressed = True
-            if lang == "eng":
-                mes_sig_eng["output"].update(value = str(out_sig))
-                mes_sig_eng["xclipp"].update(visible = False)
-                mes_sig_eng.Element("sig").Update((update_button[0], "Reset")[pressed])
-                mes_sig_eng.refresh()
-                if fin:
+            if fin:
+                if lang == "eng":
+                    mes_sig_eng["output"].update(value = str(out_sig))
+                    mes_sig_eng["xclipp"].update(visible = False)
+                    mes_sig_eng.Element("sig").Update((update_button[0], "Reset")[pressed])
+                    mes_sig_eng.refresh()
                     all_imp.pSG.popup_auto_close(fin, auto_close_duration = 1, button_type = 5, title = fin)
-                event, values = mes_sig_eng.read()
-                mes_sig_eng.close()
-            if not lang:
-                mes_sig_esp["output"].update(value = str(out_sig))
-                mes_sig_esp["xclipp"].update(visible = False)
-                mes_sig_esp.Element("sig").Update((update_button[1], "Reset")[pressed])
-                mes_sig_eng.refresh()
-                if fin:
+                    event, values = mes_sig_eng.read()
+                    mes_sig_eng.close()
+                elif lang == "esp":
+                    mes_sig_esp["output"].update(value = str(out_sig))
+                    mes_sig_esp["xclipp"].update(visible = False)
+                    mes_sig_esp.Element("sig").Update((update_button[1], "Reset")[pressed])
+                    mes_sig_eng.refresh()
                     all_imp.pSG.popup_auto_close(fin, auto_close_duration = 1, button_type = 5, title = fin)
-                event, values = mes_sig_esp.read()
-                mes_sig_esp.close()
+                    event, values = mes_sig_esp.read()
+                    mes_sig_esp.close()
         else:
-            no_priv_eng = ["Private key to sign message does not exist.", "Returning to menu", "Error!"]
-            no_priv_esp = ["La clave privada para firmar el mensaje no existe.", "Volviendo al menu", "¡Error!"]
+            no_priv_eng = ["Private key to sign message does not exist.", "Returning to menu.", "Error signing!"]
+            no_priv_esp = ["La clave privada para firmar el mensaje no existe.", "Volviendo al menú.",
+                           "¡Error firmando!"]
             if lang == "eng":
                 error1 = no_priv_eng[0] + "\n" + no_priv_eng[1]
                 error2 = no_priv_eng[2]
@@ -85,7 +85,7 @@ def sm(enc, event, keys, lang, mes_sig_eng, mes_sig_esp, sig):
     """Function that allows to choose the signing mode.
     Returns events, mode choice and values if there were any typed in."""
 
-    done, error1, error2, fin, mode, paste, window_title, values = "", "", "", "", "", "", "", ""
+    error1, error2, fin, mode, paste, window_title, values = "", "", "", "", "", "", ""
 
     choose_sig_eng, choose_sig_esp = all_imp.choose_layout.crem_sign()
     if lang == "eng" and event not in [34, 35, 36]:
@@ -135,8 +135,8 @@ def sm(enc, event, keys, lang, mes_sig_eng, mes_sig_esp, sig):
                     _, fin = all_imp.edsv.pgpy_sign(enc + "/encrypted_message.txt", False, keys + "/private.asc", lang,
                                                     sig)
                 except all_imp.pgpy.errors.PGPDecryptionError:
-                    error_pass_eng = ["The passphrase is incorrect.", "Returning to menu.", "Error!"]
-                    error_pass_esp = ["La contraseña es incorrecta.", "Volviendo al menú.", "¡Error!"]
+                    error_pass_eng = ["The passphrase is incorrect.", "Returning to menu.", "Error signing!"]
+                    error_pass_esp = ["La contraseña es incorrecta.", "Volviendo al menú.", "¡Error firmando!"]
                     if lang == "eng":
                         error1 = error_pass_eng[0] + "\n" + error_pass_eng[1]
                         error2 = error_pass_eng[2]
@@ -147,8 +147,9 @@ def sm(enc, event, keys, lang, mes_sig_eng, mes_sig_esp, sig):
                 if fin:
                     all_imp.pSG.popup_auto_close(fin, auto_close_duration = 1, button_type = 5, title = fin)
             else:
-                no_mes_eng = ["No message to sign found in Messages folder.", "Returning to menu.", "Error!"]
-                no_mes_esp = ["No existe un mensaque firmar en la carpeta Messages.", "Volviendo al menú.", "¡Error!"]
+                no_mes_eng = ["No message to sign found in ./Messages.", "Returning to menu.", "Error signing!"]
+                no_mes_esp = ["No existe un mensaje que firmar en ./Messages.", "Volviendo al menú.",
+                              "¡Error firmando!"]
                 if lang == "eng":
                     error1 = no_mes_eng[0] + "\n" + no_mes_eng[1]
                     error2 = no_mes_eng[2]
@@ -157,8 +158,9 @@ def sm(enc, event, keys, lang, mes_sig_eng, mes_sig_esp, sig):
                     error2 = no_mes_esp[2]
                 all_imp.pSG.popup_error(error1, title = error2)
         else:
-            no_priv_eng = ["Private key to sign message does not exist.", "Returning to menu.", "Error!"]
-            no_priv_esp = ["La clave privada para firmar el mensaje no existe.", "Volviendo al menú.", "¡Error!"]
+            no_priv_eng = ["Private key to sign message does not exist.", "Returning to menu.", "Error signing!"]
+            no_priv_esp = ["La clave privada para firmar el mensaje no existe.", "Volviendo al menú.",
+                           "¡Error firmando!"]
             if lang == "eng":
                 error1 = no_priv_eng[0] + "\n" + no_priv_eng[1]
                 error2 = no_priv_eng[2]
@@ -180,8 +182,8 @@ def sm(enc, event, keys, lang, mes_sig_eng, mes_sig_esp, sig):
                 try:
                     all_imp.edsv.pgpy_sign(fname, True, keys + "/private.asc", lang, sig)
                 except all_imp.pgpy.errors.PGPDecryptionError:
-                    error_pass_eng = ["The passphrase is incorrect.", "Returning to menu.", "Error!"]
-                    error_pass_esp = ["La contraseña es incorrecta.", "Volviendo al menú.", "¡Error!"]
+                    error_pass_eng = ["The passphrase is incorrect.", "Returning to menu.", "Error signing!"]
+                    error_pass_esp = ["La contraseña es incorrecta.", "Volviendo al menú.", "¡Error firmando!"]
                     if lang == "eng":
                         error1 = error_pass_eng[0] + "\n" + error_pass_eng[1]
                         error2 = error_pass_eng[2]
@@ -190,8 +192,9 @@ def sm(enc, event, keys, lang, mes_sig_eng, mes_sig_esp, sig):
                         error2 = error_pass_esp[2]
                     all_imp.pSG.popup_error(error1, title = error2)
         else:
-            no_priv_eng = ["Private key to sign message does not exist.", "Returning to menu.", "Error!"]
-            no_priv_esp = ["La clave privada para firmar el mensaje no existe.", "Volviendo al menú.", "¡Error!"]
+            no_priv_eng = ["Private key to sign file does not exist.", "Returning to menu.", "Error signing!"]
+            no_priv_esp = ["La clave privada para firmar el fichero no existe.", "Volviendo al menú.",
+                           "¡Error firmando!"]
             if lang == "eng":
                 error1 = no_priv_eng[0] + "\n" + no_priv_eng[1]
                 error2 = no_priv_eng[2]

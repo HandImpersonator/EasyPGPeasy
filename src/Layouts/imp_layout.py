@@ -45,7 +45,7 @@ def crem_pub_import():
     """Create Public key import window layout.
     Return created layout."""
 
-    text_eng = ["Paste Public key:", "(Note, keep window where you copied the Pblic key OPEN until imported here.)"]
+    text_eng = ["Paste Public key:", "(Note, keep window where you copied the Public key OPEN until imported here.)"]
     buttons_eng = ["Paste from clipboard", "Import", "Menu"]
     text_esp = ["Pega la clave Pública:",
                 "(Nota, mantener ventana de donde copia la clave Pública ABIERTA hasta que se haya importado aquí.)"]

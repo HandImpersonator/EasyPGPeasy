@@ -12,7 +12,7 @@ def create_menu(lang, imp, ks):
 
     error1, error2, fin, paste, well_is_it = "", "", "", "", ""
     email, event, event1, imp_eng, imp_esp, mode_text, name, ok = None, False, False, None, None, None, None, False
-    height, values, width = 440, [], 320
+    height, values, width = 455, [], 320
 
     while True:
 
@@ -111,8 +111,8 @@ def create_menu(lang, imp, ks):
 
             if event1 == 700:
                 if not vp[1]:
-                    empty_eng = ["Cannot import empty data.", "Error!"]
-                    empty_esp = ["No se puede importar datos vacíos.", "¡Error!"]
+                    empty_eng = ["Cannot import empty data.", "Error importing!"]
+                    empty_esp = ["No se puede importar datos vacíos.", "¡Error importando!"]
                     if lang == "eng":
                         error1 = empty_eng[0]
                         error2 = empty_eng[1]
@@ -138,12 +138,12 @@ def create_menu(lang, imp, ks):
                             text_file_v.close()
                             ok = True
                         else:
-                            error_popup_eng = ["Not a valid Public key.", "Error encrypting!"]
-                            error_popup_esp = ["No es una clave Pública válida.", "¡Error cifrando!"]
+                            error_popup_eng = ["Not a valid Public key.", "Error importing!"]
+                            error_popup_esp = ["No es una clave Pública válida.", "¡Error importando!"]
                             if lang == "eng":
                                 error1 = error_popup_eng[0]
                                 error2 = error_popup_eng[1]
-                            if not lang:
+                            elif lang == "esp":
                                 error1 = error_popup_esp[0]
                                 error2 = error_popup_esp[1]
                             all_imp.pSG.popup_error(error1, title = error2)
@@ -157,12 +157,12 @@ def create_menu(lang, imp, ks):
                             text_file_v.close()
                             ok = True
                         else:
-                            error_popup_eng = ["Not a valid Signature.", "Error encrypting!"]
-                            error_popup_esp = ["No es una Firma válida.", "¡Error cifrando!"]
+                            error_popup_eng = ["Not a valid Signature.", "Error importing!"]
+                            error_popup_esp = ["No es una Firma válida.", "¡Error importando!"]
                             if lang == "eng":
                                 error1 = error_popup_eng[0]
                                 error2 = error_popup_eng[1]
-                            if not lang:
+                            elif lang == "esp":
                                 error1 = error_popup_esp[0]
                                 error2 = error_popup_esp[1]
                             all_imp.pSG.popup_error(error1, title = error2)
@@ -170,9 +170,9 @@ def create_menu(lang, imp, ks):
                     # Show finished message
                     if ok:
                         if lang == "eng":
-                            fin = "Done! Saved in Imported."
+                            fin = "Imported! Saved in ./Imported."
                         elif lang == "esp":
-                            fin = "¡Hecho! Guardado en Imported."
+                            fin = "¡Importado! Guardado en ./Imported."
                         all_imp.pSG.popup_auto_close(fin, auto_close_duration = 1.2, button_type = 5, title = fin)
                         event = False
 

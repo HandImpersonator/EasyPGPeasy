@@ -64,7 +64,7 @@ def pgpy_create_keypair(email, keys, lang, name, size, custom):
     text_file_public.close()
 
     if lang == "eng":
-        fin = "Done! Saved in folder Keys."
+        fin = "Created! Saved in ./Keys."
     elif lang == "esp":
-        fin = "¡Hecho! Guardado en carpeta Keys."
+        fin = "¡Creado! Guardado en ./Keys."
     all_imp.pSG.popup_auto_close(fin, auto_close_duration = 1.2, button_type = 5, title = fin)

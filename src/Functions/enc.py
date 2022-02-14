@@ -9,11 +9,11 @@ def ef(enc, event, imported, lang, mes_enc_eng, mes_enc_esp, values):
     """Function that handles the encryption process.
     Returns events, mode choice and values if there were any typed in."""
 
-    done, error1, error2, fin, mode, out_enc = "", "", "", "", "", ""
+    error1, error2, fin, mode, out_enc = "", "", "", "", ""
 
     if not values["input"].strip():
-        empty_eng = ["Cannot encrypt empty data.", "Returning to menu.", "Error!"]
-        empty_esp = ["No se pueden cifrar datos vacíos.", "Volviendo al menú.", "¡Error!"]
+        empty_eng = ["Cannot encrypt empty data.", "Returning to menu.", "Error encrypting!"]
+        empty_esp = ["No se pueden cifrar datos vacíos.", "Volviendo al menú.", "¡Error cifrando!"]
         if lang == "eng":
             error1 = empty_eng[0] + "\n" + empty_eng[1]
             error2 = empty_eng[2]
@@ -29,27 +29,27 @@ def ef(enc, event, imported, lang, mes_enc_eng, mes_enc_esp, values):
                                                      imported + "/v_imported_public.asc", lang, enc)
             update_button = ["Encrypt", "Cifrar"]
             pressed = True
-            if lang == "eng":
-                mes_enc_eng["output"].update(value = str(out_enc))
-                mes_enc_eng["xclipp"].update(visible = False)
-                mes_enc_eng.Element("enc").Update((update_button[0], "Reset")[pressed])
-                mes_enc_eng.refresh()
-                if fin:
+            if fin:
+                if lang == "eng":
+                    mes_enc_eng["output"].update(value = str(out_enc))
+                    mes_enc_eng["xclipp"].update(visible = False)
+                    mes_enc_eng.Element("enc").Update((update_button[0], "Reset")[pressed])
+                    mes_enc_eng.refresh()
                     all_imp.pSG.popup_auto_close(fin, auto_close_duration = 1, button_type = 5, title = fin)
-                event, values = mes_enc_eng.read()
-                mes_enc_eng.close()
-            elif lang == "esp":
-                mes_enc_esp["output"].update(value = str(out_enc))
-                mes_enc_esp["xclipp"].update(visible = False)
-                mes_enc_esp.Element("enc").Update((update_button[1], "Reset")[pressed])
-                mes_enc_esp.refresh()
-                if fin:
+                    event, values = mes_enc_eng.read()
+                    mes_enc_eng.close()
+                elif lang == "esp":
+                    mes_enc_esp["output"].update(value = str(out_enc))
+                    mes_enc_esp["xclipp"].update(visible = False)
+                    mes_enc_esp.Element("enc").Update((update_button[1], "Reset")[pressed])
+                    mes_enc_esp.refresh()
                     all_imp.pSG.popup_auto_close(fin, auto_close_duration = 1, button_type = 5, title = fin)
-                event, values = mes_enc_esp.read()
-                mes_enc_esp.close()
+                    event, values = mes_enc_esp.read()
+                    mes_enc_esp.close()
         else:
-            no_pub_eng = ["Public key to encrypt message does not exist.", "Returning to menu", "Error!"]
-            no_pub_esp = ["La clave pública para cifrar el mensaje no existe.", "Volviendo al menu", "¡Error!"]
+            no_pub_eng = ["Public key to encrypt message does not exist.", "Returning to menu.", "Error encrypting!"]
+            no_pub_esp = ["La clave pública para cifrar el mensaje no existe.", "Volviendo al menú.",
+                          "¡Error cifrando!"]
             if lang == "eng":
                 error1 = no_pub_eng[0] + "\n" + no_pub_eng[1]
                 error2 = no_pub_eng[2]
@@ -131,8 +131,8 @@ def em(enc, event, imported, lang, mes_enc_eng, mes_enc_esp):
             if fname:
                 all_imp.edsv.pgpy_encrypt(fname, True, imported + "/v_imported_public.asc", lang, enc)
         else:
-            no_pub_eng = ["Public key to encrypt message does not exist.", "Returning to menu", "Error!"]
-            no_pub_esp = ["La clave pública para cifrar el mensaje no existe.", "Volviendo al menu", "¡Error!"]
+            no_pub_eng = ["Public key to encrypt file does not exist.", "Returning to menu.", "Error encrypting!"]
+            no_pub_esp = ["La clave pública para file el mensaje no existe.", "Volviendo al menú.", "¡Error cifrando!"]
             if lang == "eng":
                 error1 = no_pub_eng[0] + "\n" + no_pub_eng[1]
                 error2 = no_pub_eng[2]
