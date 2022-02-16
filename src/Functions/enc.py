@@ -5,7 +5,7 @@
 from src.Functions import all_imp
 
 
-def ef(enc, event, imported, lang, mes_enc_eng, mes_enc_esp, values):
+def ef(enc, event, key, lang, mes_enc_eng, mes_enc_esp, values):
     """Function that handles the encryption process.
     Returns events, mode choice and values if there were any typed in."""
 
@@ -21,44 +21,27 @@ def ef(enc, event, imported, lang, mes_enc_eng, mes_enc_esp, values):
             error1 = empty_esp[0] + "\n" + empty_esp[1]
             error2 = empty_esp[2]
         all_imp.pSG.popup_error(error1, title = error2)
-        mes_enc_eng.close()
-        mes_enc_esp.close()
     elif values["input"].strip():
-        if all_imp.os.path.isfile(imported + "/v_imported_public.asc"):
-            out_enc, fin = all_imp.edsv.pgpy_encrypt(values["input"].strip(), False,
-                                                     imported + "/v_imported_public.asc", lang, enc)
-            update_button = ["Encrypt", "Cifrar"]
-            pressed = True
-            if fin:
-                if lang == "eng":
-                    mes_enc_eng["output"].update(value = str(out_enc))
-                    mes_enc_eng["xclipp"].update(visible = False)
-                    mes_enc_eng.Element("enc").Update((update_button[0], "Reset")[pressed])
-                    mes_enc_eng.refresh()
-                    all_imp.pSG.popup_auto_close(fin, auto_close_duration = 1, button_type = 5, title = fin)
-                    event, values = mes_enc_eng.read()
-                    mes_enc_eng.close()
-                elif lang == "esp":
-                    mes_enc_esp["output"].update(value = str(out_enc))
-                    mes_enc_esp["xclipp"].update(visible = False)
-                    mes_enc_esp.Element("enc").Update((update_button[1], "Reset")[pressed])
-                    mes_enc_esp.refresh()
-                    all_imp.pSG.popup_auto_close(fin, auto_close_duration = 1, button_type = 5, title = fin)
-                    event, values = mes_enc_esp.read()
-                    mes_enc_esp.close()
-        else:
-            no_pub_eng = ["Public key to encrypt message does not exist.", "Returning to menu.", "Error encrypting!"]
-            no_pub_esp = ["La clave pública para cifrar el mensaje no existe.", "Volviendo al menú.",
-                          "¡Error cifrando!"]
+        out_enc, fin = all_imp.edsv.pgpy_encrypt(values["input"].strip(), False, key, lang, enc)
+        update_button = ["Encrypt", "Cifrar"]
+        pressed = True
+        if fin:
             if lang == "eng":
-                error1 = no_pub_eng[0] + "\n" + no_pub_eng[1]
-                error2 = no_pub_eng[2]
+                mes_enc_eng["output"].update(value = str(out_enc))
+                mes_enc_eng["xclipp"].update(visible = False)
+                mes_enc_eng.Element("enc").Update((update_button[0], "Reset")[pressed])
+                mes_enc_eng.refresh()
+                all_imp.pSG.popup_auto_close(fin, auto_close_duration = 1, button_type = 5, title = fin)
+                event, values = mes_enc_eng.read()
             elif lang == "esp":
-                error1 = no_pub_esp[0] + "\n" + no_pub_esp[1]
-                error2 = no_pub_esp[2]
-            all_imp.pSG.popup_error(error1, title = error2)
-            mes_enc_eng.close()
-            mes_enc_esp.close()
+                mes_enc_esp["output"].update(value = str(out_enc))
+                mes_enc_esp["xclipp"].update(visible = False)
+                mes_enc_esp.Element("enc").Update((update_button[1], "Reset")[pressed])
+                mes_enc_esp.refresh()
+                all_imp.pSG.popup_auto_close(fin, auto_close_duration = 1, button_type = 5, title = fin)
+                event, values = mes_enc_esp.read()
+    mes_enc_eng.close()
+    mes_enc_esp.close()
     mode = None
     if event == 800:
         mode = None
@@ -73,7 +56,7 @@ def ef(enc, event, imported, lang, mes_enc_eng, mes_enc_esp, values):
     return event, mode, values
 
 
-def em(enc, event, imported, lang, mes_enc_eng, mes_enc_esp):
+def em(enc, event, key, lang, mes_enc_eng, mes_enc_esp):
     """Function that allows to choose the encryption mode.
     Returns events, mode choice and values if there were any typed in."""
 
@@ -122,24 +105,13 @@ def em(enc, event, imported, lang, mes_enc_eng, mes_enc_esp):
             all_imp.sys.exit(0)
 
     elif event == 16:
-        if all_imp.os.path.isfile(imported + "/v_imported_public.asc"):
-            if lang == "eng":
-                window_title = "Document to encrypt:"
-            elif lang == "esp":
-                window_title = "Documento a cifrar:"
-            fname = all_imp.pSG.popup_get_file(window_title, title = window_title)
-            if fname:
-                all_imp.edsv.pgpy_encrypt(fname, True, imported + "/v_imported_public.asc", lang, enc)
-        else:
-            no_pub_eng = ["Public key to encrypt file does not exist.", "Returning to menu.", "Error encrypting!"]
-            no_pub_esp = ["La clave pública para file el mensaje no existe.", "Volviendo al menú.", "¡Error cifrando!"]
-            if lang == "eng":
-                error1 = no_pub_eng[0] + "\n" + no_pub_eng[1]
-                error2 = no_pub_eng[2]
-            elif lang == "esp":
-                error1 = no_pub_esp[0] + "\n" + no_pub_esp[1]
-                error2 = no_pub_esp[2]
-            all_imp.pSG.popup_error(error1, title = error2)
+        if lang == "eng":
+            window_title = "Document to encrypt:"
+        elif lang == "esp":
+            window_title = "Documento a cifrar:"
+        fname = all_imp.pSG.popup_get_file(window_title, title = window_title)
+        if fname:
+            _, _ = all_imp.edsv.pgpy_encrypt(fname, True, key, lang, enc)
         event = None
         mode = None
 

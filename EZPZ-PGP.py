@@ -20,7 +20,7 @@ decrypted = output + "/Decrypted"
 signed = output + "/Signed"
 verified = output + "/Verified"
 out_dec, out_sig = "", ""
-password, pressed = "", False
+password = ""
 values = {}
 window_title = ""
 
@@ -134,40 +134,98 @@ while True:
 
     # Encryption selected.
     if mode == 15:
-        pressed = False
-        event, mode, values = all_imp.enc.em(encrypted, event, imported, lang, mes_enc_eng, mes_enc_esp)
+        key = imported + "/v_imported_public.asc"
+        if all_imp.os.path.isfile(key):
+            event, mode, values = all_imp.enc.em(encrypted, event, key, lang, mes_enc_eng, mes_enc_esp)
+        else:
+            no_pub_eng = ["Public key to encrypt file does not exist.", "Error encrypting!"]
+            no_pub_esp = ["La clave pública para file el mensaje no existe.", "¡Error cifrando!"]
+            if lang == "eng":
+                error1 = no_pub_eng[0]
+                error2 = no_pub_eng[1]
+            elif lang == "esp":
+                error1 = no_pub_esp[0]
+                error2 = no_pub_esp[1]
+            all_imp.pSG.popup_error(error1, title = error2)
 
     # Decryption selected.
     elif mode == 20:
-        pressed = False
-        event, mode, values = all_imp.dec.dm(decrypted, event, imported, keys, lang, mes_dec_eng, mes_dec_esp)
+        key = keys + "/private.asc"
+        mes = imported + "/v_imported_message.txt"
+        if all_imp.os.path.isfile(key):
+            event, mode, values = all_imp.dec.dm(decrypted, event, key, lang, mes, mes_dec_eng, mes_dec_esp)
+        else:
+            no_priv_eng = ["Private key to decrypt message does not exist.", "Error decrypting!"]
+            no_priv_esp = ["La clave privada para descifrar el mensaje no existe.", "¡Error descifrando!"]
+            if lang == "eng":
+                error1 = no_priv_eng[0]
+                error2 = no_priv_eng[1]
+            elif lang == "esp":
+                error1 = no_priv_esp[0]
+                error2 = no_priv_esp[1]
+            all_imp.pSG.popup_error(error1, title = error2)
 
     # Signing selected.
     elif mode == 30:
-        pressed = False
-        event, mode, values = all_imp.sig.sm(encrypted, event, keys, lang, mes_sig_eng, mes_sig_esp, signed)
+        key = keys + "/private.asc"
+        enc = encrypted + "/encrypted_message.txt"
+        if all_imp.os.path.isfile(key):
+            event, mode, values = all_imp.sig.sm(enc, event, key, lang, mes_sig_eng, mes_sig_esp, signed)
+        else:
+            no_priv_eng = ["Private key to sign message does not exist.", "Error signing!"]
+            no_priv_esp = ["La clave privada para firmar el mensaje no existe.", "¡Error firmando!"]
+            if lang == "eng":
+                error1 = no_priv_eng[0]
+                error2 = no_priv_eng[1]
+            elif lang == "esp":
+                error1 = no_priv_esp[0]
+                error2 = no_priv_esp[1]
+            all_imp.pSG.popup_error(error1, title = error2)
 
     # Verifying selected.
     elif mode == 40:
-        pressed = False
-        event, mode, values = all_imp.ver.vm(event, imported, lang, verified)
+        key = imported + "/v_imported_public.asc"
+        mes = imported + "/v_imported_message.txt"
+        sig = imported + "/v_imported_signature.txt"
+        if all_imp.os.path.isfile(key):
+            if all_imp.os.path.isfile(sig):
+                event, mode, values = all_imp.ver.vm(event, key, lang, mes, sig, verified)
+            else:
+                no_ver_eng = ["Signature to verify message is not imported.", "Error verifying!"]
+                no_ver_esp = ["La firma para verificar el mensaje no está importado.", "¡Error verificando!"]
+                if lang == "eng":
+                    error1 = no_ver_eng[0]
+                    error2 = no_ver_eng[1]
+                elif lang == "esp":
+                    error1 = no_ver_esp[0]
+                    error2 = no_ver_esp[1]
+                all_imp.pSG.popup_error(error1, title = error2)
+        else:
+            no_pub_eng = ["Public key to verify message is not imported.", "Error verifying!"]
+            no_pub_esp = ["La clave pública para verificar el mensaje no está importado.", "¡Error verificando!"]
+            if lang == "eng":
+                error1 = no_pub_eng[0]
+                error2 = no_pub_eng[1]
+            elif lang == "esp":
+                error1 = no_pub_esp[0]
+                error2 = no_pub_esp[1]
+            all_imp.pSG.popup_error(error1, title = error2)
 
     # Perform encryption of plaintext message.
     if event == "enc":
-        event, mode, values = all_imp.enc.ef(encrypted, event, imported, lang, mes_enc_eng, mes_enc_esp, values)
+        key = imported + "/v_imported_public.asc"
+        event, mode, values = all_imp.enc.ef(encrypted, event, key, lang, mes_enc_eng, mes_enc_esp, values)
 
-    # Perform decryption encrypted message
+    # Perform decryption of encrypted message
     if event == "dec":
-        event, mode, values = all_imp.dec.df(decrypted, event, keys, lang, mes_dec_eng, mes_dec_esp, values)
+        key = keys + "/private.asc"
+        event, mode, values = all_imp.dec.df(decrypted, event, key, lang, mes_dec_eng, mes_dec_esp, values)
 
     # Perfonm singing of message.
     if event == "sig":
-        event, mode, values = all_imp.sig.sf(event, keys, lang, mes_sig_eng, mes_sig_esp, signed, values)
+        key = keys + "/private.asc"
+        event, mode, values = all_imp.sig.sf(event, key, lang, mes_sig_eng, mes_sig_esp, signed, values)
 
     # Exit tool.
     if event == 600:
         all_imp.sys.exit(0)
-
-    # Show menu.
-    if event == 800:
-        mode = None

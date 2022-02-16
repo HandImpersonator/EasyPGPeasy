@@ -5,7 +5,7 @@
 from src.Functions import all_imp
 
 
-def vm(event, imported, lang, ver):
+def vm(event, key, lang, mes, sig, ver):
     """Function that allows to choose the verifying mode.
     Returns events, mode choice and values if there were any typed in."""
 
@@ -20,87 +20,28 @@ def vm(event, imported, lang, ver):
         choose_ver_esp.close()
 
     if event == 44:
-        if all_imp.os.path.isfile(imported + "/v_imported_public.asc"):
-            if all_imp.os.path.isfile(imported + "/v_imported_message.txt"):
-                if all_imp.os.path.isfile(imported + "/v_imported_signature.txt"):
-                    mes = imported + "/v_imported_message.txt"
-                    key = imported + "/v_imported_public.asc"
-                    sig = imported + "/v_imported_signature.txt"
-                    fin = all_imp.edsv.pgpy_verify(False, mes, key, lang, sig, ver)
-                    if fin:
-                        all_imp.pSG.popup_auto_close(fin, auto_close_duration = 1, button_type = 5, title = fin)
-                else:
-                    no_ver_eng = ["Signature to verify message is not imported.", "Returning to menu.",
-                                  "Error verifying!"]
-                    no_ver_esp = ["La firma para verificar el mensaje no está importado.", "Volviendo al menú.",
-                                  "¡Error verificando!"]
-                    if lang == "eng":
-                        error1 = no_ver_eng[0] + "\n" + no_ver_eng[1]
-                        error2 = no_ver_eng[2]
-                    elif lang == "esp":
-                        error1 = no_ver_esp[0] + "\n" + no_ver_esp[1]
-                        error2 = no_ver_esp[2]
-                    all_imp.pSG.popup_error(error1, title = error2)
-            else:
-                no_pub_eng = ["Message to be verified is not imported.", "Returning to menu.", "Error verifying!"]
-                no_pub_esp = ["El mensaje a verificar no está importade.", "Volviendo al menú.", "¡Error verificando!"]
-                if lang == "eng":
-                    error1 = no_pub_eng[0] + "\n" + no_pub_eng[1]
-                    error2 = no_pub_eng[2]
-                elif lang == "esp":
-                    error1 = no_pub_esp[0] + "\n" + no_pub_esp[1]
-                    error2 = no_pub_esp[2]
-                all_imp.pSG.popup_error(error1, title = error2)
+        if all_imp.os.path.isfile(mes):
+            all_imp.edsv.pgpy_verify(False, mes, key, lang, sig, ver)
         else:
-            no_pub_eng = ["Public key to verify message is not imported.", "Returning to menu.", "Error verifying!"]
-            no_pub_esp = ["La clave pública para verificar el mensaje no está importado.", "Volviendo al menú.",
-                          "¡Error verificando!"]
+            no_pub_eng = ["Message to be verified is not imported.", "Error verifying!"]
+            no_pub_esp = ["El mensaje a verificar no está importade.", "¡Error verificando!"]
             if lang == "eng":
-                error1 = no_pub_eng[0] + "\n" + no_pub_eng[1]
-                error2 = no_pub_eng[2]
+                error1 = no_pub_eng[0]
+                error2 = no_pub_eng[1]
             elif lang == "esp":
-                error1 = no_pub_esp[0] + "\n" + no_pub_esp[1]
-                error2 = no_pub_esp[2]
+                error1 = no_pub_esp[0]
+                error2 = no_pub_esp[1]
             all_imp.pSG.popup_error(error1, title = error2)
-        mode = None
 
     elif event == 46:
-        if all_imp.os.path.isfile(imported + "/v_imported_public.asc"):
-            if all_imp.os.path.isfile(imported + "/v_imported_signature.txt"):
-                if lang == "eng":
-                    window_title = "Document to verify:"
-                elif lang == "esp":
-                    window_title = "Documento a verificar:"
-                mes = all_imp.pSG.popup_get_file(window_title, title = window_title)
-                key = imported + "/v_imported_public.asc"
-                sig = imported + "/v_imported_signature.txt"
-                if mes:
-                    fin = all_imp.edsv.pgpy_verify(True, mes, key, lang, sig, ver)
-                if fin:
-                    all_imp.pSG.popup_auto_close(fin, auto_close_duration = 1, button_type = 5, title = fin)
-            else:
-                no_ver_eng = ["Signature to verify file is not imported.", "Returning to menu.", "Error verifying!"]
-                no_ver_esp = ["La firma para verificar el fichero no está importado.", "Volviendo al menú.",
-                              "¡Error verificando!"]
-                if lang == "eng":
-                    error1 = no_ver_eng[0] + "\n" + no_ver_eng[1]
-                    error2 = no_ver_eng[2]
-                elif lang == "esp":
-                    error1 = no_ver_esp[0] + "\n" + no_ver_esp[1]
-                    error2 = no_ver_esp[2]
-                all_imp.pSG.popup_error(error1, title = error2)
-        else:
-            no_pub_eng = ["Public key to verify file is not imported.", "Returning to menu.", "Error verifying!"]
-            no_pub_esp = ["La clave pública para el fichero el mensaje no está importada.", "Volviendo al menú.",
-                          "¡Error verificando!"]
-            if lang == "eng":
-                error1 = no_pub_eng[0] + "\n" + no_pub_eng[1]
-                error2 = no_pub_eng[2]
-            elif lang == "esp":
-                error1 = no_pub_esp[0] + "\n" + no_pub_esp[1]
-                error2 = no_pub_esp[2]
-            all_imp.pSG.popup_error(error1, title = error2)
-        mode = None
+        if lang == "eng":
+            window_title = "Document to verify:"
+        elif lang == "esp":
+            window_title = "Documento a verificar:"
+        mes = all_imp.pSG.popup_get_file(window_title, title = window_title)
+        if mes:
+            all_imp.edsv.pgpy_verify(True, mes, key, lang, sig, ver)
+    mode = None
 
     if event == 800:
         mode = None
