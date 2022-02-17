@@ -1,10 +1,10 @@
 # EZPZ-PGP
 
-This is a simple and easy to use PGP tool.
+This is a simple and easy (hopefully) to use PGP tool.
 
 ## Features
 
-[X] Create new PGP Keypairs, able to choose between 4096, 8192 and 16384 (overkill) bit keys.
+[X] Create new PGP Keypairs, able to choose between 4096, 8192 and 16384 (overkill perhaps) bit keys.
 
 [X] Paste from clipboard.
 
@@ -20,7 +20,7 @@ This is a simple and easy to use PGP tool.
 
 Release to a standalone executable.
 
-## File structure
+## File directory structure
 
 ```bash
 .
@@ -52,6 +52,22 @@ Release to a standalone executable.
 
 10 directories, 15 files
 ```
+
+## Important file locations
+
+- Private key: ```./Keys/private.asc```
+- Public key: ```./Keys/public.asc```
+- Imported Public key for encryption and verification: ```./Imported/v_imported_public.asc```
+- Imported Messages (encrypted or plaintext): ```./Imported/v_imported_message.txt```
+- imported Signatures for verification: ```./Imported/v_imported_signature.txt```
+- Encrypted messages: ```./Output/Encrypted/encrypted_message.txt```
+- Encrypted files: ```./Output/Encrypted/[original_filename.ext].pgp.PK```
+- Decrypted messages: ```./Output/Decrypted/(auto_)decrypted_message.txt```
+- Decrypted files: ```./Output/Decrypted/[original_filename.ext]```
+- Signed plaintext messages: ```./Output/Signed/signed_text.txt```
+- Signed encrypted messages: ```./Output/Signed/encrypted_signed.txt```
+- Signed files: ```./Output/Signed/[original_filename.ext]_signature.txt```
+- Verified texts: ```./Output/Verified/v_verified_message.txt```
 
 ## What the tool can do
 
