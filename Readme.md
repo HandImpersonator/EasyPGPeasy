@@ -112,7 +112,7 @@ You'll need xclip for the copy/paste to/from clipboard actions to work.
 
 `dnf install python-tk xclip`
 
-### Python
+### Python dependecies
 
 - Python 3.6+
 - PySimpleGUI
@@ -123,13 +123,35 @@ You'll need xclip for the copy/paste to/from clipboard actions to work.
 
 Install with: `python -m pip install PySimpleGUI pgpy pypng pyclip pyqrcode`
 
-## Usage
+### Tails
 
-Execute `python EZPZ-PGP.py` and navigate through the menus...
+If you wish to use it with TAILS, for whatever reason, follow the next steps to use it (not recommended).
+
+```sudo apt-get update```
+
+```sudo apt-get python3-pip gcc zlib1g-dev pytohn3-tk```
+
+```torify pip3 install setuptools```
+
+```torify pip3 install pyinstaller pyclip pypng pgpy pyqrcode PySimpleGUI tk```
+
+```python3 EZPZ-PGP.py```
+
+What I do recommend is creating the release, copying it to a USB, rebooting TAILS so it's back to default TAILS and then executing the release from the home directory (if you have created Keypairs I suggest you have them on the USB to use them).
+
+```torify git clone https://github.com/pyinstaller/pyinstaller.git```
+
+```python3 ./pyisntaller/pyinstaller.py -F ./EZPZ-PGP/EZPZ-PGP.py```
+
+The release will be in the dist folder, make it executable and you're golden.
+
+### Usage
+
+Execute `python EZPZ-PGP.py` and navigate through the menus, or execute one of the releases.
 
 ### Releases
 
-Tried on fedora 34, fedora 35, several windows 10 builds (currently trying to build for Mac and try it).
+Tried on Fedora 34, Fedora 35, TAILS 4.27, several windows 10 builds (currently trying to build for Mac and try it).
 
 ### PGP Public Key
 
