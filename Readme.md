@@ -106,11 +106,11 @@ You'll need xclip for the copy/paste to/from clipboard actions to work.
 
 ### Ubuntu
 
-`apt install python-tk xclip`
+`apt install python3-tk xclip`
 
 ### Fedora
 
-`dnf install python-tk xclip`
+`dnf install python3-tk xclip`
 
 ### Python dependecies
 
