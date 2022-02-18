@@ -127,9 +127,9 @@ Install with: `python -m pip install PySimpleGUI pgpy pypng pyclip pyqrcode`
 
 If you wish to use it with TAILS, for whatever reason, follow the next steps to use it (not recommended).
 
-```sudo apt-get update```
+```sudo torify apt-get update```
 
-```sudo apt-get python3-pip gcc zlib1g-dev pytohn3-tk```
+```sudo torify apt-get python3-pip gcc zlib1g-dev python3-tk```
 
 ```torify pip3 install setuptools wheel```
 
@@ -147,7 +147,7 @@ The release will be in the dist folder, make it executable and you're golden.
 
 ### Usage
 
-Execute `python EZPZ-PGP.py` and navigate through the menus, or execute one of the releases.
+Execute `python EZPZ-PGP.py` (or `python3 EZPZ-PGP.py` depends on your system) and navigate through the menus, or execute one of the releases.
 
 ### Releases
 
