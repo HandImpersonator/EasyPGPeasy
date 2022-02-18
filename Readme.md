@@ -131,7 +131,7 @@ If you wish to use it with TAILS, for whatever reason, follow the next steps to 
 
 ```sudo apt-get python3-pip gcc zlib1g-dev pytohn3-tk```
 
-```torify pip3 install setuptools```
+```torify pip3 install setuptools wheel```
 
 ```torify pip3 install pyinstaller pyclip pypng pgpy pyqrcode PySimpleGUI tk```
 
