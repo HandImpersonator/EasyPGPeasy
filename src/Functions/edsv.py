@@ -38,7 +38,7 @@ def pgpy_decrypt(enc_data, file, key, lang, dec):
             error1 = error_dec_esp[0] + "\n" + error_dec_esp[1]
             error2 = error_dec_esp[2]
         all_imp.pSG.popup_error(error1, title = error2)
-        return  None, None
+        return None, None
 
     choose_pass_eng, choose_pass_esp = all_imp.choose_layout.crem_pass()
     if lang == "eng":
@@ -453,8 +453,8 @@ def pgpy_sign(data, file, key, lang, sig):
                     sig_message = open(sig + "/signed_text.txt", "w")
                     auto = False
                 try:
-                    sig_data = str(privkey.sign(message))
-                    comp = "-----BEGIN PGP SIGNED MESSAGE-----\n\n" + str(message) + "\n\n" + str(sig_data)
+                    sig_data = privkey.sign(message)
+                    comp = "-----BEGIN PGP SIGNED MESSAGE-----\n\n" + str(message) + "\n" + str(sig_data)
                     sig_message.write(comp)
                     sig_message.close()
                     all_imp.pyclip.copy(str(sig_data).strip())

@@ -125,11 +125,13 @@ def crem_pass():
 
     layout_pass_choose_eng = [[all_imp.pSG.Text(text_eng)],
                               [all_imp.pSG.Input(do_not_clear = False, focus = False, key = "pass", size = (width, 0))],
-                              [all_imp.pSG.Button(buttons_eng, focus = False, key = "acc", size = (width, 0))]]
+                              [all_imp.pSG.Button(buttons_eng, bind_return_key = True, focus = False, key = "acc",
+                                                  size = (width, 0))]]
     layout_pass_choose_esp = [[all_imp.pSG.Text(text_esp)],
                               [all_imp.pSG.Input(do_not_clear = False, focus = False, key = "pass",
                                                  size = (width, 0))],
-                              [all_imp.pSG.Button(buttons_esp, focus = False, key = "acc", size = (width, 0))]]
+                              [all_imp.pSG.Button(buttons_esp, bind_return_key = True, focus = False, key = "acc",
+                                                  size = (width, 0))]]
 
     window_pass_choose_eng = all_imp.pSG.Window("EZPZ PGP - Password input", layout_pass_choose_eng,
                                                 disable_close = True, element_justification = "center")
