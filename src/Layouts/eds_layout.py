@@ -22,22 +22,25 @@ def crem_enc_dec():
 
     # English
     input_column_enc_eng = [[all_imp.pSG.Text(inp_out_eng[0])], [
-        all_imp.pSG.Multiline(autoscroll = True, enable_events = False, key = "input", size = (width2, 10))], [
-                                all_imp.pSG.Button(enc_dec_mode_eng[0], focus = False, key = "enc", size = (width3, 0)),
+        all_imp.pSG.Multiline(autoscroll = True, enable_events = False, focus = True, key = "input",
+                              size = (width2, 10))],
+                            [all_imp.pSG.Button(enc_dec_mode_eng[0], focus = False, key = "enc", size = (width3, 0)),
                                 all_imp.pSG.Button(button_eng[0], focus = False, key = "xclipp", size = (width3, 0))]]
     output_column_enc_eng = [[all_imp.pSG.Text(inp_out_eng[1])], [
         all_imp.pSG.Multiline(autoscroll = True, disabled = True, enable_events = False, key = "output",
                               size = (width2, 25), write_only = True)]]
     input_column_dec_eng = [[all_imp.pSG.Text(inp_out_eng[0])], [
-        all_imp.pSG.Multiline(autoscroll = True, enable_events = False, key = "input", size = (width2, 10))], [
-                                all_imp.pSG.Button(enc_dec_mode_eng[1], focus = False, key = "dec", size = (width3, 0)),
+        all_imp.pSG.Multiline(autoscroll = True, enable_events = False, focus = True, key = "input",
+                              size = (width2, 10))],
+                            [all_imp.pSG.Button(enc_dec_mode_eng[1], focus = False, key = "dec", size = (width3, 0)),
                                 all_imp.pSG.Button(button_eng[0], focus = False, key = "xclipp", size = (width3, 0))]]
     output_column_dec_eng = [[all_imp.pSG.Text(inp_out_eng[1])], [
         all_imp.pSG.Multiline(autoscroll = True, disabled = True, enable_events = False, key = "output",
                               size = (width2, 25), write_only = True)]]
     input_column_sig_eng = [[all_imp.pSG.Text(inp_out_eng[0])], [
-        all_imp.pSG.Multiline(autoscroll = True, enable_events = False, key = "input", size = (width2, 10))], [
-                                all_imp.pSG.Button(enc_dec_mode_eng[2], focus = False, key = "sig", size = (width3, 0)),
+        all_imp.pSG.Multiline(autoscroll = True, enable_events = False, focus = True, key = "input",
+                              size = (width2, 10))],
+                            [all_imp.pSG.Button(enc_dec_mode_eng[2], focus = False, key = "sig", size = (width3, 0)),
                                 all_imp.pSG.Button(button_eng[0], focus = False, key = "xclipp", size = (width3, 0))]]
     output_column_sig_eng = [[all_imp.pSG.Text(inp_out_eng[1])], [
         all_imp.pSG.Multiline(autoscroll = True, disabled = True, enable_events = False, key = "output",
@@ -52,15 +55,17 @@ def crem_enc_dec():
         all_imp.pSG.Multiline(autoscroll = True, disabled = True, enable_events = False, key = "output",
                               size = (width2, 25), write_only = True)]]
     input_column_dec_esp = [[all_imp.pSG.Text(inp_out_esp[0])], [
-        all_imp.pSG.Multiline(autoscroll = True, enable_events = False, key = "input", size = (width2, 10))], [
-                                all_imp.pSG.Button(enc_dec_mode_esp[1], focus = False, key = "dec", size = (width3, 0)),
+        all_imp.pSG.Multiline(autoscroll = True, enable_events = False, focus = True, key = "input",
+                              size = (width2, 10))],
+                            [all_imp.pSG.Button(enc_dec_mode_esp[1], focus = False, key = "dec", size = (width3, 0)),
                                 all_imp.pSG.Button(button_esp[0], focus = False, key = "xclipp", size = (width3, 0))]]
     output_column_dec_esp = [[all_imp.pSG.Text(inp_out_esp[1])], [
         all_imp.pSG.Multiline(autoscroll = True, disabled = True, enable_events = False, key = "output",
                               size = (width2, 25), write_only = True)]]
     input_column_sig_esp = [[all_imp.pSG.Text(inp_out_esp[0])], [
-        all_imp.pSG.Multiline(autoscroll = True, enable_events = False, key = "input", size = (width2, 10))], [
-                                all_imp.pSG.Button(enc_dec_mode_esp[2], focus = False, key = "sig", size = (width3, 0)),
+        all_imp.pSG.Multiline(autoscroll = True, enable_events = False, focus = True, key = "input",
+                              size = (width2, 10))],
+                            [all_imp.pSG.Button(enc_dec_mode_esp[2], focus = False, key = "sig", size = (width3, 0)),
                                 all_imp.pSG.Button(button_esp[0], focus = False, key = "xclipp", size = (width3, 0))]]
     output_column_sig_esp = [[all_imp.pSG.Text(inp_out_esp[1])], [
         all_imp.pSG.Multiline(autoscroll = True, disabled = True, enable_events = False, key = "output",

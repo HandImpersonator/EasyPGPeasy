@@ -22,14 +22,14 @@ def crem_enc_import():
     import_v_p_e_eng = [[all_imp.pSG.Text(text_eng[0])], [all_imp.pSG.Text(text_eng[1])],
                         [all_imp.pSG.Text(text_eng[2])], [all_imp.pSG.Text(text_eng[3])],
                         [all_imp.pSG.Button(buttons_eng[0], focus = False, key = "xclipp", size = (58, 0))],
-                        [all_imp.pSG.Multiline(autoscroll = True, key = 110, size = (58, 30))],
+                        [all_imp.pSG.Multiline(autoscroll = True, focus = True, key = 112, size = (58, 30))],
                         [all_imp.pSG.Button(buttons_eng[1], focus = False, key = 700, size = (26, 0)),
                          all_imp.pSG.Button(buttons_eng[2], focus = False, key = 800, size = (26, 0))]]
     import_v_p_e_esp = [[all_imp.pSG.Text(text_esp[0])], [all_imp.pSG.Text(text_esp[1])],
                         [all_imp.pSG.Text(text_esp[2])], [all_imp.pSG.Text(text_esp[3])],
                         [all_imp.pSG.Text(text_esp[4])],
                         [all_imp.pSG.Button(buttons_esp[0], focus = False, key = "xclipp", size = (58, 0))],
-                        [all_imp.pSG.Multiline(autoscroll = True, key = 110, size = (58, 30))],
+                        [all_imp.pSG.Multiline(autoscroll = True, focus = True, key = 112, size = (58, 30))],
                         [all_imp.pSG.Button(buttons_esp[1], focus = False, key = 700, size = (26, 0)),
                          all_imp.pSG.Button(buttons_esp[2], focus = False, key = 800, size = (26, 0))]]
 
@@ -53,12 +53,12 @@ def crem_pub_import():
 
     import_v_p_k_eng = [[all_imp.pSG.Text(text_eng[0])], [all_imp.pSG.Text(text_eng[1])],
                         [all_imp.pSG.Button(buttons_eng[0], focus = False, key = "xclipp", size = (58, 0))],
-                        [all_imp.pSG.Multiline(autoscroll = True, key = 112, size = (58, 30))],
+                        [all_imp.pSG.Multiline(autoscroll = True, focus = True, key = 112, size = (58, 30))],
                         [all_imp.pSG.Button(buttons_eng[1], focus = False, key = 700, size = (26, 0)),
                          all_imp.pSG.Button(buttons_eng[2], focus = False, key = 800, size = (26, 0))]]
     import_v_p_k_esp = [[all_imp.pSG.Text(text_esp[0])], [all_imp.pSG.Text(text_esp[1])],
                         [all_imp.pSG.Button(buttons_esp[0], focus = False, key = "xclipp", size = (58, 0))],
-                        [all_imp.pSG.Multiline(autoscroll = True, key = 112, size = (58, 30))],
+                        [all_imp.pSG.Multiline(autoscroll = True, focus = True, key = 112, size = (58, 30))],
                         [all_imp.pSG.Button(buttons_esp[1], focus = False, key = 700, size = (26, 0)),
                          all_imp.pSG.Button(buttons_esp[2], focus = False, key = 800, size = (26, 0))]]
 
@@ -82,12 +82,12 @@ def crem_sig_import():
 
     import_v_p_s_eng = [[all_imp.pSG.Text(text_eng[0])], [all_imp.pSG.Text(text_eng[1])],
                         [all_imp.pSG.Button(buttons_eng[0], focus = False, key = "xclipp", size = (58, 0))],
-                        [all_imp.pSG.Multiline(autoscroll = True, key = 114, size = (58, 30))],
+                        [all_imp.pSG.Multiline(autoscroll = True, focus = True, key = 112, size = (58, 30))],
                         [all_imp.pSG.Button(buttons_eng[1], focus = False, key = 700, size = (26, 0)),
                          all_imp.pSG.Button(buttons_eng[2], focus = False, key = 800, size = (26, 0))]]
     import_v_p_s_esp = [[all_imp.pSG.Text(text_esp[0])], [all_imp.pSG.Text(text_esp[1])],
                         [all_imp.pSG.Button(buttons_esp[0], focus = False, key = "xclipp", size = (58, 0))],
-                        [all_imp.pSG.Multiline(autoscroll = True, key = 114, size = (58, 30))],
+                        [all_imp.pSG.Multiline(autoscroll = True, focus = True, key = 112, size = (58, 30))],
                         [all_imp.pSG.Button(buttons_esp[1], focus = False, key = 700, size = (26, 0)),
                          all_imp.pSG.Button(buttons_esp[2], focus = False, key = 800, size = (26, 0))]]
 
