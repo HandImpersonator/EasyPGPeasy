@@ -48,8 +48,9 @@ def crem_enc_dec():
 
     # Spanish
     input_column_enc_esp = [[all_imp.pSG.Text(inp_out_esp[0])], [
-        all_imp.pSG.Multiline(autoscroll = True, enable_events = False, key = "input", size = (width2, 10))], [
-                                all_imp.pSG.Button(enc_dec_mode_esp[0], focus = False, key = "enc", size = (width3, 0)),
+        all_imp.pSG.Multiline(autoscroll = True, enable_events = False, focus = True, key = "input",
+                              size = (width2, 10))],
+                            [all_imp.pSG.Button(enc_dec_mode_esp[0], focus = False, key = "enc", size = (width3, 0)),
                                 all_imp.pSG.Button(button_esp[0], focus = False, key = "xclipp", size = (width3, 0))]]
     output_column_enc_esp = [[all_imp.pSG.Text(inp_out_esp[1])], [
         all_imp.pSG.Multiline(autoscroll = True, disabled = True, enable_events = False, key = "output",
