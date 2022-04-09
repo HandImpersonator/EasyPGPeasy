@@ -239,7 +239,9 @@ def create_menu(lang, imp, ks):
 
                 addresses = ["bc1qxzgzrwmgd7l02cd2engq5rfvpdhkp6degglach", "0xA7eA66c2Ef113006c51A6c140EC4147464d8f260",
                              "88khuWDVBMrXMoBnDNdCA6CfuhBiejrgFRYFm2Qh6D9YUrUGs"
-                             "FLHcbahSnkUw8ThZG42jP75vWLwrbupjAEcBwWbH3jzsf3", "t1Y2UiuGFLNYQMtcW4dpbKmsuoQ1hVnhyeE",
+                             "FLHcbahSnkUw8ThZG42jP75vWLwrbupjAEcBwWbH3jzsf3",
+                             "hvs1jAcikNcWgDX8HQNsSha38c6xQq1uSNif3LN89LW7BPJi3rgQm"
+                             "9YecQtf7r9RjbPhbUxtPoFQ8bLtyZn2sB47AJdbk5y7nf", "t1Y2UiuGFLNYQMtcW4dpbKmsuoQ1hVnhyeE",
                              "zs10cgw0hgyz8hdx0pgqfu8eufqvr4m7t2yw2mxym5ma4z836y9sjrwrzaqfj4nrsflrfl7y6pshds",
                              "WJEU5DEYA32ICA7KSLMRIFOCLR2ZXJNKZRXH2AVA7FKTS277NODZDX3OII",
                              "HQNLZBEGEG6XJ5JL63H4ALGP7XVC5UUTSCXYGNG57HCH7BBQYINMYUU3LY",
@@ -248,10 +250,10 @@ def create_menu(lang, imp, ks):
                              "cosmos1xq7ywms0rh46plkhyt3s2zetw2e02a5xvp0h0v",
                              "GCKDR5KJLNE2T54T6EGOOI7V2CBZBL5XWJUAPXJVWLEBSUYY5A4OOLKJ"]
 
-                title = {1: "Bitcoin", 2: "Ethereum", 3: "Monero", 4: "ZCash Transparent", 5: "ZCash Shielded",
-                         6: "Algorand", 7: "Alogrand Assets", 8: "Harmony", 9: "Litecoin", 10: "Tezos", 11: "Cosmos",
-                         12: "Stellar"}
-                if event in range(1, 13):
+                title = {1: "Bitcoin", 2: "Ethereum", 3: "Monero", 4: "Haven", 5: "ZCash Transparent",
+                         6: "ZCash Shielded", 7: "Algorand", 8: "Alogrand Assets", 9: "Harmony", 10: "Litecoin",
+                         11: "Tezos", 12: "Cosmos", 13: "Stellar"}
+                if event in range(1, 14):
                     all_imp.pyclip.copy(addresses[(event - 1)])
                     img = all_imp.pyqrcode.create(addresses[(event - 1)], error = "H", version = 12, mode = "binary")
                     img.png(title[event], scale = 6, module_color = [0, 0, 0, 128])

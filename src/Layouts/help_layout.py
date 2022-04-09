@@ -10,8 +10,8 @@ def crem_coffee():
     Returns coffee layout."""
     width = 65
 
-    add = ["Bitcoin", "Ethereum", "Monero", "ZCash Transparent", "ZCash Shielded", "Algorand",
-           "Alogrand Assets\n(HDL, YLDY, STBL, TREES)",
+    add = ["Bitcoin", "Ethereum", "Monero", "Haven", "ZCash Transparent", "ZCash Shielded", "Algorand",
+           "Alogrand Assets\n(CHIPS, HDL, YLDY, STBL, TREES)",
            "Harmony", "Litecoin", "Tezos", "Cosmos", "Stellar"]
     text_eng = ["\n", "Send only listed Assets, other Assets sent won't be received, they'll be lost.",
                 "Clicking a button will copy the address to clipboard and show a QR.",
