@@ -129,19 +129,17 @@ If you wish to use it with TAILS, for whatever reason, follow the next steps to 
 
 ```sudo torify apt-get update```
 
-```sudo torify apt-get python3-pip gcc zlib1g-dev python3-tk```
+```sudo torify apt-get install python3-pip gcc zlib1g-dev python3-tk```
 
-```torify pip3 install setuptools wheel```
+```torify python3 -m pip install setuptools wheel```
 
-```torify pip3 install pyinstaller pyclip pypng pgpy pyqrcode PySimpleGUI tk```
+```torify python3 -m pip install pyinstaller pyclip pypng pgpy pyqrcode PySimpleGUI tk```
 
 ```python3 EZPZ-PGP.py```
 
 What I do recommend is creating the release, copying it to a USB, rebooting TAILS so it's back to default TAILS and then executing the release from the home directory (if you have created Keypairs I suggest you have them on the USB to use them).
 
-```torify git clone https://github.com/pyinstaller/pyinstaller.git```
-
-```python3 ./pyisntaller/pyinstaller.py -F ./EZPZ-PGP/EZPZ-PGP.py```
+```pyinstaller -F EZPZ-PGP.py```
 
 The release will be in the dist folder, make it executable and you're golden.
 
