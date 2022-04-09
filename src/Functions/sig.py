@@ -81,6 +81,10 @@ def sm(enc, event, key, lang, mes_sig_eng, mes_sig_esp, sig):
         event, values = choose_sig_esp.read()
         choose_sig_esp.close()
 
+    if event == 800:
+        mode = None
+        event = None
+
     if event == 34:
         if lang == "eng":
             event, values = mes_sig_eng.read()

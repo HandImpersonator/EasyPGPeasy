@@ -81,6 +81,10 @@ def dm(dec, event, key, lang, mes, mes_dec_eng, mes_dec_esp):
         event, values = choose_dec_esp.read()
         choose_dec_esp.close()
 
+    if event == 800:
+        mode = None
+        event = None
+
     if event == 24:
         if lang == "eng":
             event, values = mes_dec_eng.read()

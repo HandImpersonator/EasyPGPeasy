@@ -70,6 +70,10 @@ def em(enc, event, key, lang, mes_enc_eng, mes_enc_esp):
         event, values = choose_enc_esp.read()
         choose_enc_esp.close()
 
+    if event == 800:
+        mode = None
+        event = None
+
     if event == 14:
         if lang == "eng":
             event, values = mes_enc_eng.read()
