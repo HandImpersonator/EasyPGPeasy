@@ -87,7 +87,7 @@ If you want to create a PGP Keypair, select the bit size to use, choose whether 
 
 You can import a message that was encrypted with your public key to automatically decrypt it, if the encrypted message was signed and you import the signature you can verify it, import a plaintext message and it's signature to verify it. 
 You can import a PGP Public Key to encrypt a message.
-All of the above also applies with files and everything imported with be in the folder `./Imported`.
+All of the above also applies with files and everything imported will be in the folder `./Imported`.
 
 If you want to encrypt a file/message, you first need to import the PGP Public Key, then type or paste the message, click encrypt and in the output the encrypted message will show and save in `./Output/Encrypted` folder.
 
