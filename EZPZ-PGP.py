@@ -147,6 +147,7 @@ while True:
                 error1 = no_pub_esp[0]
                 error2 = no_pub_esp[1]
             all_imp.pSG.popup_error(error1, title = error2)
+            mode = None
 
     # Decryption selected.
     elif mode == 20:
@@ -164,6 +165,7 @@ while True:
                 error1 = no_priv_esp[0]
                 error2 = no_priv_esp[1]
             all_imp.pSG.popup_error(error1, title = error2)
+            mode = None
 
     # Signing selected.
     elif mode == 30:
@@ -181,6 +183,7 @@ while True:
                 error1 = no_priv_esp[0]
                 error2 = no_priv_esp[1]
             all_imp.pSG.popup_error(error1, title = error2)
+            mode = None
 
     # Verifying selected.
     elif mode == 40:
@@ -200,6 +203,7 @@ while True:
                     error1 = no_ver_esp[0]
                     error2 = no_ver_esp[1]
                 all_imp.pSG.popup_error(error1, title = error2)
+                mode = None
         else:
             no_pub_eng = ["Public key to verify message is not imported.", "Error verifying!"]
             no_pub_esp = ["La clave pública para verificar el mensaje no está importado.", "¡Error verificando!"]
@@ -210,6 +214,7 @@ while True:
                 error1 = no_pub_esp[0]
                 error2 = no_pub_esp[1]
             all_imp.pSG.popup_error(error1, title = error2)
+            mode = None
 
     # Perform encryption of plaintext message.
     if event == "enc":
