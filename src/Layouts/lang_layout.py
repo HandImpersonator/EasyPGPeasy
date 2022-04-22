@@ -21,9 +21,9 @@ def crem_language():
                            [all_imp.pSG.Button(button_esp[1], focus = False, key = "esp", size = (width, 0))],
                            [all_imp.pSG.Button(button_esp[2], focus = False, key = 800, size = (width, 0))]]
 
-    window_language_eng = all_imp.pSG.Window("EZPZ PGP - Language selection", layout_language_eng, disable_close = True,
-                                             element_justification = "center")
-    window_language_esp = all_imp.pSG.Window("EZPZ PGP - Selección de idioma", layout_language_esp, disable_close = True,
-                                             element_justification = "center")
+    window_language_eng = all_imp.pSG.Window("EasyPGPeasy - Language selection", layout_language_eng,
+                                             disable_close = True, element_justification = "center")
+    window_language_esp = all_imp.pSG.Window("EasyPGPeasy - Selección de idioma", layout_language_esp,
+                                             disable_close = True, element_justification = "center")
 
     return window_language_eng, window_language_esp

@@ -103,17 +103,17 @@ def crem_enc_dec():
                                all_imp.pSG.Button(button_esp[1], focus = False, key = 800, size = (width1, 0)),
                                all_imp.pSG.Button(button_esp[2], focus = False, key = 600, size = (width1, 0))]]
 
-    mes_enc_eng = all_imp.pSG.Window("EZPZ PGP - " + enc_dec_mode_eng[0], layout_text_enc_eng, disable_close = True,
+    mes_enc_eng = all_imp.pSG.Window("EasyPGPeasy - " + enc_dec_mode_eng[0], layout_text_enc_eng, disable_close = True,
                                      element_justification = "center")
-    mes_dec_eng = all_imp.pSG.Window("EZPZ PGP - " + enc_dec_mode_eng[1], layout_text_dec_eng, disable_close = True,
+    mes_dec_eng = all_imp.pSG.Window("EasyPGPeasy - " + enc_dec_mode_eng[1], layout_text_dec_eng, disable_close = True,
                                      element_justification = "center")
-    mes_sig_eng = all_imp.pSG.Window("EZPZ PGP - " + enc_dec_mode_eng[2], layout_text_sig_eng, disable_close = True,
+    mes_sig_eng = all_imp.pSG.Window("EasyPGPeasy - " + enc_dec_mode_eng[2], layout_text_sig_eng, disable_close = True,
                                      element_justification = "center")
-    mes_enc_esp = all_imp.pSG.Window("EZPZ PGP - " + enc_dec_mode_esp[0], layout_text_enc_esp, disable_close = True,
+    mes_enc_esp = all_imp.pSG.Window("EasyPGPeasy - " + enc_dec_mode_esp[0], layout_text_enc_esp, disable_close = True,
                                      element_justification = "center")
-    mes_dec_esp = all_imp.pSG.Window("EZPZ PGP - " + enc_dec_mode_esp[1], layout_text_dec_esp, disable_close = True,
+    mes_dec_esp = all_imp.pSG.Window("EasyPGPeasy - " + enc_dec_mode_esp[1], layout_text_dec_esp, disable_close = True,
                                      element_justification = "center")
-    mes_sig_esp = all_imp.pSG.Window("EZPZ PGP - " + enc_dec_mode_esp[2], layout_text_sig_esp, disable_close = True,
+    mes_sig_esp = all_imp.pSG.Window("EasyPGPeasy - " + enc_dec_mode_esp[2], layout_text_sig_esp, disable_close = True,
                                      element_justification = "center")
 
     return mes_enc_eng, mes_enc_esp, mes_dec_eng, mes_dec_esp, mes_sig_eng, mes_sig_esp

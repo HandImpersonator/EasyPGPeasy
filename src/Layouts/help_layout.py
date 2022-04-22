@@ -53,9 +53,9 @@ def crem_coffee():
                          [all_imp.pSG.Text(text_esp[4])],
                          [all_imp.pSG.Button(text_esp[5], focus = False, key = 800, size = (width, 0))]]
 
-    window_coffee_eng = all_imp.pSG.Window("EZPZ PGP - Buy me a coffee", layout_coffee_eng, disable_close = True,
+    window_coffee_eng = all_imp.pSG.Window("EasyPGPeasy - Buy me a coffee", layout_coffee_eng, disable_close = True,
                                            element_justification = "center")
-    window_coffee_esp = all_imp.pSG.Window("EZPZ PGP - Cómprame un café", layout_coffee_esp, disable_close = True,
+    window_coffee_esp = all_imp.pSG.Window("EasyPGPeasy - Cómprame un café", layout_coffee_esp, disable_close = True,
                                            element_justification = "center")
 
     return window_coffee_eng, window_coffee_esp
@@ -123,7 +123,7 @@ def crem_help():
                        [all_imp.pSG.Button(buttons_esp[0], focus = False, key = 666, size = (width2, 0))],
                        [all_imp.pSG.Button(buttons_esp[1], focus = False, key = 800, size = (width2, 0))]]
 
-    window_help_eng = all_imp.pSG.Window("EZPZ PGP - Short help window", layout_help_eng, disable_close = True)
-    window_help_esp = all_imp.pSG.Window("EZPZ PGP - Ventana de ayuda rápida", layout_help_esp, disable_close = True)
+    window_help_eng = all_imp.pSG.Window("EasyPGPeasy - Short help window", layout_help_eng, disable_close = True)
+    window_help_esp = all_imp.pSG.Window("EasyPGPeasy - Ventana de ayuda rápida", layout_help_esp, disable_close = True)
 
     return window_help_eng, window_help_esp

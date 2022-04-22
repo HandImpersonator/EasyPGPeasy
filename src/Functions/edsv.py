@@ -447,27 +447,19 @@ def pgpy_sign(data, file, key, lang, sig):
                 if all_imp.os.path.exists(data):
                     message = open(data, "r").read().strip()
                     sig_message = open(sig + "/encrypted_signed.txt", "w")
-                    auto = True
                 else:
                     message = str(data).strip()
                     sig_message = open(sig + "/signed_text.txt", "w")
-                    auto = False
                 try:
                     sig_data = privkey.sign(message)
                     comp = "-----BEGIN PGP SIGNED MESSAGE-----\n\n" + str(message) + "\n" + str(sig_data)
                     sig_message.write(comp)
                     sig_message.close()
-                    all_imp.pyclip.copy(str(sig_data).strip())
-                    if auto:
-                        if lang == "eng":
-                            fin = "Signed! Saved in ./Output/Signed."
-                        elif lang == "esp":
-                            fin = "¡Firmado! Guardado en ./Output/Signed."
-                    elif not auto:
-                        if lang == "eng":
-                            fin = "Signed! Copied to clipboard and saved in ./Output/Signed."
-                        elif lang == "esp":
-                            fin = "¡Firmado! Copiado a portapapeles y guardado en ./Output/Signed."
+                    all_imp.pyclip.copy(str(comp).strip())
+                    if lang == "eng":
+                        fin = "Signed! Copied to clipboard and saved in ./Output/Signed."
+                    elif lang == "esp":
+                        fin = "¡Firmado! Copiado a portapapeles y guardado en ./Output/Signed."
                     return str(sig_data), fin
                 except all_imp.pgpy.errors.PGPError:
                     error_sig_eng = ["Cannot sign the message with the Private key.", "Returning to menu.",

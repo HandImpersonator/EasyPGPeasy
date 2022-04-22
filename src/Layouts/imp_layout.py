@@ -33,9 +33,9 @@ def crem_enc_import():
                         [all_imp.pSG.Button(buttons_esp[1], focus = False, key = 700, size = (26, 0)),
                          all_imp.pSG.Button(buttons_esp[2], focus = False, key = 800, size = (26, 0))]]
 
-    window_v_p_e_eng = all_imp.pSG.Window("EZPZ PGP - Import Message", import_v_p_e_eng, disable_close = True,
+    window_v_p_e_eng = all_imp.pSG.Window("EasyPGPeasy - Import Message", import_v_p_e_eng, disable_close = True,
                                           element_justification = "center")
-    window_v_p_e_esp = all_imp.pSG.Window("EZPZ PGP - Importar Mensaje", import_v_p_e_esp, disable_close = True,
+    window_v_p_e_esp = all_imp.pSG.Window("EasyPGPeasy - Importar Mensaje", import_v_p_e_esp, disable_close = True,
                                           element_justification = "center")
 
     return window_v_p_e_eng, window_v_p_e_esp
@@ -62,10 +62,10 @@ def crem_pub_import():
                         [all_imp.pSG.Button(buttons_esp[1], focus = False, key = 700, size = (26, 0)),
                          all_imp.pSG.Button(buttons_esp[2], focus = False, key = 800, size = (26, 0))]]
 
-    window_v_p_k_eng = all_imp.pSG.Window("EZPZ PGP - Import Public Key", import_v_p_k_eng, disable_close = True,
+    window_v_p_k_eng = all_imp.pSG.Window("EasyPGPeasy - Import Public Key", import_v_p_k_eng, disable_close = True,
                                           element_justification = "center")
-    window_v_p_k_esp = all_imp.pSG.Window("EZPZ PGP - Importar clave pública", import_v_p_k_esp, disable_close = True,
-                                          element_justification = "center")
+    window_v_p_k_esp = all_imp.pSG.Window("EasyPGPeasy - Importar clave pública", import_v_p_k_esp,
+                                          disable_close = True, element_justification = "center")
 
     return window_v_p_k_eng, window_v_p_k_esp
 
@@ -91,9 +91,9 @@ def crem_sig_import():
                         [all_imp.pSG.Button(buttons_esp[1], focus = False, key = 700, size = (26, 0)),
                          all_imp.pSG.Button(buttons_esp[2], focus = False, key = 800, size = (26, 0))]]
 
-    window_v_p_s_eng = all_imp.pSG.Window("EZPZ PGP - Import Signature", import_v_p_s_eng, disable_close = True,
+    window_v_p_s_eng = all_imp.pSG.Window("EasyPGPeasy - Import Signature", import_v_p_s_eng, disable_close = True,
                                           element_justification = "center")
-    window_v_p_s_esp = all_imp.pSG.Window("EZPZ PGP - Importar Firma", import_v_p_s_esp, disable_close = True,
+    window_v_p_s_esp = all_imp.pSG.Window("EasyPGPeasy - Importar Firma", import_v_p_s_esp, disable_close = True,
                                           element_justification = "center")
 
     return window_v_p_s_eng, window_v_p_s_esp

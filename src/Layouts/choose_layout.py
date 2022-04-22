@@ -23,9 +23,9 @@ def crem_decrypt():
                              [all_imp.pSG.Button(buttons_esp[2], focus = False, key = 26, size = (width, 0))],
                              [all_imp.pSG.Button(buttons_esp[3], focus = False, key = 800, size = (width, 0))]]
 
-    window_dec_choose_eng = all_imp.pSG.Window("EZPZ PGP - Decrypt mode choose", layout_dec_choose_eng,
+    window_dec_choose_eng = all_imp.pSG.Window("EasyPGPeasy - Decrypt mode choose", layout_dec_choose_eng,
                                                disable_close = True, element_justification = "center")
-    window_dec_choose_esp = all_imp.pSG.Window("EZPZ PGP - Elegir modo descifrado", layout_dec_choose_esp,
+    window_dec_choose_esp = all_imp.pSG.Window("EasyPGPeasy - Elegir modo descifrado", layout_dec_choose_esp,
                                                disable_close = True, element_justification = "center")
 
     return window_dec_choose_eng, window_dec_choose_esp
@@ -47,9 +47,9 @@ def crem_encrypt():
                              [all_imp.pSG.Button(buttons_esp[1], focus = False, key = 16, size = (width, 0))],
                              [all_imp.pSG.Button(buttons_esp[2], focus = False, key = 800, size = (width, 0))]]
 
-    window_dec_choose_eng = all_imp.pSG.Window("EZPZ PGP - Encrypt mode choose", layout_dec_choose_eng,
+    window_dec_choose_eng = all_imp.pSG.Window("EasyPGPeasy - Encrypt mode choose", layout_dec_choose_eng,
                                                disable_close = True, element_justification = "center")
-    window_dec_choose_esp = all_imp.pSG.Window("EZPZ PGP - Elegir modo cifrado", layout_dec_choose_esp,
+    window_dec_choose_esp = all_imp.pSG.Window("EasyPGPeasy - Elegir modo cifrado", layout_dec_choose_esp,
                                                disable_close = True, element_justification = "center")
 
     return window_dec_choose_eng, window_dec_choose_esp
@@ -71,9 +71,9 @@ def crem_kp():
                             [all_imp.pSG.Button(buttons_esp[1], focus = False, key = 118, size = (width, 0))],
                             [all_imp.pSG.Button(buttons_esp[2], focus = False, key = 800, size = (width, 0))]]
 
-    window_kp_choose_eng = all_imp.pSG.Window("EZPZ PGP - Keypair mode choose", layout_kp_choose_eng,
+    window_kp_choose_eng = all_imp.pSG.Window("EasyPGPeasy - Keypair mode choose", layout_kp_choose_eng,
                                               disable_close = True, element_justification = "center")
-    window_kp_choose_esp = all_imp.pSG.Window("EZPZ PGP - Elección modo par de claves", layout_kp_choose_esp,
+    window_kp_choose_esp = all_imp.pSG.Window("EasyPGPeasy - Elección modo par de claves", layout_kp_choose_esp,
                                               disable_close = True, element_justification = "center")
 
     return window_kp_choose_eng, window_kp_choose_esp
@@ -104,9 +104,9 @@ def crem_ne():
                             [all_imp.pSG.Button(buttons_esp[0], focus = False, key = 660, size = (width2, 0))],
                             [all_imp.pSG.Button(buttons_esp[1], focus = False, key = 800, size = (width2, 0))]]
 
-    window_ne_choose_eng = all_imp.pSG.Window("EZPZ PGP - PGP choose creation mode", layout_ne_choose_eng,
+    window_ne_choose_eng = all_imp.pSG.Window("EasyPGPeasy - PGP choose creation mode", layout_ne_choose_eng,
                                               disable_close = True, element_justification = "center")
-    window_ne_choose_esp = all_imp.pSG.Window("EZPZ PGP - Elegir modo de creación de PGP", layout_ne_choose_esp,
+    window_ne_choose_esp = all_imp.pSG.Window("EasyPGPeasy - Elegir modo de creación de PGP", layout_ne_choose_esp,
                                               disable_close = True, element_justification = "center")
 
     return window_ne_choose_eng, window_ne_choose_esp
@@ -133,9 +133,9 @@ def crem_pass():
                               [all_imp.pSG.Button(buttons_esp, bind_return_key = True, focus = False, key = "acc",
                                                   size = (width, 0))]]
 
-    window_pass_choose_eng = all_imp.pSG.Window("EZPZ PGP - Password input", layout_pass_choose_eng,
+    window_pass_choose_eng = all_imp.pSG.Window("EasyPGPeasy - Password input", layout_pass_choose_eng,
                                                 disable_close = True, element_justification = "center")
-    window_pass_choose_esp = all_imp.pSG.Window("EZPZ PGP - Introducir contraseña", layout_pass_choose_esp,
+    window_pass_choose_esp = all_imp.pSG.Window("EasyPGPeasy - Introducir contraseña", layout_pass_choose_esp,
                                                 disable_close = True, element_justification = "center")
 
     return window_pass_choose_eng, window_pass_choose_esp
@@ -159,9 +159,9 @@ def crem_sign():
                               [all_imp.pSG.Button(buttons_esp[2], focus = False, key = 36, size = (width, 0))],
                               [all_imp.pSG.Button(buttons_esp[3], focus = False, key = 800, size = (width, 0))]]
 
-    window_sign_choose_eng = all_imp.pSG.Window("EZPZ PGP - Sign mode choose", layout_sign_choose_eng,
+    window_sign_choose_eng = all_imp.pSG.Window("EasyPGPeasy - Sign mode choose", layout_sign_choose_eng,
                                                 disable_close = True, element_justification = "center")
-    window_sign_choose_esp = all_imp.pSG.Window("EZPZ PGP - Elegir modo de firma", layout_sign_choose_esp,
+    window_sign_choose_esp = all_imp.pSG.Window("EasyPGPeasy - Elegir modo de firma", layout_sign_choose_esp,
                                                 disable_close = True, element_justification = "center")
 
     return window_sign_choose_eng, window_sign_choose_esp
@@ -182,9 +182,9 @@ def crem_verify():
                               [all_imp.pSG.Button(buttons_esp[1], focus = False, key = 46, size = (width, 0))],
                               [all_imp.pSG.Button(buttons_esp[2], focus = False, key = 800, size = (width, 0))]]
 
-    window_sign_choose_eng = all_imp.pSG.Window("EZPZ PGP - Sign mode choose", layout_sign_choose_eng,
+    window_sign_choose_eng = all_imp.pSG.Window("EasyPGPeasy - Sign mode choose", layout_sign_choose_eng,
                                                 disable_close = True, element_justification = "center")
-    window_sign_choose_esp = all_imp.pSG.Window("EZPZ PGP - Elegir modo de firma", layout_sign_choose_esp,
+    window_sign_choose_esp = all_imp.pSG.Window("EasyPGPeasy - Elegir modo de firma", layout_sign_choose_esp,
                                                 disable_close = True, element_justification = "center")
 
     return window_sign_choose_eng, window_sign_choose_esp
