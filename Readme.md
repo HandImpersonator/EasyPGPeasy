@@ -1,4 +1,4 @@
-# EZPZ-PGP
+# EasyPGPeasy
 
 This is a simple and easy (hopefully) to use PGP tool.
 
@@ -24,7 +24,7 @@ Release to a standalone executable.
 
 ```bash
 .
-├── EZPZ-PGP.py
+├── EasyPGPeasy.py
 ├── Imported
 ├── Keys
 ├── Output
@@ -135,17 +135,17 @@ If you wish to use it with TAILS, for whatever reason, follow the next steps to 
 
 ```torify python3 -m pip install pyinstaller pyclip pypng pgpy pyqrcode PySimpleGUI tk```
 
-```python3 EZPZ-PGP.py```
+```python3 EasyPGPeasy.py```
 
 What I do recommend is creating the release, copying it to a USB, rebooting TAILS so it's back to default TAILS and then executing the release from the home directory (if you have created Keypairs I suggest you have them on the USB to use them).
 
-```pyinstaller -F EZPZ-PGP.py```
+```pyinstaller -F EasyPGPeasy.py```
 
 The release will be in the dist folder, make it executable and you're golden.
 
 ### Usage
 
-Execute `python EZPZ-PGP.py` (or `python3 EZPZ-PGP.py` depends on your system) and navigate through the menus, or execute one of the releases.
+Execute `python EasyPGPeasy.py` (or `python3 EasyPGPeasy.py` depends on your system) and navigate through the menus, or execute one of the releases.
 
 ### Releases
 
@@ -214,6 +214,7 @@ Thanks to the guys who wrote the following Python libraries/modules, couldn't ha
 - https://github.com/drj11/pypng
 - https://github.com/mnooner256/pyqrcode
 - https://github.com/PySimpleGUI/PySimpleGUI
+Thanks to https://www.reddit.com/user/chaosharmonic/ for suggesting the name change, I quite like it!
 
 ### Coffee
 
