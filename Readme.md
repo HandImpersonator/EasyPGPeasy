@@ -214,7 +214,7 @@ Thanks to the guys who wrote the following Python libraries/modules, couldn't ha
 - https://github.com/drj11/pypng
 - https://github.com/mnooner256/pyqrcode
 - https://github.com/PySimpleGUI/PySimpleGUI
-Thanks to https://www.reddit.com/user/chaosharmonic/ for suggesting the name change, I quite like it!
+Thanks to https://www.reddit.com/user/chaosharmonic/ for suggesting the name chang. I quite like it!
 
 ### Coffee
 
