@@ -71,9 +71,9 @@ Release to a standalone executable.
 
 ## What the tool can do
 
-Create new PGP Keypairs, they'll be automatically saved in two separate files appropriately named in `./Keys`, which will be used when Encrypting, Decrypting, Signing and Verifying signature files and messages. Please note, every time you create new Keypairs, the old ones will be overwritten. If you want to use your own Keypairs, create a new pair to check if the formatting and replace the content of the created ones with your own.
+Create new PGP Keypairs, they'll be automatically saved in two separate files appropriately named in ```./Keys```, which will be used when Encrypting, Decrypting, Signing and Verifying signature files and messages. Please note, every time you create new Keypairs, the old ones will be overwritten. If you want to use your own Keypairs, create a new pair to check if the formatting and replace the content of the created ones with your own.
 
-Imported Public PGP Keys, messages (in order to sign or verify them) and signatures (that correspond to the imported message) will be saved in `./Imported`, and also rewritten with every import. The imported public keys will be used in encrypting and verifying. Please note imported Private PGP keys will be saved in `./Imported`.
+Imported Public PGP Keys, messages (in order to sign or verify them) and signatures (that correspond to the imported message) will be saved in ```./Imported```, and also rewritten with every import. The imported public keys will be used in encrypting and verifying. Please note imported Private PGP keys will be saved in ```./Imported```.
 
 Encrypting, decrypting, signing and verifying files and messages using the created keys and imported keys where necessary.
 
@@ -87,15 +87,15 @@ If you want to create a PGP Keypair, select the bit size to use, choose whether 
 
 You can import a message that was encrypted with your public key to automatically decrypt it, if the encrypted message was signed and you import the signature you can verify it, import a plaintext message and it's signature to verify it. 
 You can import a PGP Public Key to encrypt a message.
-All of the above also applies with files and everything imported will be in the folder `./Imported`.
+All of the above also applies with files and everything imported will be in the folder ```./Imported```.
 
-If you want to encrypt a file/message, you first need to import the PGP Public Key, then type or paste the message, click encrypt and in the output the encrypted message will show and save in `./Output/Encrypted` folder.
+If you want to encrypt a file/message, you first need to import the PGP Public Key, then type or paste the message, click encrypt and in the output the encrypted message will show and save in ```./Output/Encrypted``` folder.
 
-If you want to decrypt a file/message someone encrypted with your PGP Public Key, first, paste the encrypted message, press decrypt, type the passphrase and voilà, if the encrypted message was imported, you can autodecrypt, you can also choose to decrypt a file you encrypted. Decrypted files amd messages will be saved in `./Output/Decrypted`.
+If you want to decrypt a file/message someone encrypted with your PGP Public Key, first, paste the encrypted message, press decrypt, type the passphrase and voilà, if the encrypted message was imported, you can autodecrypt, you can also choose to decrypt a file you encrypted. Decrypted files amd messages will be saved in ```./Output/Decrypted```.
 
-If you want to sign a file/message, you can type a plaintext message, and press sign, you can automatically sign a message that was imported, be it plaintext or encrypted, or a file and will be saved in `./Output/Signed`. The signing operation requires you to type the PGP Private Key passphrase.
+If you want to sign a file/message, you can type a plaintext message, and press sign, you can automatically sign a message that was imported, be it plaintext or encrypted, or a file and will be saved in ```./Output/Signed```. The signing operation requires you to type the PGP Private Key passphrase.
 
-If you want to verify a file/message, you need import the message, import the PGP Public Key, import the signature along with the corresponding PGP Public Key to verify that message, if will give a positive or negative result and save the verified message in `./Output/Verified`, it will not save anything when verifying a file.
+If you want to verify a file/message, you need import the message, import the PGP Public Key, import the signature along with the corresponding PGP Public Key to verify that message, if will give a positive or negative result and save the verified message in ```./Output/Verified```, it will not save anything when verifying a file.
 
 If anything goes wrong, an error will pop up and redirect you to the menu.
 If the tool crashes please open a ticket, with clear instructions on your steps to encounter the issue and I'll try and replicate the issue on my end and fix it the best I can.
@@ -106,11 +106,11 @@ You'll need xclip for the copy/paste to/from clipboard actions to work.
 
 ### Ubuntu
 
-`apt install python3-tk xclip`
+```apt install python3-tk xclip```
 
 ### Fedora
 
-`dnf install python3-tk xclip`
+```dnf install python3-tk xclip```
 
 ### Python dependecies
 
@@ -121,7 +121,7 @@ You'll need xclip for the copy/paste to/from clipboard actions to work.
 - pyclip
 - pyqrcode
 
-Install with: `python -m pip install PySimpleGUI pgpy pypng pyclip pyqrcode`
+Install with: ```python -m pip install PySimpleGUI pgpy pypng pyclip pyqrcode```
 
 ### Tails
 
@@ -139,17 +139,19 @@ If you wish to use it with TAILS, for whatever reason, follow the next steps to 
 
 What I do recommend is creating the release, copying it to a USB, rebooting TAILS so it's back to default TAILS and then executing the release from the home directory (if you have created Keypairs I suggest you have them on the USB to use them).
 
-```pyinstaller -F EasyPGPeasy.py```
+```python3 /home/amnesia/.local/bin/pyinstaller -F EasyPGPeasy.py```
+
+```./EasyPGPeasy```
 
 The release will be in the dist folder, make it executable and you're golden.
 
 ### Usage
 
-Execute `python EasyPGPeasy.py` (or `python3 EasyPGPeasy.py` depends on your system) and navigate through the menus, or execute one of the releases.
+Execute ```python EasyPGPeasy.py``` (or ```python3 EasyPGPeasy.py``` depends on your system) and navigate through the menus, or execute one of the releases.
 
 ### Releases
 
-Tried on Fedora 34, Fedora 35, TAILS 4.27, several windows 10 builds (currently trying to build for Mac and try it).
+Tried on Fedora 33, 34 and 35, TAILS 4.29, several windows 10 builds (currently trying to build for Mac and try it).
 
 ### PGP Public Key
 
