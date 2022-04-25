@@ -41,9 +41,11 @@ def vm(event, key, lang, mes, sig, ver):
         mes = all_imp.pSG.popup_get_file(window_title, title = window_title)
         if mes:
             all_imp.edsv.pgpy_verify(True, mes, key, lang, sig, ver)
+    event = None
     mode = None
 
     if event == 800:
+        event = None
         mode = None
     if event == 600:
         all_imp.sys.exit(0)
